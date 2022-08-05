@@ -139,4 +139,7 @@ return $"Hello {d.name}, today is {d.date}";
 
 
 En dus zou je een soort van parsertje kunnen maken met opties voor variabelen in een vertaling. Voor bijvoorbeeld een bepaald date format. Of misschien wel alleen strings voor 'transformations'. Bijvoorbeeld een `ValueTransformer` met key 'longdate'. We kunnen een standaard set aan ValueTransformers maken en uitbreidbaar maken voor custom implementaties.
+
+Of nog een 'modifier' ofzo, als 'req' voor wanneer er een waarde MOET zijn.
+
 Je kunt dan in de root van TechTolk een standaard meegeven, voor als er niets is gegeven. Misschien een cascading override van meest specifiek naar global.(Dus eerst entry, dan translation set, dan tolk).
