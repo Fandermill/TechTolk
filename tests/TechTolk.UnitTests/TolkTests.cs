@@ -5,8 +5,8 @@ public class TolkTests
     [Fact]
     public void Translation_key_results_in_string()
     {
-        var key = "TRANSLATION_KEY";
-        var tolk = new Tolk(new FixedDividerProvider(new FixedStringDivider("Divider")));
+        var key = "TranslationKey";
+        var tolk = new Tolk(new FixedDividerProvider(new FixedStringDivider("nl")));
 
         var result = tolk.Translate(key);
 
