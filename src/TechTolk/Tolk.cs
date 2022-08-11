@@ -1,63 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace TechTolk;
 
-namespace TechTolk;
-
-public class Tolk : ITolk
+public class Tolk<T> : ITolk<T>
 {
     private readonly ICurrentDividerProvider _currentDividerProvider;
 
-    private IDictionary<Type, ITranslationSet> _typeSets;
+    private readonly ITranslationSet<T> _translations;
 
-    public Tolk(ICurrentDividerProvider currentDividerProvider)
+    public Tolk(ICurrentDividerProvider currentDividerProvider, ITranslationSet<T> translations)
     {
         _currentDividerProvider = currentDividerProvider;
-
-        var translationSet = new TranslationSet<string>("Testing set");
-        var nlDictionary = new TranslationDictionary<string>();
-        nlDictionary.Add("TranslationKey", new Translation<string>("Translated text"));
-        translationSet.AddDivision("nl", nlDictionary);
-
-        _typeSets = new Dictionary<Type, ITranslationSet>();
-        _typeSets.Add(typeof(string), translationSet);
+        _translations = translations;
     }
 
 
-
-    public string Translate(string key)
-    {
-        return Translate<string>(key);
-    }
-
-    public string Translate(IDivider divider, string key)
-    {
-        return Translate<string>(divider, key);
-    }
-
-    public string Translate(IDivider divider, string key, object? data)
-    {
-        return Translate<string>(divider, key, data);
-    }
-
-
-
-    public T Translate<T>(string key)
+    public T Translate(string key)
     {
         var divider = _currentDividerProvider.GetCurrent();
-        return Translate<T>(divider, key);
+        return Translate(divider, key);
     }
 
-    public T Translate<T>(IDivider divider, string key)
+    public T Translate(IDivider divider, string key)
     {
-        return Translate<T>(divider, key, null);
+        return Translate(divider, key, null);
     }
 
-    public T Translate<T>(IDivider divider, string key, object? data)
+    public T Translate(IDivider divider, string key, object? data)
     {
-        var type = typeof(T);
-        if (!_typeSets.ContainsKey(type))
-            throw new ArgumentException($"No translation set found for type '{type.Name}'");
-
-        return _typeSets[type].GetTranslation<T>(divider.GetKey(), key);//data
+        return _translations.GetTranslation(divider.GetKey(), key, data);
     }
 }

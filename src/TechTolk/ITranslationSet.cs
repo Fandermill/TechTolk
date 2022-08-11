@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace TechTolk;
 
-public interface ITranslationSet
+public interface ITranslationSet<T>
 {
     string Name { get; }
     Type Type { get; }
 
-    TUnbox GetTranslation<TUnbox>(string divisionKey, string translationKey);
+    T GetTranslation(string divisionKey, string translationKey, object? data);
 }
 
-public class TranslationSet<T> : ITranslationSet
+public class TranslationSet<T> : ITranslationSet<T>
 {
     public string Name { get; private set; }
     public Type Type => typeof(T);
@@ -32,16 +32,12 @@ public class TranslationSet<T> : ITranslationSet
         _dividedDictionaries.Add(divisionKey, dictionary);
     }
 
-    public TUnbox GetTranslation<TUnbox>(string divisionKey, string translationKey)
+    public T GetTranslation(string divisionKey, string translationKey, object? data)
     {
-        var unboxType = typeof(TUnbox);
-        if (!unboxType.IsAssignableFrom(Type))
-            throw new InvalidCastException($"Unable to unbox translation of type '{Type.Name}' into '{unboxType.Name}'");
-
-        // todo - better solution
-
-        var translation= _dividedDictionaries[divisionKey].Get(translationKey);
-        var result = translation.GetValue(null);
-        return (TUnbox)(object)result;
+        if (!_dividedDictionaries.ContainsKey(divisionKey))
+            throw new ArgumentException("Division key not found in translation set", nameof(divisionKey));
+        
+        var translation = _dividedDictionaries[divisionKey].Get(translationKey);
+        return translation.GetValue(data);
     }
 }
