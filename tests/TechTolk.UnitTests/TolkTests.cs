@@ -1,3 +1,5 @@
+using TechTolk.Translations;
+
 namespace TechTolk.UnitTests;
 
 public class TolkTests
@@ -41,7 +43,7 @@ public class TolkTests
     private Tolk<string> CreateTolk()
     {
         var translationSet = new TranslationSet<string>("Testing set");
-        var nlDictionary = new TranslationDictionary<string>();
+        var nlDictionary = new TranslationDictionary<string>("Test dictionary");
         nlDictionary.Add("TRANSLATION_KEY", new Translation<string>("Translated text"));
         translationSet.AddDivision("nl", nlDictionary);
 

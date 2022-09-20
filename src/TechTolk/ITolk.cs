@@ -1,4 +1,6 @@
-﻿namespace TechTolk;
+﻿using TechTolk.Dividing;
+
+namespace TechTolk;
 
 public interface ITolk<T>
 {

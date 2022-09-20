@@ -1,11 +1,6 @@
 ﻿using System.Linq;
 
-namespace TechTolk;
-
-public interface IValueBagConverter
-{
-    IValueBag ConvertFromObject(object obj);
-}
+namespace TechTolk.Values;
 
 public class ValueBagConverter : IValueBagConverter
 {
@@ -17,7 +12,7 @@ public class ValueBagConverter : IValueBagConverter
             .GetType()
             .GetProperties()
             .ToList()
-            .ForEach(p => valueBag.Add(p.Name, p.GetValue(obj, null)));
+            .ForEach(p => valueBag.Set(p.Name, p.GetValue(obj, null)));
 
         return valueBag;
     }

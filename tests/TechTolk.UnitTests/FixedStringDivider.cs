@@ -1,4 +1,6 @@
-﻿namespace TechTolk.UnitTests;
+﻿using TechTolk.Dividing;
+
+namespace TechTolk.UnitTests;
 
 public class FixedStringDivider : IDivider
 {

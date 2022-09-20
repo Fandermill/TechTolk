@@ -1,6 +1,8 @@
-namespace TechTolk.UnitTests;
+﻿using TechTolk.Values;
 
-public class ValueBagTests
+namespace TechTolk.UnitTests.Values;
+
+public class ValueBagConverterTests
 {
     [Fact]
     public void Can_convert_anonymous_object_into_value_bag()
