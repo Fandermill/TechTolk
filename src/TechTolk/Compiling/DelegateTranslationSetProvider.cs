@@ -2,7 +2,7 @@
 
 namespace TechTolk.Compiling;
 
-public class DelegateTranslationSetProvider<T> : ITranslationSetProvider<T>
+public sealed class DelegateTranslationSetProvider<T> : ITranslationSetProvider<T>
 {
     private readonly Func<ITranslationSet<T>> _func;
 

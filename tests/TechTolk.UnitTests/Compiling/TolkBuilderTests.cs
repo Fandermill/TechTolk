@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TechTolk.Compiling;
+﻿using TechTolk.Compiling;
 
 namespace TechTolk.UnitTests.Compiling;
 
@@ -12,14 +7,16 @@ public class TolkBuilderTests
     [Fact]
     public void Can_add_single_translation_set()
     {
-        var builder = new TolkBuilder<string>();
-        
-        var tolk = builder
-            .AddTranslationSet(() => new TranslationSet<string>("Set1")).OverwriteDuplicates()
-            //.AddTranslationSet
+        // TODO - Write compilation tests... and not in this class... =)
+
+
+        TolkCompiler.ForType<string>()
+            .WithDivider(new FixedDividerProvider(new FixedStringDivider("nl")))
+            .WithMerger(null) // todo
+            .AddTranslationSet(() => new TranslationSet<string>("tst1")).DiscardDuplicates()
+            .AddTranslationSet(() => new TranslationSet<string>("test 2"))
             .Compile();
 
-        // TODO
         throw new NotImplementedException();
 
     }

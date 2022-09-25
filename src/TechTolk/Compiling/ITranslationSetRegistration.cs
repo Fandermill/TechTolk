@@ -1,8 +1,6 @@
-﻿using System;
+﻿namespace TechTolk.Compiling;
 
-namespace TechTolk.Compiling;
-
-public interface ITranslationSetRegistration<T> : ITolkBuilder<T>
+public interface ITranslationSetRegistration<T> : ITranslationSetTolkCompiler<T>, ICompilableTolkCompiler<T>
 {
-    ITranslationSetRegistration<T> OverwriteDuplicates();
+    ITranslationSetRegistration<T> DiscardDuplicates();
 }

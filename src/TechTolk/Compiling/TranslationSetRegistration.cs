@@ -3,24 +3,23 @@ using TechTolk.Exceptions;
 
 namespace TechTolk.Compiling;
 
-public class TranslationSetRegistration<T> : WrappedTolkBuilder<T>, ITranslationSetRegistration<T>
+public class TranslationSetRegistration<T> : WrappedCompilableTolkCompilation<T>, ITranslationSetRegistration<T>
 {
-    private bool _overwriteDuplicates = false;
+    private bool _discardDuplicates = false;
 
     private readonly ITranslationSetProvider<T> _translationSetProvider;
 
     public TranslationSetRegistration(
-        ITolkBuilder<T> builder,
+        ITolkCompilation<T> compilation,
         ITranslationSetProvider<T> translationSetProvider)
-        : base(builder)
+        : base(compilation)
     {
-        _builder = builder ?? throw new ArgumentNullException(nameof(builder));
         _translationSetProvider = translationSetProvider ?? throw new ArgumentNullException(nameof(translationSetProvider));
     }
 
-    public ITranslationSetRegistration<T> OverwriteDuplicates()
+    public ITranslationSetRegistration<T> DiscardDuplicates()
     {
-        _overwriteDuplicates = true;
+        _discardDuplicates = true;
         return this;
     }
 
