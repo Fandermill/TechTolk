@@ -5,7 +5,7 @@ namespace TechTolk.Compiling;
 
 public class TranslationSetRegistration<T> : WrappedCompilableTolkCompilation<T>, ITranslationSetRegistration<T>
 {
-    private bool _discardDuplicates = false;
+    public bool DiscardDuplicates { get; private set; } = false;
 
     private readonly ITranslationSetProvider<T> _translationSetProvider;
 
@@ -17,9 +17,9 @@ public class TranslationSetRegistration<T> : WrappedCompilableTolkCompilation<T>
         _translationSetProvider = translationSetProvider ?? throw new ArgumentNullException(nameof(translationSetProvider));
     }
 
-    public ITranslationSetRegistration<T> DiscardDuplicates()
+    public ITranslationSetRegistration<T> DiscardDuplicatesOnMerge()
     {
-        _discardDuplicates = true;
+        DiscardDuplicates = true;
         return this;
     }
 

@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace TechTolk;
 
 public class TranslationSet<T> : ITranslationSet<T>
 {
-    public string Name { get; private set; }
-    public Type Type => typeof(T);
+    public TranslationSetInfo SetInfo { get; private set; }
 
-    // todo private ITranslationDictionary<T> _dictionary;
     private Dictionary<string, TranslationDictionary<T>> _dividedDictionaries;
 
     public TranslationSet(string name)
     {
-        Name = name;
-
+        SetInfo = new TranslationSetInfo(name, typeof(T));
         _dividedDictionaries = new Dictionary<string, TranslationDictionary<T>>();
     }
 
@@ -31,5 +29,10 @@ public class TranslationSet<T> : ITranslationSet<T>
         
         var translation = _dividedDictionaries[divisionKey].Get(translationKey);
         return translation.GetValue(data);
+    }
+
+    public IReadOnlyDictionary<string, TranslationDictionary<T>> GetDivisionDictionaries()
+    {
+        return new ReadOnlyDictionary<string, TranslationDictionary<T>>(_dividedDictionaries);
     }
 }

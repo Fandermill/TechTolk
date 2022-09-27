@@ -1,0 +1,42 @@
+﻿
+dict <divider, <key, translation> >
+
+
+TranslationSet
++ Info : TranslationSetInfo
++ dict <divider, TranslationDictionary>
+
+TranslationSetInfo
++ name : string
++ timestamp_fetched : datetime
+
+TranslationDictionary
++ name
++ dict<key, Translation>
+
+Translation
++ GetValue(object? mailMerge) : string
+
+---------
+
+Bij het bouwen van de sets zou een andere data structuur gebruikt moeten worden
+dan de TranslationSet die uiteindelijk in Tolk gebruikt wordt.
+
+Tussen de fetcher/merger en de translation set moet pas de translation value ge-parsed worden,
+die van "bla bla {x} lbla" een MergeValueTranslation object te maken etc etc enz enz.
+
+
+TranslationRecord
++ Divider : IDivider
++ Key : string
++ Translation : string
+
+TranslationRecordSetProvider
++ GetSet() : TranslationRecordSet
+
+TranslationRecordSet
++ SetInfo : TranslationSetInfo
++ Records : List<TranslationRecord>
+
+
+Moet een TranslationSetInfo een property voor DiscardDuplicate bool hebben? Nee?

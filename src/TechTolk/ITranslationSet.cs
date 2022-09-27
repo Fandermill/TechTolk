@@ -1,11 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace TechTolk;
 
 public interface ITranslationSet<T>
 {
-    string Name { get; }
-    Type Type { get; }
-
+    TranslationSetInfo SetInfo { get; }
+    IReadOnlyDictionary<string, TranslationDictionary<T>> GetDivisionDictionaries();
     T GetTranslation(string divisionKey, string translationKey, object? data);
 }

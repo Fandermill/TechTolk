@@ -16,12 +16,12 @@ public class TolkCompiler
         private ICurrentDividerProvider? _currentDividerProvider;
         private ITranslationSetMerger<T>? _translationSetMerger;
 
-        private readonly List<ITranslationSetRegistration<T>> _setRegistrations;
+        private readonly List<TranslationSetRegistration<T>> _setRegistrations;
 
 
         public TolkCompilation()
         {
-            _setRegistrations = new List<ITranslationSetRegistration<T>>();
+            _setRegistrations = new List<TranslationSetRegistration<T>>();
         }
 
         public void WithDivider(ICurrentDividerProvider dividerProvider)
@@ -55,7 +55,8 @@ public class TolkCompiler
             if (_translationSetMerger is null)
                 throw new InvalidOperationException($"Unable to compile without a merger");
 
-            throw new NotImplementedException();
+            var mergedTranslationSet = _translationSetMerger.Merge(_setRegistrations);
+            return new Tolk<T>(_currentDividerProvider, mergedTranslationSet);
         }
     }
 

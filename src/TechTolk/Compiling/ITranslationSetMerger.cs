@@ -4,5 +4,5 @@ namespace TechTolk.Compiling;
 
 public interface ITranslationSetMerger<T>
 {
-    ITranslationSet<T> Merge(IEnumerable<ITranslationSet<T>> sets);
+    ITranslationSet<T> Merge(IEnumerable<ITranslationSetRegistration<T>> setRegistrations);
 }

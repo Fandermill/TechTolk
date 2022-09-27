@@ -2,5 +2,7 @@
 
 public interface ITranslationSetRegistration<T> : ITranslationSetTolkCompiler<T>, ICompilableTolkCompiler<T>
 {
-    ITranslationSetRegistration<T> DiscardDuplicates();
+    bool DiscardDuplicates { get; }
+    ITranslationSet<T> GetTranslationSet();
+    ITranslationSetRegistration<T> DiscardDuplicatesOnMerge();
 }
