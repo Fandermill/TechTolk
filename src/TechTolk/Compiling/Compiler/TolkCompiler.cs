@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechTolk.Compiling.Merging;
 using TechTolk.Compiling.Sourcing;
 using TechTolk.Dividing;
 
@@ -12,10 +13,10 @@ public class TolkCompilation
         return new DividerProviderTolkCompiler<T>(new TolkCompiler<T>());
     }
 
-    private class TolkCompiler<T> : ITolkCompilation<T>
+    private class TolkCompiler<T> : ITolkCompiler<T>
     {
         private ICurrentDividerProvider? _currentDividerProvider;
-        private ITranslationSetMerger<T>? _translationSetMerger;
+        private ITranslationRecordSetMerger<T>? _merger;
 
         private readonly List<TranslationSetRegistration<T>> _setRegistrations;
 
@@ -30,9 +31,9 @@ public class TolkCompilation
             _currentDividerProvider = dividerProvider;
         }
 
-        public void WithMerger(ITranslationSetMerger<T> merger)
+        public void WithMerger(ITranslationRecordSetMerger<T> merger)
         {
-            _translationSetMerger = merger;
+            _merger = merger;
         }
 
         public ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationRecordSet<T>> getTranslationSet)
@@ -53,63 +54,66 @@ public class TolkCompilation
         {
             if (_currentDividerProvider is null)
                 throw new InvalidOperationException($"Unable to compile without a divider provider");
-            if (_translationSetMerger is null)
+            if (_merger is null)
                 throw new InvalidOperationException($"Unable to compile without a merger");
 
-            var mergedTranslationSet = _translationSetMerger.Merge(_setRegistrations);
+            var mergedTranslationSet = _merger.Merge(_setRegistrations);
+
+            // todo - convert translationRecordSet into TranslationSet
+
             return new Tolk<T>(_currentDividerProvider, mergedTranslationSet);
         }
     }
 
     private class DividerProviderTolkCompiler<T> : IDividerProviderTolkCompiler<T>
     {
-        private ITolkCompilation<T> _compilation;
+        private ITolkCompiler<T> _compiler;
 
-        public DividerProviderTolkCompiler(ITolkCompilation<T> compilation)
+        public DividerProviderTolkCompiler(ITolkCompiler<T> compiler)
         {
-            _compilation = compilation;
+            _compiler = compiler;
         }
 
         public IMergerTolkCompiler<T> WithDivider(ICurrentDividerProvider dividerProvider)
         {
-            _compilation.WithDivider(dividerProvider);
-            return new MergerTolkCompiler<T>(_compilation);
+            _compiler.WithDivider(dividerProvider);
+            return new MergerTolkCompiler<T>(_compiler);
         }
     }
 
     private class MergerTolkCompiler<T> : IMergerTolkCompiler<T>
     {
-        private ITolkCompilation<T> _compilation;
+        private ITolkCompiler<T> _compiler;
 
-        public MergerTolkCompiler(ITolkCompilation<T> compilation)
+        public MergerTolkCompiler(ITolkCompiler<T> compiler)
         {
-            _compilation = compilation;
+            _compiler = compiler;
         }
 
-        public ITranslationSetTolkCompiler<T> WithMerger(ITranslationSetMerger<T> merger)
+        public ITranslationSetTolkCompiler<T> WithMerger(ITranslationRecordSetMerger<T> merger)
         {
-            _compilation.WithMerger(merger);
-            return new TranslationSetTolkCompiler<T>(_compilation);
+            _compiler.WithMerger(merger);
+            return new TranslationSetTolkCompiler<T>(_compiler);
         }
     }
 
     private class TranslationSetTolkCompiler<T> : ITranslationSetTolkCompiler<T>
     {
-        private ITolkCompilation<T> _compilation;
+        private ITolkCompiler<T> _compiler;
 
-        public TranslationSetTolkCompiler(ITolkCompilation<T> compilation)
+        public TranslationSetTolkCompiler(ITolkCompiler<T> compiler)
         {
-            _compilation = compilation;
+            _compiler = compiler;
         }
 
-        public ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationSet<T>> getTranslationSet)
+        public ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationRecordSet<T>> getTranslationSet)
         {
-            return _compilation.AddTranslationSet(getTranslationSet);
+            return _compiler.AddTranslationSet(getTranslationSet);
         }
 
-        public ITranslationSetRegistration<T> AddTranslationSet(ITranslationSetProvider<T> translationSetProvider)
+        public ITranslationSetRegistration<T> AddTranslationSet(ITranslationRecordSetProvider<T> translationSetProvider)
         {
-            return _compilation.AddTranslationSet(translationSetProvider);
+            return _compiler.AddTranslationSet(translationSetProvider);
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TechTolk.Compiling.Compiler;
 using TechTolk.Compiling.Sourcing;
 
@@ -12,7 +8,7 @@ public class TranslationRecordSetMerger<T> : ITranslationRecordSetMerger<T>
 {
     public ITranslationRecordSet<T> Merge(IEnumerable<ITranslationSetRegistration<T>> setRegistrations)
     {
-        var resultSet = new TranslationSet<T>("compiled-set");
+        var resultSet = new TranslationRecordSet<T>("compiled-set");
         foreach (var setRegistration in setRegistrations)
         {
             MergeIntoResult(resultSet, setRegistration);
@@ -21,13 +17,10 @@ public class TranslationRecordSetMerger<T> : ITranslationRecordSetMerger<T>
     }
 
     private void MergeIntoResult(
-        TranslationSet<T> resultSet,
+        TranslationRecordSet<T> resultSet,
         ITranslationSetRegistration<T> setRegistration)
     {
         var set = setRegistration.GetTranslationSet();
-        foreach (var divisionDictionary in set.GetDivisionDictionaries())
-        {
-            if (resultSet.)
-        }
+        set.AddRecords(set.Records, !setRegistration.DiscardDuplicates);
     }
 }

@@ -11,9 +11,9 @@ public class TranslationSetRegistration<T> : WrappedCompilableTolkCompilation<T>
     private readonly ITranslationRecordSetProvider<T> _translationSetProvider;
 
     public TranslationSetRegistration(
-        ITolkCompilation<T> compilation,
+        ITolkCompiler<T> compiler,
         ITranslationRecordSetProvider<T> translationSetProvider)
-        : base(compilation)
+        : base(compiler)
     {
         _translationSetProvider = translationSetProvider ?? throw new ArgumentNullException(nameof(translationSetProvider));
     }

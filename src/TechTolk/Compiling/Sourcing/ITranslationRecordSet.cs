@@ -8,5 +8,7 @@ public interface ITranslationRecordSet<T>
     IReadOnlyCollection<ITranslationRecord<T>> Records { get; }
 
     void AddRecord(ITranslationRecord<T> record);
+    void AddRecord(ITranslationRecord<T> record, bool replaceExisting);
     void AddRecords(IEnumerable<ITranslationRecord<T>> records);
+    void AddRecords(IEnumerable<ITranslationRecord<T>> records, bool replaceExisting);
 }
