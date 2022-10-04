@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechTolk.Compiling.Sourcing;
 using TechTolk.Dividing;
 
-namespace TechTolk.Compiling;
+namespace TechTolk.Compiling.Compiler;
 
-public class TolkCompiler
+public class TolkCompilation
 {
     public static IDividerProviderTolkCompiler<T> ForType<T>()
     {
-        return new DividerProviderTolkCompiler<T>(new TolkCompilation<T>());
+        return new DividerProviderTolkCompiler<T>(new TolkCompiler<T>());
     }
 
-    private class TolkCompilation<T> : ITolkCompilation<T>
+    private class TolkCompiler<T> : ITolkCompilation<T>
     {
         private ICurrentDividerProvider? _currentDividerProvider;
         private ITranslationSetMerger<T>? _translationSetMerger;
@@ -19,7 +20,7 @@ public class TolkCompiler
         private readonly List<TranslationSetRegistration<T>> _setRegistrations;
 
 
-        public TolkCompilation()
+        public TolkCompiler()
         {
             _setRegistrations = new List<TranslationSetRegistration<T>>();
         }
@@ -34,14 +35,14 @@ public class TolkCompiler
             _translationSetMerger = merger;
         }
 
-        public ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationSet<T>> getTranslationSet)
+        public ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationRecordSet<T>> getTranslationSet)
         {
-            var registration = new TranslationSetRegistration<T>(this, new DelegateTranslationSetProvider<T>(getTranslationSet));
+            var registration = new TranslationSetRegistration<T>(this, new DelegateTranslationRecordSetProvider<T>(getTranslationSet));
             _setRegistrations.Add(registration);
             return registration;
         }
 
-        public ITranslationSetRegistration<T> AddTranslationSet(ITranslationSetProvider<T> translationSetProvider)
+        public ITranslationSetRegistration<T> AddTranslationSet(ITranslationRecordSetProvider<T> translationSetProvider)
         {
             var registration = new TranslationSetRegistration<T>(this, translationSetProvider);
             _setRegistrations.Add(registration);

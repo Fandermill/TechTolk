@@ -1,17 +1,18 @@
 ﻿using System;
+using TechTolk.Compiling.Sourcing;
 using TechTolk.Exceptions;
 
-namespace TechTolk.Compiling;
+namespace TechTolk.Compiling.Compiler;
 
 public class TranslationSetRegistration<T> : WrappedCompilableTolkCompilation<T>, ITranslationSetRegistration<T>
 {
     public bool DiscardDuplicates { get; private set; } = false;
 
-    private readonly ITranslationSetProvider<T> _translationSetProvider;
+    private readonly ITranslationRecordSetProvider<T> _translationSetProvider;
 
     public TranslationSetRegistration(
         ITolkCompilation<T> compilation,
-        ITranslationSetProvider<T> translationSetProvider)
+        ITranslationRecordSetProvider<T> translationSetProvider)
         : base(compilation)
     {
         _translationSetProvider = translationSetProvider ?? throw new ArgumentNullException(nameof(translationSetProvider));
@@ -23,9 +24,9 @@ public class TranslationSetRegistration<T> : WrappedCompilableTolkCompilation<T>
         return this;
     }
 
-    public ITranslationSet<T> GetTranslationSet()
+    public ITranslationRecordSet<T> GetTranslationSet()
     {
-        return _translationSetProvider.GetTranslationSet()
+        return _translationSetProvider.GetSet()
             ?? throw new TechTolkException("Function returned no translation set");
     }
 }

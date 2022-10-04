@@ -1,4 +1,4 @@
-﻿namespace TechTolk.Compiling;
+﻿namespace TechTolk.Compiling.Compiler;
 
 public interface IMergerTolkCompiler<T>
 {

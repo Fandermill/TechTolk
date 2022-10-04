@@ -1,7 +1,8 @@
 ﻿using System;
+using TechTolk.Compiling.Sourcing;
 using TechTolk.Dividing;
 
-namespace TechTolk.Compiling;
+namespace TechTolk.Compiling.Compiler;
 
 public abstract class WrappedCompilableTolkCompilation<T> : ITolkCompilation<T>, ICompilableTolkCompiler<T>
 {
@@ -22,12 +23,12 @@ public abstract class WrappedCompilableTolkCompilation<T> : ITolkCompilation<T>,
         _compilation.WithMerger(merger);
     }
 
-    public ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationSet<T>> getTranslationSet)
+    public ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationRecordSet<T>> getTranslationSet)
     {
         return _compilation.AddTranslationSet(getTranslationSet);
     }
 
-    public ITranslationSetRegistration<T> AddTranslationSet(ITranslationSetProvider<T> translationSetProvider)
+    public ITranslationSetRegistration<T> AddTranslationSet(ITranslationRecordSetProvider<T> translationSetProvider)
     {
         return _compilation.AddTranslationSet(translationSetProvider);
     }

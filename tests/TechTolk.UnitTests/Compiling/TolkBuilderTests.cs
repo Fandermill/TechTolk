@@ -1,4 +1,5 @@
-﻿using TechTolk.Compiling;
+﻿using TechTolk.Compiling.Compiler;
+using TechTolk.Compiling.Sourcing;
 
 namespace TechTolk.UnitTests.Compiling;
 
@@ -9,12 +10,19 @@ public class TolkBuilderTests
     {
         // TODO - Write compilation tests... and not in this class... =)
 
+        var recordSet = new TranslationRecordSet<string>("test-set-1");
+        recordSet.AddRecord(new TranslationRecord<string>(new FixedStringDivider("nl"), "RECORD_ONE", "Translation one"));
 
-        TolkCompiler.ForType<string>()
+        TolkCompilation.ForType<string>()
             .WithDivider(new FixedDividerProvider(new FixedStringDivider("nl")))
             .WithMerger(null) // todo
-            .AddTranslationSet(() => new TranslationSet<string>("tst1")).DiscardDuplicates()
-            .AddTranslationSet(() => new TranslationSet<string>("test 2"))
+            .AddTranslationSet(() => recordSet)
+            .AddTranslationSet(() =>
+            {
+                var recordSet2 = new TranslationRecordSet<string>("test-set-2");
+                recordSet2.AddRecord(new TranslationRecord<string>(new FixedStringDivider("nl"), "RECORD_TWO", "Translation two"));
+                return recordSet2;
+            }).DiscardDuplicatesOnMerge()
             .Compile();
 
         throw new NotImplementedException();

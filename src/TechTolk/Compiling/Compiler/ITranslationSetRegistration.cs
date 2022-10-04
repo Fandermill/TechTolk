@@ -1,8 +1,10 @@
-﻿namespace TechTolk.Compiling;
+﻿using TechTolk.Compiling.Sourcing;
+
+namespace TechTolk.Compiling.Compiler;
 
 public interface ITranslationSetRegistration<T> : ITranslationSetTolkCompiler<T>, ICompilableTolkCompiler<T>
 {
     bool DiscardDuplicates { get; }
-    ITranslationSet<T> GetTranslationSet();
+    ITranslationRecordSet<T> GetTranslationSet();
     ITranslationSetRegistration<T> DiscardDuplicatesOnMerge();
 }
