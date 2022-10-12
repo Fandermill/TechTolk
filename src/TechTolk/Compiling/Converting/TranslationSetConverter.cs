@@ -9,7 +9,7 @@ public class TranslationSetConverter<T> : ITranslationSetConverter<T>
     public ITranslationSet<T> FromRecordSet(ITranslationRecordSet<T> recordSet)
     {
         var set = new TranslationSet<T>(recordSet.SetInfo.Name);
-        foreach (var dividerRecords in recordSet.Records.GroupBy(r => r.Divider))
+        foreach (var dividerRecords in recordSet.Records.GroupBy(r => r.Divider.GetKey()))
         {
             var dividerDictionary = new TranslationDictionary<T>(recordSet.SetInfo.Name + ".compiled");
             foreach (var record in dividerRecords)
@@ -17,7 +17,7 @@ public class TranslationSetConverter<T> : ITranslationSetConverter<T>
                 if (record.Translation is not null)
                     dividerDictionary.Add(record.Key, CreateTranslation(record.Translation));
             }
-            set.AddDivision(dividerRecords.Key.GetKey(), dividerDictionary);
+            set.AddDivision(dividerRecords.Key, dividerDictionary);
         }
         return set;
     }
