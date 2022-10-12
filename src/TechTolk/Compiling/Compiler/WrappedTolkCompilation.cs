@@ -1,4 +1,5 @@
 ﻿using System;
+using TechTolk.Compiling.Converting;
 using TechTolk.Compiling.Merging;
 using TechTolk.Compiling.Sourcing;
 using TechTolk.Dividing;
@@ -22,6 +23,11 @@ public abstract class WrappedCompilableTolkCompilation<T> : ITolkCompiler<T>, IC
     public void WithMerger(ITranslationRecordSetMerger<T> merger)
     {
         _compiler.WithMerger(merger);
+    }
+
+    public void WithTranslationSetConverter(ITranslationSetConverter<T> translationSetConverter)
+    {
+        _compiler.WithTranslationSetConverter(translationSetConverter);
     }
 
     public ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationRecordSet<T>> getTranslationSet)

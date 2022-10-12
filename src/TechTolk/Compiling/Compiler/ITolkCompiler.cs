@@ -1,4 +1,5 @@
 ﻿using System;
+using TechTolk.Compiling.Converting;
 using TechTolk.Compiling.Merging;
 using TechTolk.Compiling.Sourcing;
 using TechTolk.Dividing;
@@ -9,8 +10,9 @@ public interface ITolkCompiler<T>
 {
     void WithDivider(ICurrentDividerProvider dividerProvider);
     void WithMerger(ITranslationRecordSetMerger<T> merger);
+    void WithTranslationSetConverter(ITranslationSetConverter<T> translationSetConverter);
 
-    
+
     ITranslationSetRegistration<T> AddTranslationSet(Func<ITranslationRecordSet<T>> getTranslationSet);
     ITranslationSetRegistration<T> AddTranslationSet(ITranslationRecordSetProvider<T> translationSetProvider);
 

@@ -1,4 +1,5 @@
 ﻿using TechTolk.Compiling.Compiler;
+using TechTolk.Compiling.Converting;
 using TechTolk.Compiling.Merging;
 using TechTolk.Compiling.Sourcing;
 
@@ -21,6 +22,7 @@ public class TolkBuilderTests
         TolkCompilation.ForType<string>()
             .WithDivider(new FixedDividerProvider(new FixedStringDivider("nl")))
             .WithMerger(new TranslationRecordSetMerger<string>()) // todo
+            .WithTranslationSetConverter(new TranslationSetConverter<string>()) // todo
             .AddTranslationSet(() => recordSet)
             .AddTranslationSet(() =>
             {

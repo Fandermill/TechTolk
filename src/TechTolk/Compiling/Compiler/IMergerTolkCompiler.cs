@@ -4,5 +4,5 @@ namespace TechTolk.Compiling.Compiler;
 
 public interface IMergerTolkCompiler<T>
 {
-    ITranslationSetTolkCompiler<T> WithMerger(ITranslationRecordSetMerger<T> merger);
+    ITranslationSetConverterTolkCompiler<T> WithMerger(ITranslationRecordSetMerger<T> merger);
 }
