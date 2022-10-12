@@ -21,6 +21,6 @@ public class TranslationRecordSetMerger<T> : ITranslationRecordSetMerger<T>
         ITranslationSetRegistration<T> setRegistration)
     {
         var set = setRegistration.GetTranslationSet();
-        set.AddRecords(set.Records, !setRegistration.DiscardDuplicates);
+        resultSet.AddRecords(set.Records, !setRegistration.DiscardDuplicates);
     }
 }
