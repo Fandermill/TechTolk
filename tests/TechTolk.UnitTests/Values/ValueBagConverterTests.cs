@@ -1,4 +1,5 @@
-﻿using TechTolk.Values;
+﻿using FluentAssertions;
+using TechTolk.Values;
 
 namespace TechTolk.UnitTests.Values;
 
@@ -12,7 +13,7 @@ public class ValueBagConverterTests
 
         var valueBag = converter.ConvertFromObject(obj);
 
-        Assert.Equal(obj.date, valueBag["date"]);
-        Assert.Equal(obj.name, valueBag["name"]);
+        valueBag["date"].Should().Be(obj.date);
+        valueBag["name"].Should().Be(obj.name);
     }
 }

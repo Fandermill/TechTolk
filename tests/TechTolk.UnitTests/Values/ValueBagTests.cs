@@ -12,6 +12,7 @@ public class ValueBagTests
         bag.Set("TestKey1", "TestValue1");
         bag["TestKey2"] = "TestValue2";
 
+
         Assert.Equal("TestValue1", bag.Get("TestKey1"));
         Assert.Equal("TestValue2", bag["TestKey2"]);
     }
