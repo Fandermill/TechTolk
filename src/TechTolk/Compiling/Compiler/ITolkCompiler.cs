@@ -8,7 +8,7 @@ namespace TechTolk.Compiling.Compiler;
 
 public interface ITolkCompiler<T>
 {
-    void WithDivider(ICurrentDividerProvider dividerProvider);
+    void WithCurrentDividerProvider(ICurrentDividerProvider currentDividerProvider);
     void WithMerger(ITranslationRecordSetMerger<T> merger);
     void WithTranslationSetConverter(ITranslationSetConverter<T> translationSetConverter);
 

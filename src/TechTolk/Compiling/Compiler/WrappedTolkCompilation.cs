@@ -15,9 +15,9 @@ public abstract class WrappedCompilableTolkCompilation<T> : ITolkCompiler<T>, IC
         _compiler = compiler ?? throw new ArgumentNullException(nameof(compiler));
     }
 
-    public void WithDivider(ICurrentDividerProvider dividerProvider)
+    public void WithCurrentDividerProvider(ICurrentDividerProvider currentDividerProvider)
     {
-        _compiler.WithDivider(dividerProvider);
+        _compiler.WithCurrentDividerProvider(currentDividerProvider);
     }
 
     public void WithMerger(ITranslationRecordSetMerger<T> merger)

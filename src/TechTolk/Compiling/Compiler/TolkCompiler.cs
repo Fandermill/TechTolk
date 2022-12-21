@@ -28,9 +28,9 @@ public class TolkCompilation
             _setRegistrations = new List<TranslationSetRegistration<T>>();
         }
 
-        public void WithDivider(ICurrentDividerProvider dividerProvider)
+        public void WithCurrentDividerProvider(ICurrentDividerProvider currentDividerProvider)
         {
-            _currentDividerProvider = dividerProvider;
+            _currentDividerProvider = currentDividerProvider;
         }
 
         public void WithMerger(ITranslationRecordSetMerger<T> merger)
@@ -81,9 +81,9 @@ public class TolkCompilation
             _compiler = compiler;
         }
 
-        public IMergerTolkCompiler<T> WithDivider(ICurrentDividerProvider dividerProvider)
+        public IMergerTolkCompiler<T> WithCurrentDividerProvider(ICurrentDividerProvider currentDividerProvider)
         {
-            _compiler.WithDivider(dividerProvider);
+            _compiler.WithCurrentDividerProvider(currentDividerProvider);
             return new MergerTolkCompiler<T>(_compiler);
         }
     }
