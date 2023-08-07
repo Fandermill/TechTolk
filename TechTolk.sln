@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E886A93E-8F71-401D-A094-2735AA4F9C0F}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{021ED6DC-2265-4B76-A11E-EA6F7E51911E}"
+	ProjectSection(SolutionItems) = preProject
+		tests\xunit.runner.json = tests\xunit.runner.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{72762321-A0E2-46F1-8A27-1E1F23637A17}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk", "src\TechTolk\TechTolk.csproj", "{8724A57C-58B5-4E34-95C8-4FAAA2614FF7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk.Extensions.Localization", "src\TechTolk.Extensions.Localization\TechTolk.Extensions.Localization.csproj", "{8702718A-1B83-443B-8BF4-2D334BABB3C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolkTests", "tests\TechTolkTests\TechTolkTests.csproj", "{12167440-FAF1-425B-BB63-1AB3D088FE71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8724A57C-58B5-4E34-95C8-4FAAA2614FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8724A57C-58B5-4E34-95C8-4FAAA2614FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8724A57C-58B5-4E34-95C8-4FAAA2614FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8724A57C-58B5-4E34-95C8-4FAAA2614FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8702718A-1B83-443B-8BF4-2D334BABB3C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8702718A-1B83-443B-8BF4-2D334BABB3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8702718A-1B83-443B-8BF4-2D334BABB3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8702718A-1B83-443B-8BF4-2D334BABB3C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12167440-FAF1-425B-BB63-1AB3D088FE71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12167440-FAF1-425B-BB63-1AB3D088FE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12167440-FAF1-425B-BB63-1AB3D088FE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12167440-FAF1-425B-BB63-1AB3D088FE71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8724A57C-58B5-4E34-95C8-4FAAA2614FF7} = {E886A93E-8F71-401D-A094-2735AA4F9C0F}
+		{8702718A-1B83-443B-8BF4-2D334BABB3C7} = {E886A93E-8F71-401D-A094-2735AA4F9C0F}
+		{12167440-FAF1-425B-BB63-1AB3D088FE71} = {021ED6DC-2265-4B76-A11E-EA6F7E51911E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C20C0AB4-F356-4B2B-8E6E-531327F28494}
+	EndGlobalSection
+EndGlobal

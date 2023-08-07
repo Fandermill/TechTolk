@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  
+    <PackageId>TechTolk.Extensions.Localization</PackageId>
+	<Title>TechTolk.Extensions.Localization</Title>
+	<Description>Package with adapters to use TechTolk in ASP.NET Core environments</Description>
+	<PackageTags>Localisation;Translation;Translating;Tolk;Microsoft.Extensions.Localization;ASP.NET Core;aspnetcore</PackageTags>
+	
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TechTolk\TechTolk.csproj" />
+  </ItemGroup>
+
+</Project>

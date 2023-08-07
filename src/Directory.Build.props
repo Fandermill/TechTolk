@@ -1,0 +1,29 @@
+<Project>
+	<PropertyGroup>
+
+		<TargetFrameworks>net6;netstandard2.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<Version>1.0.0-alpha-3</Version>
+		<Authors>Folkert van der Molen</Authors>
+		<Copyright>Copyright 2023 (c) Folkert van der Molen</Copyright>
+		<RepositoryUrl>https://github.com/Fandermill/TechTolk</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Fandermill/TechTolk</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+  </ItemGroup>
+</Project>
