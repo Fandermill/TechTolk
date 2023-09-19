@@ -6,13 +6,14 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<Version>1.0.0-alpha-3</Version>
 		<Authors>Folkert van der Molen</Authors>
 		<Copyright>Copyright 2023 (c) Folkert van der Molen</Copyright>
 		<RepositoryUrl>https://github.com/Fandermill/TechTolk</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Fandermill/TechTolk</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
 	</PropertyGroup>
 
