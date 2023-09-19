@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build & test
+    name: Build, test, pack & publish to NuGet.org
     runs-on: ubuntu-latest
     steps:
 
@@ -25,7 +25,7 @@ jobs:
       run: dotnet test --configuration Release
 
     - name: Pack NuGet packages
-      run: dotnet pack --configuration Release -p:PackageVersion=${{github.event.release.tag_name}} -p:ReleaseNotes="${{github.event.release.body}}"
+      run: dotnet pack --configuration Release -p:PackageVersion=${{github.event.release.tag_name}}
     
     - name: Push to NuGet.org
       run: dotnet nuget push "**/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
