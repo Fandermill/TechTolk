@@ -7,15 +7,15 @@ internal class TranslationSetRegistrationCollection
 {
     private readonly Dictionary<string, TranslationSetRegistration> _translationSets;
 
-	public TranslationSetRegistrationCollection()
-	{
-		_translationSets = new();
-	}
+    public TranslationSetRegistrationCollection()
+    {
+        _translationSets = new();
+    }
 
-	public TranslationSetRegistration Get(string key)
+    public TranslationSetRegistration Get(string key)
     {
         if (!_translationSets.TryGetValue(key, out var registration))
-            throw new RegistrationException($"No translation set registered with key '{key}'");
+            throw new TranslationSetNotFoundException(key);
         return registration;
     }
 

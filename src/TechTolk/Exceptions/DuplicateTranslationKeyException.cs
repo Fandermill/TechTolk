@@ -3,7 +3,7 @@ using TechTolk.TranslationSets;
 
 namespace TechTolk.Exceptions;
 
-public sealed class DuplicateTranslationKeyException : NotFoundException
+public sealed class DuplicateTranslationKeyException : TechTolkException
 {
     private DuplicateTranslationKeyException(string message) : base(message) { }
 

@@ -1,5 +1,5 @@
-﻿using TechTolk.TranslationSets.Options;
-using TechTolk.TranslationSets.Values;
+﻿using TechTolk.Rendering;
+using TechTolk.TranslationSets.Options;
 
 namespace TechTolk.Registration.Builders;
 
@@ -12,7 +12,7 @@ internal class TranslationSetOptionsBuilder : ITranslationSetOptionsBuilder
         _options = options;
     }
 
-    public ITranslationSetOptionsBuilder UseValueRenderer<T>() where T : ITranslationValueFactory
+    public ITranslationSetOptionsBuilder UseValueRenderer<T>() where T : AbstractTranslationValueRenderer
     {
         _options.ValueRendererType = typeof(T);
         return this;

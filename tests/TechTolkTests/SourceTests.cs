@@ -2,6 +2,8 @@
 using TechTolk;
 using TechTolk.Exceptions;
 using TechTolk.Sources;
+using TechTolkTests.Helpers;
+using TechTolkTests.TestTranslationSets;
 
 namespace TechTolkTests;
 
@@ -29,6 +31,18 @@ public class SourceTests : AbstractTechTolkTests
 
         var act = () => tolkFactory.Create(Set1.Key);
 
-        act.Should().Throw<TechTolkException>(); // todo - actual specific exception is 'internal' ?
+        act.Should().Throw<RegistrationException>();
+    }
+
+    [Fact]
+    public void Adding_a_translation_set_without_sources_throws_an_exception()
+    {
+        _services.AddTechTolk().ConfigureDefaultDividers()
+            .AddTranslationSet(Set1.Key, s => { });
+        var tolkFactory = Provider.GetRequiredService<ITolkFactory>();
+
+        var act = () => tolkFactory.Create(Set1.Key);
+
+        act.Should().Throw<TechTolkException>();
     }
 }
