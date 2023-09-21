@@ -1,67 +1,71 @@
-﻿using TechTolk;
-using TechTolk.Division.Internals;
+﻿using Microsoft.Extensions.DependencyInjection;
+using TechTolk;
+using TechTolk.Exceptions;
+using TechTolk.Registration.Builders;
 using TechTolkTests.Helpers;
+using TechTolkTests.TestTranslationSets;
 
 namespace TechTolkTests;
 
-public class MergingTests
+public class MergingTests : AbstractTechTolkTests
 {
-    /*private readonly StringDivider _divider;
-    private readonly ITranslationSetMerger _merger;
+    private const string MergedSetKey = "MergedSet";
 
-    private readonly ITranslationSet _set1;
-    private readonly ITranslationSet _set2;
-
-
-    public MergingTests()
+    [Fact]
+    public void Duplicate_key_in_subsequent_translation_set_will_replace_the_previous_value_as_configured()
     {
-        _divider = new StringDivider("nl");
-        var supportedDividers = new SupportedDividersProvider();
-        supportedDividers.AddSupportedDivider(_divider);
+        SetupMergedTranslationSetWithOptions(options => options.OnDuplicateKey().Replace());
+        var tolk = GetTolkForTranslationSet(MergedSetKey);
 
-        _merger = new TranslationSetMerger(
-            new TranslationSetFactory(),
-            supportedDividers);
+        var result = tolk.Translate(DividerConstants.NL, "MyKey");
 
-        _set1 = new TranslationSetBuilder()
-            .ForDivider(_divider)
-            .Add("duplicate.key", "1st-value")
-            .Build();
-
-        _set2 = new TranslationSetBuilder()
-            .ForDivider(_divider)
-            .Add("duplicate.key", "2nd-value")
-            .Build();
+        result.Should().Be("NL-MyValue-FromSet2");
     }
 
     [Fact]
-    public void Merge_translation_sets_with_replace_duplicate_behavior()
+    public void Duplicate_key_in_subsequent_translation_set_will_be_discarded_as_configured()
     {
-        var options = new TranslationSetMergerOptions { MergeBehavior = DuplicateBehavior.Replace };
+        SetupMergedTranslationSetWithOptions(options => options.OnDuplicateKey().Discard());
+        var tolk = GetTolkForTranslationSet(MergedSetKey);
 
-        var result = _merger.Merge(options, _set1, _set2);
+        var result = tolk.Translate(DividerConstants.NL, "MyKey");
 
-        var value = result.GetTranslation(_divider.Key, "duplicate.key");
-        value.Should().Be("2nd-value");
+        result.Should().Be("NL-MyValue");
     }
 
     [Fact]
-    public void Merge_translation_sets_with_discard_duplicate_behavior()
+    public void Duplicate_key_in_subsequent_translation_set_will_throw_exception_as_configured()
     {
-        var options = new TranslationSetMergerOptions { MergeBehavior = DuplicateBehavior.Discard };
+        SetupMergedTranslationSetWithOptions(options => options.OnDuplicateKey().ThrowException());
+        var tolkFactory = Provider.GetRequiredService<ITolkFactory>();
 
-        var result = _merger.Merge(options, _set1, _set2);
+        var act = () => tolkFactory.Create(MergedSetKey);
 
-        var value = result.GetTranslation(_divider.Key, "duplicate.key");
-        value.Should().Be("1st-value");
+        act.Should().Throw<DuplicateTranslationKeyException>();
     }
 
     [Fact]
-    public void Merge_translation_sets_with_throw_duplicate_behavior()
+    public void New_key_in_subsequent_translation_set_will_be_added_to_merged_set()
     {
-        var options = new TranslationSetMergerOptions { MergeBehavior = DuplicateBehavior.Throw };
+        SetupMergedTranslationSetWithOptions(null);
+        var tolkFactory = Provider.GetRequiredService<ITolkFactory>();
+        var tolk = tolkFactory.Create(MergedSetKey);
 
-        var act = () => _merger.Merge(options, _set1, _set2);
-        act.Should().Throw<ArgumentException>(); // todo - make custom exception
-    }*/
+        var result = tolk.Translate(DividerConstants.NL, "AdditionalKey");
+
+        result.Should().Be("NL-AdditionalValue");
+    }
+
+    private void SetupMergedTranslationSetWithOptions(Action<IMergedTranslationSetOptionsBuilder>? options)
+    {
+        _services.AddTechTolk()
+            .ConfigureDefaultDividers()
+            .AddMergedTranslationSet("MergedSet", builder =>
+            {
+                builder.FromSource(Set1.Key, new Set1());
+                builder.FromSource(Set2.Key, new Set2());
+                if (options is not null)
+                    builder.WithOptions(options);
+            });
+    }
 }

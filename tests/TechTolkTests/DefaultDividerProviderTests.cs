@@ -3,7 +3,7 @@ using System.Globalization;
 using TechTolk;
 using TechTolk.Division;
 
-namespace TechTolkTests.Division;
+namespace TechTolkTests;
 
 public class DefaultDividerProviderTests
 {

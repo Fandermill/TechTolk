@@ -1,7 +1,7 @@
 using System.Globalization;
 using TechTolk.Division;
 
-namespace TechTolkTests.Division;
+namespace TechTolkTests;
 
 public class CultureInfoDividerTests
 {

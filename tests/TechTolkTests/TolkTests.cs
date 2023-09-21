@@ -1,6 +1,8 @@
 using System.Globalization;
 using TechTolk;
 using TechTolk.Exceptions;
+using TechTolkTests.Helpers;
+using TechTolkTests.TestTranslationSets;
 
 namespace TechTolkTests;
 
@@ -9,7 +11,6 @@ public class TolkTests : AbstractTechTolkTests
     [Fact]
     public void Tolk_returns_correct_value_for_divider()
     {
-
         _services.AddTechTolk().ConfigureDefaultDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var tolk = GetTolkForTranslationSet(Set1.Key);

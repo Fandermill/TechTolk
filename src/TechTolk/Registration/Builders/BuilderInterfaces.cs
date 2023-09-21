@@ -1,6 +1,6 @@
 ﻿using TechTolk.Division;
+using TechTolk.Rendering;
 using TechTolk.Sources;
-using TechTolk.TranslationSets.Values;
 
 namespace TechTolk.Registration.Builders;
 
@@ -12,19 +12,33 @@ public interface ITechTolkBuilder
     ITechTolkBuilder AddTranslationSet<T>(Action<IRootTranslationSetRegistrationBuilder> set);
 
     ITechTolkBuilder AddMergedTranslationSet(string name, Action<IMergedTranslationSetRegistrationBuilder> mergedSet);
-	ITechTolkBuilder AddMergedTranslationSet<T>(Action<IMergedTranslationSetRegistrationBuilder> mergedSet);
+    ITechTolkBuilder AddMergedTranslationSet<T>(Action<IMergedTranslationSetRegistrationBuilder> mergedSet);
 }
 
 public interface IDividerConfigurationBuilder
 {
+    /// <summary>
+    /// Registers the given type as the implementation of the 
+    /// <see cref="ICurrentDividerProvider" /> interface
+    /// </summary>
+    /// <typeparam name="T">The implementation type</typeparam>
+    /// <returns>The builder to chain calls on</returns>
     IDividerConfigurationBuilder SetCurrentDividerProvider<T>() where T : ICurrentDividerProvider;
+
+    /// <summary>
+    /// Registers a factory method to create an implementation of the 
+    /// <see cref="ICurrentDividerProvider"/> interface
+    /// </summary>
+    /// <typeparam name="T">The implementation type</typeparam>
+    /// <param name="provider"></param>
+    /// <returns>The builder to chain calls on</returns>
     IDividerConfigurationBuilder SetCurrentDividerProvider<T>(Func<IServiceProvider, ICurrentDividerProvider> provider) where T : ICurrentDividerProvider;
     IDividerConfigurationBuilder AddSupportedDivider(IDivider divider);
     // TODO - Set fallback, aliases
 }
 public interface ITranslationSetOptionsBuilder
 {
-    ITranslationSetOptionsBuilder UseValueRenderer<T>() where T : ITranslationValueFactory;
+    ITranslationSetOptionsBuilder UseValueRenderer<T>() where T : AbstractTranslationValueRenderer;
     ITranslationNotFoundBehaviorConfigurationBuilder OnTranslationNotFound();
 }
 public interface IMergedTranslationSetOptionsBuilder : ITranslationSetOptionsBuilder
