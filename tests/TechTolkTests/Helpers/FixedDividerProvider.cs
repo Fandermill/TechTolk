@@ -1,4 +1,5 @@
 ﻿using TechTolk.Division;
+using TechTolk.Division.String;
 
 namespace TechTolkTests.Helpers;
 
@@ -14,14 +15,4 @@ internal class FixedDividerProvider : ICurrentDividerProvider
     public IDivider GetCurrent() => _divider;
 
 
-}
-
-internal readonly struct StringDivider : IDivider
-{
-    public string Key { get; init; }
-    public StringDivider(string key)
-    {
-        ArgumentNullException.ThrowIfNull(key);
-        Key = key;
-    }
 }

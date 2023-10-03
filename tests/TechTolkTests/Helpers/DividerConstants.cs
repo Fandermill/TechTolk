@@ -1,4 +1,5 @@
 using TechTolk.Division;
+using TechTolk.Division.String;
 using TechTolk.Registration.Builders;
 
 namespace TechTolkTests.Helpers;
