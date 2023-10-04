@@ -1,4 +1,5 @@
 ﻿using TechTolk;
+using TechTolk.Division.String;
 using TechTolk.Exceptions;
 using TechTolkTests.Helpers;
 using TechTolkTests.TestTranslationSets;
