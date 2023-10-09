@@ -6,11 +6,11 @@ namespace TechTolkTests;
 public class CultureInfoDividerTests
 {
     [Fact]
-    public void The_divider_key_should_be_the_language_code_of_a_culture_info()
+    public void The_divider_key_should_be_the_name_of_a_culture_info()
     {
-        var cultureInfo = new CultureInfo("nl-NL");
-        var divider = new CultureInfoDivider(cultureInfo);
+        var culture = new CultureInfo("nl-NL");
+        var divider = CultureInfoDivider.FromCulture(culture);
 
-        divider.Key.Should().Be("nl");
+        divider.Key.Should().Be("nl-NL");
     }
 }

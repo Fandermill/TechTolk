@@ -9,6 +9,6 @@ internal sealed class CurrentThreadUICultureDividerProvider : ICurrentDividerPro
 {
     public IDivider GetCurrent()
     {
-        return new CultureInfoDivider(CultureInfo.CurrentUICulture);
+        return CultureInfoDivider.FromCulture(CultureInfo.CurrentUICulture);
     }
 }
