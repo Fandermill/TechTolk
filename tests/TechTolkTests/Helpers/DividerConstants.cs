@@ -1,11 +1,12 @@
+using TechTolk.Division;
 using TechTolk.Registration.Builders;
 
 namespace TechTolkTests.Helpers;
 
 internal static class DividerConstants
 {
-    public static readonly StringDivider NL = new(nameof(NL).ToLower());
-    public static readonly StringDivider EN = new(nameof(EN).ToLower());
+    public static readonly CultureInfoDivider NL = CultureInfoDivider.FromCulture("nl-NL");
+    public static readonly CultureInfoDivider EN = CultureInfoDivider.FromCulture("en-US");
 
     public static readonly StringDivider FixedDivider = new(nameof(FixedDivider));
 

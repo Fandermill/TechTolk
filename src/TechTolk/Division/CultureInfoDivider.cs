@@ -7,12 +7,21 @@ namespace TechTolk.Division;
 /// </summary>
 public readonly struct CultureInfoDivider : IDivider
 {
-	private readonly CultureInfo _cultureInfo;
+    private readonly CultureInfo _cultureInfo;
 
-	public CultureInfoDivider(CultureInfo cultureInfo)
-	{
-		_cultureInfo = cultureInfo;
-	}
+    public CultureInfoDivider() { _cultureInfo = CultureInfo.InvariantCulture; }
+    private CultureInfoDivider(CultureInfo cultureInfo)
+    {
+        _cultureInfo = cultureInfo;
+    }
 
-	public readonly string Key => _cultureInfo.TwoLetterISOLanguageName;
+    public readonly string Key => _cultureInfo.Name;
+
+    public static CultureInfoDivider FromCulture(string name)
+        => FromCulture(new CultureInfo(name));
+
+    public static CultureInfoDivider FromCulture(CultureInfo cultureInfo)
+    {
+        return new CultureInfoDivider(cultureInfo);
+    }
 }

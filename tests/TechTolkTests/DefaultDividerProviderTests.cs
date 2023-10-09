@@ -13,12 +13,12 @@ public class DefaultDividerProviderTests
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddTechTolk();
         var provider = serviceCollection.BuildServiceProvider();
-
+        var culture = new CultureInfo("nl-NL");
         var sut = provider.GetRequiredService<ICurrentDividerProvider>();
 
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo("nl-NL");
+        Thread.CurrentThread.CurrentUICulture = culture;
         var currentDivider = sut.GetCurrent();
 
-        currentDivider.Key.Should().Be("nl");
+        currentDivider.Key.Should().Be(culture.Name);
     }
 }
