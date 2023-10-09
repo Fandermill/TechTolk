@@ -11,7 +11,7 @@ public sealed class DuplicateTranslationKeyException : TechTolkException
         string translationKey, IDivider divider, ITranslationSet translationSet)
     {
         return new DuplicateTranslationKeyException(
-            $"Key '{translationKey}' was does already exist for divider '{divider.Key}' " +
+            $"Key '{translationKey}' does already exist for divider '{divider.Key}' " +
             $"in translation set '{translationSet.SetInfo.Key}'");
     }
 
