@@ -1,11 +1,7 @@
-﻿using System.Globalization;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TechTolk;
 using TechTolk.Division.CultureInfo;
-using TechTolk.Registration;
-using TechTolk.Sources;
-using TechTolk.TranslationSets.Building;
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
 
@@ -16,30 +12,29 @@ builder.Services.AddTechTolk()
         dividers.AddSupportedDivider(CultureInfoDivider.FromCulture("nl-NL"));
         dividers.AddSupportedDivider(CultureInfoDivider.FromCulture("en-US"));
     })
-    .AddTranslationSet<Program>(set => set.FromSource(new HardCodedSet()));
 
+    // Example 1 - Simple hard coded translation set
+    .AddTranslationSet<Example1.Runner>(set => set.FromSource(new Example1.HardCodedSet()));
+
+
+builder.Services.AddScoped<Example1.Runner>();
 
 var host = builder.Build();
 
-CultureInfo.CurrentUICulture = new CultureInfo("nl-NL");
-Console.WriteLine("Current thread ui culture: "+ CultureInfo.CurrentUICulture);
-using var scope = host.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
-var tolk = scope.ServiceProvider.GetRequiredService<ITolk<Program>>();
-Console.WriteLine("Translated value: " + tolk.Translate("MyKey"));
+host.RunExampleInScope<Example1.Runner>();
 
-await host.RunAsync();
+//await host.RunAsync();
 
 
 
 
-class HardCodedSet : ITranslationSetSource
+
+public static class ExampleRunnerExtensions
 {
-    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    public static void RunExampleInScope<T>(this IHost host) where T : IExampleRunner
     {
-        builder.ForDivider(CultureInfoDivider.FromCulture("nl-NL"))
-            .Add(new[]
-            {
-                ("MyKey","MyValue")
-            });
+        using var scope = host.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+        var exampleRunner = scope.ServiceProvider.GetRequiredService<T>();
+        exampleRunner.Run();
     }
 }

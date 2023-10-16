@@ -1,6 +1,7 @@
 using BCL=System.Globalization;
+using TechTolk.Division.CultureInfo;
 
-namespace TechTolk.Division.CultureInfo;
+namespace TechTolk;
 
 public static class ITolkExtensions
 {
