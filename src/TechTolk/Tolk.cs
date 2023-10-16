@@ -1,4 +1,5 @@
-﻿using TechTolk.Division;
+﻿using System.Globalization;
+using TechTolk.Division;
 using TechTolk.Exceptions;
 using TechTolk.Rendering;
 using TechTolk.TranslationSets;

@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using BCL=System.Globalization;
+using TechTolk.Division.CultureInfo;
+
 
 namespace TechTolk.Division.Internals;
 
@@ -9,6 +11,7 @@ internal sealed class CurrentThreadUICultureDividerProvider : ICurrentDividerPro
 {
     public IDivider GetCurrent()
     {
-        return CultureInfoDivider.FromCulture(CultureInfo.CurrentUICulture);
+
+        return CultureInfoDivider.FromCulture(BCL.CultureInfo.CurrentUICulture);
     }
 }
