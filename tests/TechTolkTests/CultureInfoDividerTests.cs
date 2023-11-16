@@ -1,5 +1,6 @@
 using System.Globalization;
 using TechTolk.Division;
+using TechTolk.Division.CultureInfo;
 
 namespace TechTolkTests;
 

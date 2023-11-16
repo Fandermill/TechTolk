@@ -1,4 +1,4 @@
-using TechTolk.Division;
+using TechTolk.Division.CultureInfo;
 using TechTolk.Division.String;
 using TechTolk.Registration.Builders;
 
