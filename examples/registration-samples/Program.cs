@@ -1,16 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TechTolk;
-using TechTolk.Division.CultureInfo;
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
 
 builder.Services.AddTechTolk()
     .ConfigureDividers(dividers =>
     {
-        // TODO - Can we me make overrides/extensions with implicit conversion from string to CultureInfo
-        dividers.AddSupportedDivider(CultureInfoDivider.FromCulture("nl-NL"));
-        dividers.AddSupportedDivider(CultureInfoDivider.FromCulture("en-US"));
+        dividers.AddSupportedCultureInfoDivider("nl-NL");
+        dividers.AddSupportedCultureInfoDivider("en-US");
     })
 
     // Example 1 - Simple hard coded translation set

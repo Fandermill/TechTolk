@@ -9,11 +9,15 @@ public sealed class HardCodedSet : ITranslationSetSource
 {
     public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
-        builder.ForDivider(CultureInfoDivider.FromCulture("nl-NL"))
+        builder
+            
+            .ForDivider(CultureInfoDivider.FromCulture("nl-NL"))
             .Add(new[]
             {
-                ("MyKey","My Dutch Value")
-            }).ThenForDivider(CultureInfoDivider.FromCulture("en-US"))
+                ("MyKey", "My Dutch Value")
+            })
+            
+            .ThenForDivider(CultureInfoDivider.FromCulture("en-US"))
             .Add(new[] {
                 ("MyKey", "My English Value")
             });
