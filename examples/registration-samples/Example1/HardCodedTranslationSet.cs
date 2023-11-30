@@ -10,7 +10,7 @@ public sealed class HardCodedSet : ITranslationSetSource
     public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         builder
-            
+
             .ForDivider(CultureInfoDivider.FromCulture("nl-NL"))
             .Add(new[]
             {
