@@ -30,8 +30,9 @@ internal class TolkFactory : ITolkFactory
 
     public ITolk Create(string translationSetKey)
     {
-        var set = _store.GetTranslationSet(translationSetKey);
-        var options = _optionsProvider.GetByTranslationSetKey(set.SetInfo.Key);
+        var options = _optionsProvider.GetByTranslationSetKey(translationSetKey);
+        var set = _store.GetTranslationSet(translationSetKey, options.TranslationSetNotLoadedBehavior);
+
 
         return new Tolk(
             GetCurrentDividerProvider(),

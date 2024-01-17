@@ -40,10 +40,16 @@ public interface ITranslationSetOptionsBuilder
 {
     ITranslationSetOptionsBuilder UseValueRenderer<T>() where T : AbstractTranslationValueRenderer;
     ITranslationNotFoundBehaviorConfigurationBuilder OnTranslationNotFound();
+    ITranslationSetNotLoadedBehaviorConfigurationBuilder OnTranslationSetNotLoaded();
 }
 public interface IMergedTranslationSetOptionsBuilder : ITranslationSetOptionsBuilder
 {
     IDuplicateKeyBehaviorConfigurationBuilder OnDuplicateKey();
+}
+public interface ITranslationSetNotLoadedBehaviorConfigurationBuilder
+{
+    ITranslationSetOptionsBuilder ThrowException();
+    ITranslationSetOptionsBuilder LazyLoad();
 }
 public interface ITranslationNotFoundBehaviorConfigurationBuilder
 {

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Concurrent;
+using TechTolk.Exceptions;
 using TechTolk.Registration;
 using TechTolk.Sources.Internals;
 using TechTolk.TranslationSets;
+using TechTolk.TranslationSets.Options;
 
 namespace TechTolk;
 
@@ -13,7 +15,7 @@ internal class TranslationSetStore
     private readonly ConcurrentDictionary<string, ITranslationSet> _translationSets;
 
     public TranslationSetStore(
-        TranslationSetRegistrationCollection registrations, 
+        TranslationSetRegistrationCollection registrations,
         ITranslationSetCompiler translationSetCompiler)
     {
         _registrations = registrations;
@@ -22,7 +24,19 @@ internal class TranslationSetStore
         _translationSets = new();
     }
 
-    public ITranslationSet GetTranslationSet(string setKey)
+    public ITranslationSet GetTranslationSet(string setKey, TranslationSetNotLoadedBehavior notLoadedBehavior)
+    {
+        if (notLoadedBehavior == TranslationSetNotLoadedBehavior.LazyLoad)
+            return GetOrAddTranslationSet(setKey);
+        else
+        {
+            if (_translationSets.TryGetValue(setKey, out var set))
+                return set;
+            throw new TranslationSetNotLoadedException(setKey);
+        }
+    }
+
+    internal ITranslationSet GetOrAddTranslationSet(string setKey)
     {
         return _translationSets.GetOrAdd(setKey, CompileSet);
     }
