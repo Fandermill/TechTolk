@@ -41,11 +41,19 @@ internal class TranslationSetStore
         return _translationSets.GetOrAdd(setKey, CompileSet);
     }
 
+    public void ClearAllTranslationSets()
+    {
+        _translationSets.Clear();
+    }
+
+    public void ClearTranslationSet(string setKey)
+    {
+        _translationSets.TryRemove(setKey, out _);
+    }
+
     private ITranslationSet CompileSet(string key)
     {
         var registration = _registrations.Get(key);
         return _translationSetCompiler.CompileTranslationSet(registration);
     }
-
-    // TODO - Might want to add a Reset or Reload method here
 }
