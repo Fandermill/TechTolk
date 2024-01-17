@@ -45,12 +45,6 @@ internal class TolkFactory : ITolkFactory
 
     public ITolk Create(Type type)
     {
-        var translationSetKey = GetTranslationSetKeyFromType(type);
-        return Create(translationSetKey);
-    }
-
-    private string GetTranslationSetKeyFromType(Type type)
-    {
-        return type.Name;
+        return Create(type.ToTranslationSetKey());
     }
 }
