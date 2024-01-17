@@ -122,4 +122,33 @@ public class LoaderTests : AbstractTechTolkTests
         var act = () => Provider.GetRequiredService<ITolkFactory>().Create(Set1.Key);
         act.Should().ThrowExactly<TranslationSetNotLoadedException>();
     }
+
+    [Fact]
+    public void Clearing_all_translation_sets_will_unload_all_loaded_translation_sets()
+    {
+        _services
+            .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
+            .ConfigureDefaultDividers()
+            .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()))
+            .AddTranslationSet(Set2.Key, s => s.FromSource(new Set2()));
+        var loader = Provider.GetRequiredService<ITolkLoader>();
+        loader.LoadTranslationSet(Set1.Key);
+        loader.LoadTranslationSet(Set2.Key);
+        var factory = Provider.GetRequiredService<ITolkFactory>();
+        var set1Tolk1 = factory.Create(Set1.Key);
+        var set2Tolk1 = factory.Create(Set2.Key);
+
+        loader.ClearAllTranslationSets();
+
+        var actSet1 = () => factory.Create(Set1.Key);
+        var actSet2 = () => factory.Create(Set2.Key);
+
+        actSet1.Should().ThrowExactly<TranslationSetNotLoadedException>();
+        actSet2.Should().ThrowExactly<TranslationSetNotLoadedException>();
+
+        // these tolks still own a reference to a translation set that is cleared later,
+        // showing that the translation sets were indeed loaded before
+        set1Tolk1.Translate(DividerConstants.NL, "MyKey").Should().Be("NL-MyValue");
+        set2Tolk1.Translate(DividerConstants.NL, "MyKey").Should().Be("NL-MyValue-FromSet2");
+    }
 }
