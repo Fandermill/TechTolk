@@ -41,4 +41,31 @@ public class FactoryTests : AbstractTechTolkTests
 
         act.Should().Throw<TranslationSetNotFoundException>();
     }
+
+    [Fact]
+    public void Creating_a_tolk_for_a_translation_set_that_is_not_loaded_will_throw_an_exception_as_configured()
+    {
+        _services
+            .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
+            .ConfigureDefaultDividers()
+            .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
+        var factory = Provider.GetRequiredService<ITolkFactory>();
+
+        var act = () => factory.Create(Set1.Key);
+
+        act.Should().ThrowExactly<TranslationSetNotLoadedException>();
+    }
+
+    [Fact]
+    public void Creating_a_tolk_for_a_translation_set_that_is_not_loaded_will_lazy_load_as_configured()
+    {
+        _services
+            .AddTechTolk(options => options.OnTranslationSetNotLoaded().LazyLoad())
+            .ConfigureDefaultDividers()
+            .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
+        var factory = Provider.GetRequiredService<ITolkFactory>();
+
+        var tolk = factory.Create(Set1.Key);
+        tolk.Translate(DividerConstants.NL, "MyKey").Should().Be("NL-MyValue");
+    }
 }

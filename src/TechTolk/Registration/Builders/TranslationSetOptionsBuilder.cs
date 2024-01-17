@@ -22,4 +22,9 @@ internal class TranslationSetOptionsBuilder : ITranslationSetOptionsBuilder
     {
         return new TranslationNotFoundBehaviorConfigurationBuilder(this, _options);
     }
+
+    public ITranslationSetNotLoadedBehaviorConfigurationBuilder OnTranslationSetNotLoaded()
+    {
+        return new TranslationSetNotLoadedBehaviorConfigurationBuilder(this, _options);
+    }
 }
