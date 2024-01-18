@@ -36,3 +36,21 @@ public class Set2 : ITranslationSetSource
             });
     }
 }
+
+public class SetWithComplexConstructor : ITranslationSetSource
+{
+    public const string Key = nameof(SetWithComplexConstructor);
+
+    public SetWithComplexConstructor(string notParameterlessCtor)
+    {
+        // the parameter in this constructor is on purpose for testing
+    }
+
+    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    {
+        builder
+            .ForDivider(DividerConstants.NL).Add(new[] {
+                ( "MyKey", "MyValue")
+            });
+    }
+}
