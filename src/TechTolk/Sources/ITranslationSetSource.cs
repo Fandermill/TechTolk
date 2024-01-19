@@ -5,5 +5,5 @@ namespace TechTolk.Sources;
 
 public interface ITranslationSetSource
 {
-    void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration);
+    Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration);
 }

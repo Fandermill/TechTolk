@@ -23,35 +23,62 @@ internal class TranslationSetCompiler : ITranslationSetCompiler
         _merger = merger;
     }
 
-    public ITranslationSet CompileTranslationSet(TranslationSetRegistration registration)
+    public async Task<ITranslationSet> CompileTranslationSetAsync(TranslationSetRegistration registration)
     {
-        var sets = CreateTranslationSets(registration);
-        if (sets.Count == 1)
+        var sets = await CreateTranslationSetsAsync(registration);
+        return ToSingleTranslationSet(registration, sets);
+    }
+
+    public ITranslationSet CompileTranslationSetSynchronously(TranslationSetRegistration registration)
+    {
+        List<IInternalTranslationSet> sets;
+
+        try
         {
-            return sets.First();
+            sets = Task.Run(async () => await CreateTranslationSetsAsync(registration)).Result;
+        }
+        catch (AggregateException ae)
+        {
+            if (ae.InnerExceptions.Count == 1)
+                throw ae.InnerExceptions.First();
+
+            throw new CompilationException(
+                $"Multiple exceptions thrown while compiling translation set " +
+                $"synchronously for '{registration.Name}'", ae);
+        }
+
+        return ToSingleTranslationSet(registration, sets);
+    }
+
+    private ITranslationSet ToSingleTranslationSet(TranslationSetRegistration registration, List<IInternalTranslationSet> translationSets)
+    {
+        if (translationSets.Count == 1)
+        {
+            return translationSets.First();
         }
         else
         {
-            return _merger.Merge(registration.MergeOptions ?? new TranslationSetMergeOptions(), sets.ToArray());
+            return _merger.Merge(registration.MergeOptions ?? new TranslationSetMergeOptions(), translationSets.ToArray());
         }
     }
 
-    private List<IInternalTranslationSet> CreateTranslationSets(TranslationSetRegistration registration)
+    private async Task<List<IInternalTranslationSet>> CreateTranslationSetsAsync(TranslationSetRegistration registration)
     {
         List<IInternalTranslationSet> sets = new();
         foreach (var sourceRegistration in registration.Sources)
         {
-            var set = CreateSetFromSource(registration, sourceRegistration);
+            var set = await CreateSetFromSource(registration, sourceRegistration);
             sets.Add(set);
         }
         return sets;
     }
 
-    private IInternalTranslationSet CreateSetFromSource(TranslationSetRegistration registration, SourceRegistrationBase sourceRegistration)
+    private async Task<IInternalTranslationSet> CreateSetFromSource(TranslationSetRegistration registration, SourceRegistrationBase sourceRegistration)
     {
         var builder = _builderFactory.CreateBuilder(new SetInfo(registration.Key, registration.Name));
         var source = GetSource(sourceRegistration);
-        source.PopulateTranslations(builder, sourceRegistration);
+
+        await source.PopulateTranslationsAsync(builder, sourceRegistration).ConfigureAwait(false);
 
         var set = builder.Build();
         return set as IInternalTranslationSet

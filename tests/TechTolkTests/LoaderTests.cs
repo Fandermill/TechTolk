@@ -9,7 +9,7 @@ namespace TechTolkTests;
 public class LoaderTests : AbstractTechTolkTests
 {
     [Fact]
-    public void Loading_a_translation_set_with_an_existing_registration_will_succeed()
+    public async Task Loading_a_translation_set_with_an_existing_registration_will_succeed()
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
@@ -17,7 +17,7 @@ public class LoaderTests : AbstractTechTolkTests
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
 
         var sut = Provider.GetRequiredService<ITolkLoader>();
-        sut.LoadTranslationSet(Set1.Key);
+        await sut.LoadTranslationSetAsync(Set1.Key);
 
         var tolk = GetTolkForTranslationSet(Set1.Key);
 
@@ -27,7 +27,7 @@ public class LoaderTests : AbstractTechTolkTests
     }
 
     [Fact]
-    public void Loading_a_translation_set_that_is_already_loaded_will_do_nothing()
+    public async Task Loading_a_translation_set_that_is_already_loaded_will_do_nothing()
     {
         var translationSetSource = new TranslationSetSourceSpy();
 
@@ -37,11 +37,11 @@ public class LoaderTests : AbstractTechTolkTests
             .AddTranslationSet(translationSetSource.Key, s => s.FromSource(translationSetSource));
         var sut = Provider.GetRequiredService<ITolkLoader>();
 
-        sut.LoadTranslationSet(translationSetSource.Key);
+        await sut.LoadTranslationSetAsync(translationSetSource.Key);
         var tolk1 = GetTolkForTranslationSet(translationSetSource.Key);
         var val1 = tolk1.Translate(DividerConstants.NL, "MyKey");
 
-        sut.LoadTranslationSet(translationSetSource.Key);
+        await sut.LoadTranslationSetAsync(translationSetSource.Key);
         var tolk2 = GetTolkForTranslationSet(translationSetSource.Key);
         var val2 = tolk1.Translate(DividerConstants.NL, "MyKey");
 
@@ -50,7 +50,7 @@ public class LoaderTests : AbstractTechTolkTests
     }
 
     [Fact]
-    public void Loading_a_translation_set_without_an_existing_registration_will_fail()
+    public async Task Loading_a_translation_set_without_an_existing_registration_will_fail()
     {
         _services
             .AddTechTolk()
@@ -58,13 +58,13 @@ public class LoaderTests : AbstractTechTolkTests
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var sut = Provider.GetRequiredService<ITolkLoader>();
 
-        var act = () => sut.LoadTranslationSet("MyKey");
+        var act = async () => await sut.LoadTranslationSetAsync("MyKey");
 
-        act.Should().ThrowExactly<TranslationSetNotFoundException>();
+        await act.Should().ThrowExactlyAsync<TranslationSetNotFoundException>();
     }
 
     [Fact]
-    public void Reloading_a_translation_set_will_recreate_the_translation_set_even_when_it_was_already_loaded()
+    public async Task Reloading_a_translation_set_will_recreate_the_translation_set_even_when_it_was_already_loaded()
     {
         var translationSetSource = new TranslationSetSourceSpy();
 
@@ -74,11 +74,11 @@ public class LoaderTests : AbstractTechTolkTests
             .AddTranslationSet(translationSetSource.Key, s => s.FromSource(translationSetSource));
         var sut = Provider.GetRequiredService<ITolkLoader>();
 
-        sut.LoadTranslationSet(translationSetSource.Key);
+        await sut.LoadTranslationSetAsync(translationSetSource.Key);
         var tolk1 = GetTolkForTranslationSet(translationSetSource.Key);
         var val1 = tolk1.Translate(DividerConstants.NL, "MyKey");
 
-        sut.ReloadTranslationSet(translationSetSource.Key);
+        await sut.ReloadTranslationSetAsync(translationSetSource.Key);
         var tolk2 = GetTolkForTranslationSet(translationSetSource.Key);
         var val2 = tolk2.Translate(DividerConstants.NL, "MyKey");
 
@@ -87,7 +87,7 @@ public class LoaderTests : AbstractTechTolkTests
     }
 
     [Fact]
-    public void Injecting_an_ITolk_after_reloading_a_translation_set_returns_new_values()
+    public async Task Injecting_an_ITolk_after_reloading_a_translation_set_returns_new_values()
     {
         var translationSetSource = new TranslationSetSourceSpy();
 
@@ -97,11 +97,11 @@ public class LoaderTests : AbstractTechTolkTests
             .AddTranslationSet<SharedResource>(s => s.FromSource(translationSetSource));
         var sut = Provider.GetRequiredService<ITolkLoader>();
 
-        sut.LoadTranslationSet<SharedResource>();
+        await sut.LoadTranslationSetAsync<SharedResource>();
         var tolk1 = Provider.GetRequiredService<ITolk<SharedResource>>();
         var val1 = tolk1.Translate(DividerConstants.NL, "MyKey");
 
-        sut.ReloadTranslationSet<SharedResource>();
+        await sut.ReloadTranslationSetAsync<SharedResource>();
         var tolk2 = Provider.GetRequiredService<ITolk<SharedResource>>();
         var val2 = tolk2.Translate(DividerConstants.NL, "MyKey");
 
@@ -110,7 +110,7 @@ public class LoaderTests : AbstractTechTolkTests
     }
 
     [Fact]
-    public void Clearing_a_translation_set_will_remove_an_existing_translation_set()
+    public async Task Clearing_a_translation_set_will_remove_an_existing_translation_set()
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
@@ -118,7 +118,7 @@ public class LoaderTests : AbstractTechTolkTests
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
 
         var loader = Provider.GetRequiredService<ITolkLoader>();
-        loader.LoadTranslationSet(Set1.Key);
+        await loader.LoadTranslationSetAsync(Set1.Key);
         var tolk1 = GetTolkForTranslationSet(Set1.Key);
 
         loader.ClearTranslationSet(Set1.Key);
@@ -149,7 +149,7 @@ public class LoaderTests : AbstractTechTolkTests
     }
 
     [Fact]
-    public void Clearing_all_translation_sets_will_unload_all_loaded_translation_sets()
+    public async Task Clearing_all_translation_sets_will_unload_all_loaded_translation_sets()
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
@@ -157,8 +157,8 @@ public class LoaderTests : AbstractTechTolkTests
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()))
             .AddTranslationSet(Set2.Key, s => s.FromSource(new Set2()));
         var loader = Provider.GetRequiredService<ITolkLoader>();
-        loader.LoadTranslationSet(Set1.Key);
-        loader.LoadTranslationSet(Set2.Key);
+        await loader.LoadTranslationSetAsync(Set1.Key);
+        await loader.LoadTranslationSetAsync(Set2.Key);
         var factory = Provider.GetRequiredService<ITolkFactory>();
         var set1Tolk1 = factory.Create(Set1.Key);
         var set2Tolk1 = factory.Create(Set2.Key);

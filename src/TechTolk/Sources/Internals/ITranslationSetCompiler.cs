@@ -5,5 +5,6 @@ namespace TechTolk.Sources.Internals;
 
 internal interface ITranslationSetCompiler
 {
-    ITranslationSet CompileTranslationSet(TranslationSetRegistration registration);
+    Task<ITranslationSet> CompileTranslationSetAsync(TranslationSetRegistration registration);
+    ITranslationSet CompileTranslationSetSynchronously(TranslationSetRegistration registration);
 }

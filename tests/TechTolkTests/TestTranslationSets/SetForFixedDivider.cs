@@ -9,8 +9,9 @@ public class SetForFixedDivider : ITranslationSetSource
 {
     public const string Key = nameof(SetForFixedDivider);
 
-    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         builder.ForDivider(DividerConstants.FixedDivider).Add("MyFixedDividerKey", "MyFixedDividerValue");
+        return Task.CompletedTask;
     }
 }

@@ -26,34 +26,45 @@ internal class TranslationSetStore
 
     public ITranslationSet GetTranslationSet(string setKey, TranslationSetNotLoadedBehavior notLoadedBehavior)
     {
+        if (_translationSets.TryGetValue(setKey, out var set))
+            return set;
+
         if (notLoadedBehavior == TranslationSetNotLoadedBehavior.LazyLoad)
-            return GetOrAddTranslationSet(setKey);
-        else
-        {
-            if (_translationSets.TryGetValue(setKey, out var set))
-                return set;
-            throw new TranslationSetNotLoadedException(setKey);
-        }
+            return InitTranslationSetSynchronously(setKey);
+
+        throw new TranslationSetNotLoadedException(setKey);
     }
 
-    internal ITranslationSet GetOrAddTranslationSet(string setKey)
+    internal async Task<ITranslationSet> InitTranslationSetAsync(string setKey)
     {
-        return _translationSets.GetOrAdd(setKey, CompileSet);
+        if (_translationSets.TryGetValue(setKey, out var set))
+            return set;
+
+        var registration = _registrations.Get(setKey);
+        var translationSet = await _translationSetCompiler.CompileTranslationSetAsync(registration);
+
+        _translationSets.AddOrUpdate(setKey, translationSet, (key, oldValue) => translationSet);
+
+        return translationSet;
     }
 
-    public void ClearAllTranslationSets()
+    private ITranslationSet InitTranslationSetSynchronously(string setKey)
+    {
+        var registration = _registrations.Get(setKey);
+        var translationSet = _translationSetCompiler.CompileTranslationSetSynchronously(registration);
+
+        _translationSets.AddOrUpdate(setKey, translationSet, (key, oldValue) => translationSet);
+
+        return translationSet;
+    }
+
+    internal void ClearAllTranslationSets()
     {
         _translationSets.Clear();
     }
 
-    public void ClearTranslationSet(string setKey)
+    internal void ClearTranslationSet(string setKey)
     {
         _translationSets.TryRemove(setKey, out _);
-    }
-
-    private ITranslationSet CompileSet(string key)
-    {
-        var registration = _registrations.Get(key);
-        return _translationSetCompiler.CompileTranslationSet(registration);
     }
 }

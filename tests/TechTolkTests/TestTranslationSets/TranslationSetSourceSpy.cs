@@ -11,7 +11,7 @@ public class TranslationSetSourceSpy : ITranslationSetSource
 
     public int NumberOfTimesPopulatedTranslations { get; private set; } = 0;
 
-    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         NumberOfTimesPopulatedTranslations++;
 
@@ -20,5 +20,7 @@ public class TranslationSetSourceSpy : ITranslationSetSource
             {
                 ( "MyKey", "MyValue" + NumberOfTimesPopulatedTranslations)
             });
+
+        return Task.CompletedTask;
     }
 }
