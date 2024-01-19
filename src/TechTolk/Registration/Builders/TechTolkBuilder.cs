@@ -27,7 +27,7 @@ internal class TechTolkBuilder : ITechTolkBuilder
             ConfigureDefaultOptions(defaultOptions);
 
         _registrations = new();
-		_services.AddSingleton(_registrations);
+        _services.AddSingleton(_registrations);
     }
 
     private void ConfigureDefaultOptions(Action<ITranslationSetOptionsBuilder> configureDefaultOptions)
@@ -53,10 +53,10 @@ internal class TechTolkBuilder : ITechTolkBuilder
 
     public ITechTolkBuilder AddTranslationSet<T>(Action<IRootTranslationSetRegistrationBuilder> set)
     {
-		// todo - Get metadata from T
+        // todo - Get metadata from T
 
-		var name = typeof(T).Name;
-		return AddTranslationSet(name, set);
+        var name = typeof(T).ToTranslationSetKey();
+        return AddTranslationSet(name, set);
     }
 
     public ITechTolkBuilder AddMergedTranslationSet(string name, Action<IMergedTranslationSetRegistrationBuilder> mergedSet)
@@ -66,11 +66,11 @@ internal class TechTolkBuilder : ITechTolkBuilder
         mergedSet(builder);
         return this;
     }
-	public ITechTolkBuilder AddMergedTranslationSet<T>(Action<IMergedTranslationSetRegistrationBuilder> mergedSet)
-	{
-		// todo - Get metadata from T
+    public ITechTolkBuilder AddMergedTranslationSet<T>(Action<IMergedTranslationSetRegistrationBuilder> mergedSet)
+    {
+        // todo - Get metadata from T
 
-		var name = typeof(T).Name;
-		return AddMergedTranslationSet(name, mergedSet);
-	}
+        var name = typeof(T).ToTranslationSetKey();
+        return AddMergedTranslationSet(name, mergedSet);
+    }
 }
