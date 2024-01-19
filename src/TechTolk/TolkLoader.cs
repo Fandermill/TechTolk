@@ -11,26 +11,26 @@ internal sealed class TolkLoader : ITolkLoader
 
 
 
-    public void LoadTranslationSet(string setKey)
+    public async Task LoadTranslationSetAsync(string setKey)
     {
-        _ = _translationSetStore.GetOrAddTranslationSet(setKey);
+        _ = await _translationSetStore.InitTranslationSetAsync(setKey);
     }
 
-    public void LoadTranslationSet<T>() => LoadTranslationSet(typeof(T));
+    public Task LoadTranslationSetAsync<T>() => LoadTranslationSetAsync(typeof(T));
 
-    public void LoadTranslationSet(Type type) => LoadTranslationSet(type.ToTranslationSetKey());
+    public async Task LoadTranslationSetAsync(Type type) => await LoadTranslationSetAsync(type.ToTranslationSetKey());
 
 
 
-    public void ReloadTranslationSet(string setKey)
+    public async Task ReloadTranslationSetAsync(string setKey)
     {
         ClearTranslationSet(setKey);
-        LoadTranslationSet(setKey);
+        await LoadTranslationSetAsync(setKey);
     }
 
-    public void ReloadTranslationSet<T>() => ReloadTranslationSet(typeof(T));
+    public Task ReloadTranslationSetAsync<T>() => ReloadTranslationSetAsync(typeof(T));
 
-    public void ReloadTranslationSet(Type type) => ReloadTranslationSet(type.ToTranslationSetKey());
+    public async Task ReloadTranslationSetAsync(Type type) => await ReloadTranslationSetAsync(type.ToTranslationSetKey());
 
 
 

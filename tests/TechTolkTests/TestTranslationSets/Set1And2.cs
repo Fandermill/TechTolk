@@ -9,7 +9,7 @@ public class Set1 : ITranslationSetSource
 {
     public const string Key = nameof(Set1);
 
-    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         builder
             .ForDivider(DividerConstants.NL).Add(new[] {
@@ -20,6 +20,8 @@ public class Set1 : ITranslationSetSource
                 ( "MyKey", "EN-MyValue"),
                 ( "KeyThatExistsInAllDividers", "EN-ValueFromKeyThatExistsInAllDividers" ),
             });
+
+        return Task.CompletedTask;
     }
 }
 
@@ -27,13 +29,15 @@ public class Set2 : ITranslationSetSource
 {
     public const string Key = nameof(Set2);
 
-    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         builder
             .ForDivider(DividerConstants.NL).Add(new[] {
                 ( "MyKey", "NL-MyValue-FromSet2"),
                 ( "AdditionalKey", "NL-AdditionalValue" )
             });
+
+        return Task.CompletedTask;
     }
 }
 
@@ -46,11 +50,13 @@ public class SetWithComplexConstructor : ITranslationSetSource
         // the parameter in this constructor is on purpose for testing
     }
 
-    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         builder
             .ForDivider(DividerConstants.NL).Add(new[] {
                 ( "MyKey", "MyValue")
             });
+
+        return Task.CompletedTask;
     }
 }

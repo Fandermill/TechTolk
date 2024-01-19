@@ -2,13 +2,13 @@
 
 public interface ITolkLoader
 {
-    void LoadTranslationSet(string setKey);
-    void LoadTranslationSet<T>();
-    void LoadTranslationSet(Type type);
+    Task LoadTranslationSetAsync(string setKey);
+    Task LoadTranslationSetAsync<T>();
+    Task LoadTranslationSetAsync(Type type);
 
-    void ReloadTranslationSet(string setKey);
-    void ReloadTranslationSet<T>();
-    void ReloadTranslationSet(Type type);
+    Task ReloadTranslationSetAsync(string setKey);
+    Task ReloadTranslationSetAsync<T>();
+    Task ReloadTranslationSetAsync(Type type);
 
     void ClearAllTranslationSets();
     void ClearTranslationSet(string setKey);

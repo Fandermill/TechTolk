@@ -27,6 +27,8 @@ public class SourceTests : AbstractTechTolkTests
     {
         _services.AddTechTolk().ConfigureDefaultDividers()
             .AddTranslationSet(SetWithComplexConstructor.Key, s => s.FromSource<SetWithComplexConstructor>());
+        var loader = Provider.GetRequiredService<ITolkLoader>();
+
         var tolkFactory = Provider.GetRequiredService<ITolkFactory>();
 
         var act = () => tolkFactory.Create(SetWithComplexConstructor.Key);
