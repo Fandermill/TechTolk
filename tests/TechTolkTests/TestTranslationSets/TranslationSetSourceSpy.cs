@@ -13,12 +13,12 @@ public class TranslationSetSourceSpy : ITranslationSetSource
 
     public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
+        NumberOfTimesPopulatedTranslations++;
+
         builder
             .ForDivider(DividerConstants.NL).Add(new[]
             {
-                ( "MyKey", "MyValue")
+                ( "MyKey", "MyValue" + NumberOfTimesPopulatedTranslations)
             });
-
-        NumberOfTimesPopulatedTranslations++;
     }
 }
