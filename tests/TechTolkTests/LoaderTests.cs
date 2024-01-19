@@ -46,6 +46,7 @@ public class LoaderTests : AbstractTechTolkTests
         var val2 = tolk1.Translate(DividerConstants.NL, "MyKey");
 
         translationSetSource.NumberOfTimesPopulatedTranslations.Should().Be(1);
+        val2.Should().Be(val1);
     }
 
     [Fact]
@@ -63,7 +64,7 @@ public class LoaderTests : AbstractTechTolkTests
     }
 
     [Fact]
-    public void Reloading_a_translation_set_will_recreate_the_translation_set_event_when_it_was_already_loaded()
+    public void Reloading_a_translation_set_will_recreate_the_translation_set_even_when_it_was_already_loaded()
     {
         var translationSetSource = new TranslationSetSourceSpy();
 
@@ -79,9 +80,33 @@ public class LoaderTests : AbstractTechTolkTests
 
         sut.ReloadTranslationSet(translationSetSource.Key);
         var tolk2 = GetTolkForTranslationSet(translationSetSource.Key);
-        var val2 = tolk1.Translate(DividerConstants.NL, "MyKey");
+        var val2 = tolk2.Translate(DividerConstants.NL, "MyKey");
 
         translationSetSource.NumberOfTimesPopulatedTranslations.Should().Be(2);
+        val2.Should().NotBe(val1);
+    }
+
+    [Fact]
+    public void Injecting_an_ITolk_after_reloading_a_translation_set_returns_new_values()
+    {
+        var translationSetSource = new TranslationSetSourceSpy();
+
+        _services
+            .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
+            .ConfigureDefaultDividers()
+            .AddTranslationSet<SharedResource>(s => s.FromSource(translationSetSource));
+        var sut = Provider.GetRequiredService<ITolkLoader>();
+
+        sut.LoadTranslationSet<SharedResource>();
+        var tolk1 = Provider.GetRequiredService<ITolk<SharedResource>>();
+        var val1 = tolk1.Translate(DividerConstants.NL, "MyKey");
+
+        sut.ReloadTranslationSet<SharedResource>();
+        var tolk2 = Provider.GetRequiredService<ITolk<SharedResource>>();
+        var val2 = tolk2.Translate(DividerConstants.NL, "MyKey");
+
+        val1.Should().Be("MyValue1");
+        val2.Should().Be("MyValue2");
     }
 
     [Fact]
