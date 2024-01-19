@@ -26,7 +26,7 @@ public static class TechTolkServiceCollectionExtensions
 
         services.AddSingleton<ITolkLoader, TolkLoader>();
         services.AddSingleton<ITolkFactory, TolkFactory>();
-        services.AddSingleton(typeof(ITolk<>), typeof(Tolk<>));
+        services.AddTransient(typeof(ITolk<>), typeof(Tolk<>));
 
         return new TechTolkBuilder(services, defaults);
     }
