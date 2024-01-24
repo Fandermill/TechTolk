@@ -7,7 +7,7 @@ namespace registration_samples;
 
 public sealed class HardCodedSetA : ITranslationSetSource
 {
-    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         builder
 
@@ -24,12 +24,14 @@ public sealed class HardCodedSetA : ITranslationSetSource
                 ("SetA-TranslationKey", "My English Value from set A"),
                 ("KeyInAllSets", "English value from set A for key that exists in all sets")
             });
+
+        return Task.CompletedTask;
     }
 }
 
 public sealed class HardCodedSetB : ITranslationSetSource
 {
-    public void PopulateTranslations(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
+    public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         builder
 
@@ -45,5 +47,7 @@ public sealed class HardCodedSetB : ITranslationSetSource
                 ("SetB-TranslationKey", "My English Value from set B"),
                 ("KeyInAllSets", "English value from set B for key that exists in all sets")
             });
+
+        return Task.CompletedTask;
     }
 }
