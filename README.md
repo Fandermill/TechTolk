@@ -1,3 +1,6 @@
+> [!WARNING]
+> The package and it's documentation are a work-in-progress. All of this is subject to change!
+
 # TechTolk
 
 TechTolk makes it easy to load translations from any source into memory and use them in your code.
