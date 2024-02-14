@@ -1,6 +1,7 @@
 ﻿using TechTolk.Division;
 using TechTolk.Exceptions;
 using TechTolk.TranslationSets.Building;
+using TechTolk.TranslationSets.Building.Internals;
 using TechTolk.TranslationSets.Internals;
 
 namespace TechTolk.TranslationSets.Merging;

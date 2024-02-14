@@ -3,6 +3,7 @@ using TechTolk.Exceptions;
 using TechTolk.Rendering;
 using TechTolk.TranslationSets;
 using TechTolk.TranslationSets.Options;
+using TechTolk.TranslationSets.Options.Internals;
 using TechTolk.TranslationSets.Values;
 
 namespace TechTolk;

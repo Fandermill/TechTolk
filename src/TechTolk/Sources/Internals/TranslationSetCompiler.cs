@@ -1,7 +1,7 @@
 ﻿using TechTolk.Exceptions;
 using TechTolk.Registration;
 using TechTolk.TranslationSets;
-using TechTolk.TranslationSets.Building;
+using TechTolk.TranslationSets.Building.Internals;
 using TechTolk.TranslationSets.Internals;
 using TechTolk.TranslationSets.Merging;
 

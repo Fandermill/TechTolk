@@ -1,5 +1,5 @@
 ﻿using TechTolk.Exceptions;
-using TechTolk.TranslationSets.Options;
+using TechTolk.TranslationSets.Options.Internals;
 
 namespace TechTolk.Registration;
 

@@ -1,8 +1,8 @@
 ﻿using TechTolk.Rendering.Internals;
 
-namespace TechTolk.TranslationSets.Options;
+namespace TechTolk.TranslationSets.Options.Internals;
 
-public class TranslationSetOptions
+internal class TranslationSetOptions
 {
     public TranslationSetNotLoadedBehavior TranslationSetNotLoadedBehavior { get; internal set; } = TranslationSetNotLoadedBehavior.LazyLoad;
     public TranslationNotFoundBehavior TranslationNotFoundBehavior { get; internal set; } = TranslationNotFoundBehavior.EmptyString;
