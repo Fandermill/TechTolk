@@ -19,7 +19,7 @@ public interface IDividerConfigurationBuilder
 {
     /// <summary>
     /// Registers the given type as the implementation of the 
-    /// <see cref="ICurrentDividerProvider" /> interface
+    /// <see cref="ICurrentDividerProvider"/> interface
     /// </summary>
     /// <typeparam name="T">The implementation type</typeparam>
     /// <returns>The builder to chain calls on</returns>

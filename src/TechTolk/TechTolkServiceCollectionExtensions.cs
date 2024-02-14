@@ -3,7 +3,6 @@ using TechTolk.Registration.Builders;
 using TechTolk.Rendering.Internals;
 using TechTolk.Sources;
 using TechTolk.Sources.Internals;
-using TechTolk.TranslationSets.Building;
 using TechTolk.TranslationSets.Building.Internals;
 using TechTolk.TranslationSets.Internals;
 using TechTolk.TranslationSets.Merging;
@@ -13,11 +12,21 @@ using TechTolk.TranslationSets.Values.Internals;
 
 namespace TechTolk;
 
+/// <summary>
+/// Extension methods for adding TechTolk to your DI container
+/// </summary>
 public static class TechTolkServiceCollectionExtensions
 {
+    /// <summary>
+    /// Adds TechTolk to the service collection with default configuration
+    /// </summary>
     public static ITechTolkBuilder AddTechTolk(this IServiceCollection services)
         => AddTechTolk(services, null);
 
+    /// <summary>
+    /// Adds TechTolk to the service collection
+    /// </summary>
+    /// <param name="defaults">Action to do configuration</param>
     public static ITechTolkBuilder AddTechTolk(
         this IServiceCollection services,
         Action<ITranslationSetOptionsBuilder>? defaults)

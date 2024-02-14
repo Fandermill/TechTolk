@@ -1,5 +1,5 @@
 ﻿using TechTolk.TranslationSets.Merging;
-using TechTolk.TranslationSets.Options;
+using TechTolk.TranslationSets.Options.Internals;
 
 namespace TechTolk.Registration;
 
@@ -8,7 +8,7 @@ public class TranslationSetRegistration
     public string Key { get; init; }
     public string Name { get; init; }
 
-    public TranslationSetOptions Options { get; init; }
+    internal TranslationSetOptions Options { get; init; }
     internal TranslationSetMergeOptions? MergeOptions { get; set; }
 
     internal bool Merge => Sources.Count > 1;
