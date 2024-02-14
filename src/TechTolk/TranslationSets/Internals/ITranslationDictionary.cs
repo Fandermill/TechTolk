@@ -1,8 +1,8 @@
 ﻿using TechTolk.TranslationSets.Values;
 
-namespace TechTolk.TranslationSets;
+namespace TechTolk.TranslationSets.Internals;
 
-public interface ITranslationDictionary
+internal interface ITranslationDictionary
 {
     TranslationValue Get(string key);
     TranslationValue? TryGet(string key);
