@@ -1,4 +1,39 @@
 - name: Introduction
   href: introduction.md
+
 - name: Getting Started
   href: getting-started.md
+
+- name: Configuration
+- name: Dividers
+  href: dividers.md
+- name: Translation sets
+  href: translation-sets.md
+
+- name: Translation set sources
+  href: translation-set-sources.md
+- name: Value renderers
+  href: value-renderers.md
+
+# Getting Started
+## Service Registration
+## Sources
+## Tolk usage
+
+
+# dividers
+## wat is het
+## Current divider provider
+## add supported dividers bij registratie
+
+# translation sets
+## Registration
+## Normale set
+## Merged set
+## source
+# translation sets
+#
+
+# Translation set source
+
+# Value renderers
