@@ -2,5 +2,5 @@
 
 public sealed class RegistrationException : TechTolkException
 {
-    internal RegistrationException(string message) : base(message) { }
+    public RegistrationException(string message) : base(message) { }
 }
