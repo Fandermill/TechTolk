@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+
+    <PackageId>TechTolk.Sources.Resx</PackageId>
+    <Title>TechTolk.Sources.Resx</Title>
+    <Description>Package to source translation sets from resource (.resx) files</Description>
+    <PackageTags>Localisation;Translation;Translating;Tolk;Resx;Resource files</PackageTags>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TechTolk\TechTolk.csproj" />
+  </ItemGroup>
+	
+</Project>

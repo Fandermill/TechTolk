@@ -11,7 +11,7 @@ internal class SupportedDividersProvider : ISupportedDividersProvider
         if (_dividers.Count == 0)
             throw new RegistrationException(
                 "TechTolk did not find any configured dividers. " +
-                "Did you forget to add supported dividers? You" +
+                "Did you forget to add supported dividers? You " +
                 "can do this with the TechTolkdBuilder.ConfigureDividers() method.");
 
         return _dividers.AsReadOnly();
