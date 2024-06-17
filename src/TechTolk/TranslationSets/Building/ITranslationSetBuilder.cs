@@ -18,10 +18,10 @@ public interface ITranslationSetBuilder
     /// <param name="duplicateBehavior">Behavior for when a value already exists for the translation key/divider combination</param>
     /// <returns>The same builder instance</returns>
     ITranslationSetBuilder Add(
-        IDivider divider, 
-        string translationKey, 
-        string value, 
-        DuplicateBehavior duplicateBehavior);
+        IDivider divider,
+        string translationKey,
+        string value,
+        DuplicateBehavior duplicateBehavior = DuplicateBehavior.Throw);
 
     /// <summary>
     /// Adds a translated string value to the translation set
@@ -32,10 +32,10 @@ public interface ITranslationSetBuilder
     /// <param name="duplicateBehavior">Behavior for when a value already exists for the translation key/divider combination</param>
     /// <returns>The same builder instance</returns>
     ITranslationSetBuilder Add(
-        IDivider divider, 
-        string translationKey, 
-        TranslationValue value, 
-        DuplicateBehavior duplicateBehavior);
+        IDivider divider,
+        string translationKey,
+        TranslationValue value,
+        DuplicateBehavior duplicateBehavior = DuplicateBehavior.Throw);
 
     /// <summary>
     /// Select the given divider to chain multiple calls 
