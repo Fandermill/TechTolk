@@ -14,7 +14,7 @@ an implementation of the `ITechTolk<T>` interface into your constructors.
 Then you need to register the source from which the translations should be loaded.
 You can do this by invoking `.FromSource`.
 
-> [!INFO]
+> [!TIP]
 > Find out more about the sources at the [Translation Set Sources](translation-set-sources) page.
 
 Additionaly, you can set options for the behavior upon non existing translation values.
