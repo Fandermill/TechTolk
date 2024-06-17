@@ -27,13 +27,13 @@ internal class TranslationSetBuilder : ITranslationSetBuilder
         _dictionaries = new();
     }
 
-    public ITranslationSetBuilder Add(IDivider divider, string translationKey, string value, DuplicateBehavior duplicateBehavior)
+    public ITranslationSetBuilder Add(IDivider divider, string translationKey, string value, DuplicateBehavior duplicateBehavior = DuplicateBehavior.Throw)
     {
         var translationValue = _valueFactory.CreateValue(_translationSet, value);
         return Add(divider, translationKey, translationValue, duplicateBehavior);
     }
 
-    public ITranslationSetBuilder Add(IDivider divider, string translationKey, TranslationValue value, DuplicateBehavior duplicateBehavior)
+    public ITranslationSetBuilder Add(IDivider divider, string translationKey, TranslationValue value, DuplicateBehavior duplicateBehavior = DuplicateBehavior.Throw)
     {
         ThrowOnUnsupportedDivider(divider);
         _ = _dictionaries.TryAdd(divider.Key, new TranslationDictionary());
