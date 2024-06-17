@@ -2,9 +2,9 @@
 # Translation sets
 
 A translation set is a collection of translations and consists of translation keys
-and a translation per [divider](dividers). It gets registered with a name or a
+and a translation per [divider](dividers.md). It gets registered with a name or a
 type from which a name is determined. A set gets populated from a
-[translation set source](translation-set-sources). Multiple sets can be merged
+[translation set source](translation-set-sources.md). Multiple sets can be merged
 into one with a [merged translation set](#merged-translation-set).
 
 ## Registering a translation set
@@ -14,8 +14,8 @@ an implementation of the `ITechTolk<T>` interface into your constructors.
 Then you need to register the source from which the translations should be loaded.
 You can do this by invoking `.FromSource`.
 
-> [!INFO]
-> Find out more about the sources at the [Translation Set Sources](translation-set-sources) page.
+> [!TIP]
+> Find out more about the sources at the [Translation Set Sources](translation-set-sources.md) page.
 
 Additionaly, you can set options for the behavior upon non existing translation values.
 
