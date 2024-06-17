@@ -19,22 +19,29 @@ To specify the supported dividers, you should use the `IDividerConfigurationBuil
 when calling `.ConfigureDividers(Action<IDividerConfigurationBuilder>)`.
 
 ```csharp
-
 services
     .AddTechTolk()
     .ConfigureDividers(config => {
-        config.AddSupportedDivider(new CultureInfo("nl-NL"));
-        config.AddSupportedDivider(new CUltureInfo("en-US"));
+        config.AddSupportedDivider(new CultureInfoDivider("nl-NL"));
+        config.AddSupportedDivider(new CultureInfoDivider("en-US"));
     });
 ```
 
-> [!WARNING]
-> **TODO** We should make it as easy as possible to get started. Maybe add the supported dividers into
-> the AddTechTolk() method, like services.AddTechTolk(Div1, Div2, Div3).
+> [!TIP]
+> You can use a shorthand extension method to use the built in `CultureInfoDivider` as dividers.
+> This method also sets a `ICurrentDividerProvider` that returns the current UI culture of the
+> current thread.
+> ```csharp
+> services
+>     .AddTechTolk()
+>     .UseCultureInfoDividers("nl-NL", "en-US")
+>     // (... translation sets)
+> ```
+>
+> The `CultureInfoDivider` contains an implicit operator so you can easily pass a string,
+> where a `CultureInfoDivider` is asked. That's why you can pass in strings in the
+> `.UserCultureInfoDividers()` extension method.
 
-> [!WARNING]
-> **TODO** Say something about the implicit operator override to convert a CultureInfo into
-> the built in CultureInfoDivider.
 
 ## The `ICurrentDividerProvider`
 
