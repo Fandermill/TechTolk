@@ -5,8 +5,24 @@ namespace TechTolk.Registration.Builders;
 
 public static class BuilderExtensions
 {
-    // TODO - Shortcut extension method to add a TranslationSet directly,
-    //        like .AddTranslationSetFromResx<TSomeType>();
+    public static ITechTolkBuilder AddTranslationSetFromResource<TResxResource>(
+        this ITechTolkBuilder techTolkBuilder)
+        => AddTranslationSetFromResource<TResxResource>(techTolkBuilder, null);
+
+    public static ITechTolkBuilder AddTranslationSetFromResource<TResxResource>(
+        this ITechTolkBuilder techTolkBuilder, Action<ITranslationSetOptionsBuilder>? options)
+    {
+        techTolkBuilder.AddTranslationSet<TResxResource>(set =>
+        {
+            BuilderExtensions.FromResource<TResxResource>(set);
+            if (options is not null)
+            {
+                set.WithOptions(options);
+            }
+        });
+
+        return techTolkBuilder;
+    }
 
     public static void FromResource<TResxResource>(
         this IRootTranslationSetRegistrationBuilder rootSetBuilder)

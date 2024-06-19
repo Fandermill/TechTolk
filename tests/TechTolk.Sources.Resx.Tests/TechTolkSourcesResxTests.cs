@@ -60,7 +60,7 @@ public sealed class TechTolkSourcesResxTests
             builder.AddMergedTranslationSet("MergedSet1", mergedSet =>
             {
                 mergedSet.FromResource<MyResource>();
-                mergedSet.FromResource<MySecondResource>(); // TODO - weird, test cant seem to find it?
+                mergedSet.FromResource<MySecondResource>();
 
                 mergedSet.WithOptions(o => o.OnDuplicateKey().Replace());
             });
@@ -108,8 +108,6 @@ public sealed class TechTolkSourcesResxTests
                 );
 
             var assembly = GetType().Assembly;
-            // todo - or register by tagtype? (like .FromResource<TTypeFromAssembly>("str"))
-            //var assembly = Assembly.GetAssembly( typeof(AnotherResource_Div1).Assembly;
 
             builder.AddTranslationSet("Set1", set =>
             {
@@ -190,6 +188,24 @@ public sealed class TechTolkSourcesResxTests
             var act = () => GetTolkForTranslationSet("MergedSet1");
 
             act.Should().Throw<RegistrationException>();
+        }
+    }
+
+    public class Misc : AbstractTechTolkTests
+    {
+        [Fact]
+        public void Can_register_a_resource_through_the_add_translation_set_extension_method()
+        {
+            _services.AddTechTolkResxServices();
+            var builder = _services.AddTechTolk()
+                .ConfigureDefaultDividers() // uses Constants.CultureInfoDividers
+                .AddTranslationSetFromResource<MyResource>(null);
+
+            var tolk = GetTolkForTranslationSet<MyResource>();
+
+            var result = tolk.Translate(Constants.CultureInfoDividers.nl_NL, "MyKey");
+
+            result.Should().Be("MyValue-NL");
         }
     }
 }
