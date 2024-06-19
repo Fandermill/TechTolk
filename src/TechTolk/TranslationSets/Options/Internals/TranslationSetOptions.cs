@@ -2,7 +2,7 @@
 
 namespace TechTolk.TranslationSets.Options.Internals;
 
-internal class TranslationSetOptions
+internal sealed class TranslationSetOptions
 {
     public TranslationSetNotLoadedBehavior TranslationSetNotLoadedBehavior { get; internal set; } = TranslationSetNotLoadedBehavior.LazyLoad;
     public TranslationNotFoundBehavior TranslationNotFoundBehavior { get; internal set; } = TranslationNotFoundBehavior.EmptyString;

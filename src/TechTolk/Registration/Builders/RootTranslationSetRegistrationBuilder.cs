@@ -2,9 +2,9 @@
 
 namespace TechTolk.Registration.Builders;
 
-internal class RootTranslationSetRegistrationBuilder : IRootTranslationSetRegistrationBuilder
+internal sealed class RootTranslationSetRegistrationBuilder : IRootTranslationSetRegistrationBuilder
 {
-    protected readonly TranslationSetRegistration _registration;
+    private readonly TranslationSetRegistration _registration;
 
     public RootTranslationSetRegistrationBuilder(TranslationSetRegistration registration)
     {
@@ -36,7 +36,7 @@ internal class RootTranslationSetRegistrationBuilder : IRootTranslationSetRegist
     public void FromSource(ITranslationSetSource source, Func<TranslationSetSourceOptions>? options)
     {
         var sourceRegistration = new SourceInstanceRegistration(
-            _registration.Name, 
+            _registration.Name,
             source,
             options is not null ? options() : null);
 

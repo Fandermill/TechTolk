@@ -1,15 +1,14 @@
 ﻿using TechTolk.Division;
 using TechTolk.Exceptions;
-using TechTolk.TranslationSets.Options;
 using TechTolk.TranslationSets.Values;
 
 namespace TechTolk.TranslationSets.Internals;
 
-internal class TranslationSet : ITranslationSet, IInternalTranslationSet
+internal sealed class TranslationSet : ITranslationSet, IInternalTranslationSet
 {
     public SetInfo SetInfo { get; private set; }
 
-    
+
 
 
     private readonly Dictionary<string, IInternalTranslationDictionary> _divisionDictionaries;

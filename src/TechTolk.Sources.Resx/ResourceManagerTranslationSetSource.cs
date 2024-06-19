@@ -14,7 +14,7 @@ internal sealed class ResourceManagerTranslationSetSource : ResxTranslationSetSo
     {
         _supportedDividersProvider = supportedDividersProvider;
     }
-    
+
     protected override Task PopulateTranslationsAsync(ITranslationSetBuilder builder, ResxTranslationSetSourceOptions options)
     {
         var resourceManager = CreateResourceManagerFromOptions(options);
@@ -38,11 +38,10 @@ internal sealed class ResourceManagerTranslationSetSource : ResxTranslationSetSo
                     $"Unable to get resource set from resource manager " +
                     $"with base name '{resourceManager.ResourceSetType.Name}'");
             }
-                
+
 
             foreach (DictionaryEntry? entry in resourceSet)
             {
-                // TODO - Find out more about how this DictionaryEntry works, why the casting?
                 if (entry?.Key is string key && entry?.Value is string val)
                 {
                     // TODO - Duplicate behavior, from where?

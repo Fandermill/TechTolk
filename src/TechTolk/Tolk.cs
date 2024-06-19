@@ -8,7 +8,7 @@ using TechTolk.TranslationSets.Values;
 
 namespace TechTolk;
 
-internal class Tolk : ITolk
+internal sealed class Tolk : ITolk
 {
     private readonly ICurrentDividerProvider _currentDividerProvider;
     private readonly ITranslationSet _translationSet;

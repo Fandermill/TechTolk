@@ -2,7 +2,7 @@
 
 namespace TechTolk.Division.Internals;
 
-internal class SupportedDividersProvider : ISupportedDividersProvider
+internal sealed class SupportedDividersProvider : ISupportedDividersProvider
 {
     private List<IDivider> _dividers = new();
 

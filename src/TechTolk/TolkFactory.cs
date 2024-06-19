@@ -5,7 +5,7 @@ using TechTolk.TranslationSets.Options.Internals;
 
 namespace TechTolk;
 
-internal class TolkFactory : ITolkFactory
+internal sealed class TolkFactory : ITolkFactory
 {
     private readonly TranslationSetStore _store;
     private readonly ITranslationSetOptionsProvider _optionsProvider;

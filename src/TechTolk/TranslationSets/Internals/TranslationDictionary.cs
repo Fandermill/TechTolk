@@ -3,7 +3,7 @@ using TechTolk.TranslationSets.Values;
 
 namespace TechTolk.TranslationSets.Internals;
 
-internal class TranslationDictionary : ITranslationDictionary, IInternalTranslationDictionary
+internal sealed class TranslationDictionary : ITranslationDictionary, IInternalTranslationDictionary
 {
     private readonly Dictionary<string, TranslationValue> _dictionary = new();
     IEnumerable<string> IInternalTranslationDictionary.Keys => _dictionary.Keys;

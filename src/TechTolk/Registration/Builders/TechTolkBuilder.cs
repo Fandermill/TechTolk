@@ -5,7 +5,7 @@ using TechTolk.TranslationSets.Options.Internals;
 
 namespace TechTolk.Registration.Builders;
 
-internal class TechTolkBuilder : ITechTolkBuilder
+internal sealed class TechTolkBuilder : ITechTolkBuilder
 {
     private readonly IServiceCollection _services;
 
@@ -53,8 +53,6 @@ internal class TechTolkBuilder : ITechTolkBuilder
 
     public ITechTolkBuilder AddTranslationSet<T>(Action<IRootTranslationSetRegistrationBuilder> set)
     {
-        // todo - Get metadata from T
-
         var name = typeof(T).ToTranslationSetKey();
         return AddTranslationSet(name, set);
     }
@@ -68,8 +66,6 @@ internal class TechTolkBuilder : ITechTolkBuilder
     }
     public ITechTolkBuilder AddMergedTranslationSet<T>(Action<IMergedTranslationSetRegistrationBuilder> mergedSet)
     {
-        // todo - Get metadata from T
-
         var name = typeof(T).ToTranslationSetKey();
         return AddMergedTranslationSet(name, mergedSet);
     }

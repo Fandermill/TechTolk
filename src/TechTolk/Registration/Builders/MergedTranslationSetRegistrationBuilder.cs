@@ -3,9 +3,9 @@ using TechTolk.TranslationSets.Merging;
 
 namespace TechTolk.Registration.Builders;
 
-internal class MergedTranslationSetRegistrationBuilder : IMergedTranslationSetRegistrationBuilder
+internal sealed class MergedTranslationSetRegistrationBuilder : IMergedTranslationSetRegistrationBuilder
 {
-    protected readonly TranslationSetRegistration _registration;
+    private readonly TranslationSetRegistration _registration;
 
     public MergedTranslationSetRegistrationBuilder(TranslationSetRegistration registration)
     {

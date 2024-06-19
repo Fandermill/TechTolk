@@ -42,8 +42,6 @@ public static class TechTolkServiceCollectionExtensions
 
     private static void AddInternals(this IServiceCollection services)
     {
-        // TODO - Lifetimes
-
         services.AddSingleton<ValueBagTranslationValueRenderer>();
         services.AddSingleton<ITranslationSetCompiler, TranslationSetCompiler>();
         services.AddSingleton<ITranslationSetSourceFactory, TranslationSetSourceFactory>();

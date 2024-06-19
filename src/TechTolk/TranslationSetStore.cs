@@ -7,7 +7,7 @@ using TechTolk.TranslationSets.Options;
 
 namespace TechTolk;
 
-internal class TranslationSetStore
+internal sealed class TranslationSetStore
 {
     private readonly TranslationSetRegistrationCollection _registrations;
     private readonly ITranslationSetCompiler _translationSetCompiler;

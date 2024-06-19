@@ -2,7 +2,7 @@
 
 namespace TechTolk.Extensions.Localization.Adapters;
 
-internal class TechTolkStringLocalizerFactory : IStringLocalizerFactory
+internal sealed class TechTolkStringLocalizerFactory : IStringLocalizerFactory
 {
     private ITolkFactory _tolkFactory;
 

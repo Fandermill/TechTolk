@@ -6,7 +6,7 @@ using TechTolk.TranslationSets.Internals;
 
 namespace TechTolk.TranslationSets.Merging;
 
-internal class TranslationSetMerger : ITranslationSetMerger
+internal sealed class TranslationSetMerger : ITranslationSetMerger
 {
     private readonly ITranslationSetBuilderFactory _builderFactory;
     private readonly ISupportedDividersProvider _supportedDividersProvider;

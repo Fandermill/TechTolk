@@ -3,7 +3,7 @@ using TechTolk.TranslationSets.Options.Internals;
 
 namespace TechTolk.Registration.Builders;
 
-internal class MergedTranslationSetOptionsBuilder : TranslationSetOptionsBuilder, IMergedTranslationSetOptionsBuilder
+internal sealed class MergedTranslationSetOptionsBuilder : TranslationSetOptionsBuilder, IMergedTranslationSetOptionsBuilder
 {
     private readonly TranslationSetMergeOptions _mergeOptions;
 

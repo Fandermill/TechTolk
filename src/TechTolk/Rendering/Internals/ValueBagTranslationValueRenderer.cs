@@ -10,7 +10,7 @@ namespace TechTolk.Rendering.Internals;
 /// in curly brackets, like '{MyToken}'.
 /// If the renderer is called with an object? array, then the tokens are replaced in order.
 /// </summary>
-internal class ValueBagTranslationValueRenderer : AbstractTranslationValueRenderer
+internal sealed class ValueBagTranslationValueRenderer : AbstractTranslationValueRenderer
 {
     private static readonly Regex TOKEN_REGEX = new Regex(@"{.*?}", RegexOptions.Compiled);
 
