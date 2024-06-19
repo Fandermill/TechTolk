@@ -12,7 +12,7 @@ internal sealed class SupportedDividersProvider : ISupportedDividersProvider
             throw new RegistrationException(
                 "TechTolk did not find any configured dividers. " +
                 "Did you forget to add supported dividers? You " +
-                "can do this with the TechTolkdBuilder.ConfigureDividers() method.");
+                "can do this with the TechTolkBuilder.ConfigureDividers() method.");
 
         return _dividers.AsReadOnly();
     }
