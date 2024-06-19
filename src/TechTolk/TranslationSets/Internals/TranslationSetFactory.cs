@@ -2,7 +2,7 @@
 
 namespace TechTolk.TranslationSets.Internals;
 
-internal class TranslationSetFactory : IInternalTranslationSetFactory
+internal sealed class TranslationSetFactory : IInternalTranslationSetFactory
 {
     public IInternalTranslationSet CreateEmpty(SetInfo setInfo, IEnumerable<IDivider> dividers)
     {

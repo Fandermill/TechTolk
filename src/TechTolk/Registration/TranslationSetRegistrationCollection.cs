@@ -3,7 +3,7 @@ using TechTolk.TranslationSets.Options.Internals;
 
 namespace TechTolk.Registration;
 
-internal class TranslationSetRegistrationCollection
+internal sealed class TranslationSetRegistrationCollection
 {
     private readonly Dictionary<string, TranslationSetRegistration> _translationSets;
 

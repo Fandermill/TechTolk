@@ -1,16 +1,16 @@
 ﻿namespace TechTolk.Rendering.Internals;
 
-internal class ValueBagConverter
+internal sealed class ValueBagConverter
 {
-	public ValueBag ConvertFromObject(Dictionary<string, object?> obj)
-	{
-		return new ValueBag(obj);
-	}
-
-	public ValueBag ConvertFromObject(object obj)
+    public ValueBag ConvertFromObject(Dictionary<string, object?> obj)
     {
-		if (obj is Dictionary<string, object?> dict)
-			return ConvertFromObject(dict);
+        return new ValueBag(obj);
+    }
+
+    public ValueBag ConvertFromObject(object obj)
+    {
+        if (obj is Dictionary<string, object?> dict)
+            return ConvertFromObject(dict);
 
         var valueBag = new ValueBag();
 

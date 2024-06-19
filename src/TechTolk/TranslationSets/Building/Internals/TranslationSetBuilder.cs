@@ -6,7 +6,7 @@ using TechTolk.TranslationSets.Values;
 
 namespace TechTolk.TranslationSets.Building.Internals;
 
-internal class TranslationSetBuilder : ITranslationSetBuilder
+internal sealed class TranslationSetBuilder : ITranslationSetBuilder
 {
     private readonly ISupportedDividersProvider _supportedDividersProvider;
     private readonly ITranslationValueFactory _valueFactory;

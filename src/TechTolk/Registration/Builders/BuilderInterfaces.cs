@@ -34,8 +34,8 @@ public interface IDividerConfigurationBuilder
     /// <returns>The builder to chain calls on</returns>
     IDividerConfigurationBuilder SetCurrentDividerProvider<T>(Func<IServiceProvider, ICurrentDividerProvider> provider) where T : ICurrentDividerProvider;
     IDividerConfigurationBuilder AddSupportedDivider(IDivider divider);
-    // TODO - Set fallback, aliases
 }
+
 public interface ITranslationSetOptionsBuilder
 {
     ITranslationSetOptionsBuilder UseValueRenderer<T>() where T : AbstractTranslationValueRenderer;

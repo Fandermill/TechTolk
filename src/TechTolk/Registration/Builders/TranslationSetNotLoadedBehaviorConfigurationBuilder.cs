@@ -3,7 +3,7 @@ using TechTolk.TranslationSets.Options.Internals;
 
 namespace TechTolk.Registration.Builders;
 
-internal class TranslationSetNotLoadedBehaviorConfigurationBuilder : ITranslationSetNotLoadedBehaviorConfigurationBuilder
+internal sealed class TranslationSetNotLoadedBehaviorConfigurationBuilder : ITranslationSetNotLoadedBehaviorConfigurationBuilder
 {
     private readonly TranslationSetOptionsBuilder _builder;
     private readonly TranslationSetOptions _options;

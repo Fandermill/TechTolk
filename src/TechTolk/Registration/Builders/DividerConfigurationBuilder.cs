@@ -5,7 +5,7 @@ using TechTolk.Division.Internals;
 
 namespace TechTolk.Registration.Builders;
 
-internal class DividerConfigurationBuilder : IDividerConfigurationBuilder
+internal sealed class DividerConfigurationBuilder : IDividerConfigurationBuilder
 {
     private readonly IServiceCollection _services;
     private readonly SupportedDividersProvider _supportedDividersProvider;
