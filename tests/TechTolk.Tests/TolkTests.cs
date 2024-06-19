@@ -77,8 +77,6 @@ public class TolkTests : AbstractTechTolkTests
     [Fact]
     public void Tolk_returns_translation_key_for_missing_translation_key_as_configured_specifically_for_translation_set()
     {
-        // TODO - Do we really need separate tests for Throw/EmptyString ?
-
         _services.AddTechTolk(options => options.OnTranslationNotFound().ReturnEmptyString())
             .ConfigureDefaultDividers()
             .AddTranslationSet(Set1.Key, s =>

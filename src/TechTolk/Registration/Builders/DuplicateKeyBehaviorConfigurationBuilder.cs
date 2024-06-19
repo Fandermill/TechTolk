@@ -3,7 +3,7 @@ using TechTolk.TranslationSets.Options;
 
 namespace TechTolk.Registration.Builders;
 
-internal class DuplicateKeyBehaviorConfigurationBuilder : IDuplicateKeyBehaviorConfigurationBuilder
+internal sealed class DuplicateKeyBehaviorConfigurationBuilder : IDuplicateKeyBehaviorConfigurationBuilder
 {
     private readonly IMergedTranslationSetOptionsBuilder _builder;
     private readonly TranslationSetMergeOptions _mergeOptions;

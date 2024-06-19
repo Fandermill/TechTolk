@@ -2,7 +2,7 @@
 
 namespace TechTolk.TranslationSets.Options.Internals;
 
-internal class TranslationSetOptionsProvider : ITranslationSetOptionsProvider
+internal sealed class TranslationSetOptionsProvider : ITranslationSetOptionsProvider
 {
     private readonly TranslationSetRegistrationCollection _registrations;
 

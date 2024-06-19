@@ -3,7 +3,7 @@ using TechTolk.Registration;
 
 namespace TechTolk.Sources.Internals;
 
-internal class TranslationSetSourceFactory : ITranslationSetSourceFactory
+internal sealed class TranslationSetSourceFactory : ITranslationSetSourceFactory
 {
     private readonly IServiceProvider _serviceProvider;
 

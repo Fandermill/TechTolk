@@ -5,7 +5,7 @@ using TechTolk.TranslationSets.Values;
 
 namespace TechTolk.TranslationSets.Building.Internals;
 
-internal class TranslationSetBuilderFactory : ITranslationSetBuilderFactory
+internal sealed class TranslationSetBuilderFactory : ITranslationSetBuilderFactory
 {
     private readonly IServiceProvider _serviceProvider;
 

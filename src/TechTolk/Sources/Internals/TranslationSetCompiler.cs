@@ -7,11 +7,11 @@ using TechTolk.TranslationSets.Merging;
 
 namespace TechTolk.Sources.Internals;
 
-internal class TranslationSetCompiler : ITranslationSetCompiler
+internal sealed class TranslationSetCompiler : ITranslationSetCompiler
 {
-    private ITranslationSetBuilderFactory _builderFactory;
-    private ITranslationSetSourceFactory _sourceFactory;
-    private ITranslationSetMerger _merger;
+    private readonly ITranslationSetBuilderFactory _builderFactory;
+    private readonly ITranslationSetSourceFactory _sourceFactory;
+    private readonly ITranslationSetMerger _merger;
 
     public TranslationSetCompiler(
         ITranslationSetBuilderFactory builderFactory,
