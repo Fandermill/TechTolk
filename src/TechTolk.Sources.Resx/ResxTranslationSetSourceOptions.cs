@@ -5,13 +5,14 @@ namespace TechTolk.Sources.Resx;
 internal sealed class ResxTranslationSetSourceOptions : TranslationSetSourceOptions
 {
     /// <summary>
-    /// todo
+    /// The type of the resource on which the resource files are linked
     /// </summary>
     public Type? ResourceType { get; init; }
 
     /// <summary>
-    /// todo
+    /// The base name of the resource without a divider key or extension
     /// </summary>
+    /// <example>My.Namespace.MyResources</example>
     public string? BaseName { get; init; }
 
     /// <summary>
