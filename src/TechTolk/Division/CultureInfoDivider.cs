@@ -35,4 +35,6 @@ public readonly struct CultureInfoDivider : IDivider
     /// <param name="cultureInfo">The <see cref="CultureInfo"/> to act as the divider</param>
     public static CultureInfoDivider FromCulture(CultureInfo cultureInfo)
         => new CultureInfoDivider(cultureInfo);
+
+    public static implicit operator CultureInfoDivider(string name) => FromCulture(name);
 }
