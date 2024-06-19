@@ -42,6 +42,18 @@ services.AddTechTolk()
     });
 ```
 
+> [!TIP]
+> You can use an extension method to keep the translation set registration short
+>
+> ```csharp
+> services.AddTechTolkResxServices();
+> services.AddTechTolk()
+>     //.ConfigureDividers(...)
+>     .AddTranslationSetFromResource<MyResource>();
+> 
+>     // (Can later be requested by resolving ITolk<MyResource> from the service provider)
+> ```
+
 > [!WARNING]
 > Be aware that you cannot register a resource source by a type tag (`.FromResource<T>()`)
 > when using dividers other than `CultureInfo`. It will throw an exception.
