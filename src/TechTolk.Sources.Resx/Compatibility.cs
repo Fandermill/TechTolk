@@ -1,10 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 
-/*
- *  Copied from base TechTolk project. TODO - Clean up. Take dep on Polysharp? Nah... Hmm...
- */
-
-
 namespace System.Runtime.CompilerServices
 {
     // To make modern syntactic sugar features work for older targets
