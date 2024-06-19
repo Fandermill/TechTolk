@@ -27,25 +27,18 @@ internal sealed class ResourceManagerTranslationSetSource : ResxTranslationSetSo
         foreach (var divider in _supportedDividersProvider.GetSupportedDividers())
         {
             var cultureInfo = new CultureInfo(divider.Key);
-            // TODO - validation?
 
-            // TODO - try catch?
-
-            using var resourceSet = resourceManager.GetResourceSet(cultureInfo, true, true);
-            if (resourceSet is null)
-            {
-                throw new InvalidOperationException(
+            using var resourceSet = resourceManager.GetResourceSet(cultureInfo, true, true)
+                ?? throw new InvalidOperationException(
                     $"Unable to get resource set from resource manager " +
                     $"with base name '{resourceManager.ResourceSetType.Name}'");
-            }
 
 
             foreach (DictionaryEntry? entry in resourceSet)
             {
                 if (entry?.Key is string key && entry?.Value is string val)
                 {
-                    // TODO - Duplicate behavior, from where?
-                    builder.Add(divider, key, val, TranslationSets.Options.DuplicateBehavior.Replace);
+                    builder.Add(divider, key, val);
                 }
             }
         }

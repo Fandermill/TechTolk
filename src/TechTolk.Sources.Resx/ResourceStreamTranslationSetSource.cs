@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Globalization;
 using System.Resources;
 using TechTolk.Division;
 using TechTolk.Exceptions;
@@ -26,8 +25,7 @@ internal sealed class ResourceStreamTranslationSetSource : ResxTranslationSetSou
             {
                 if (entry.Key is string key && entry.Value is string val)
                 {
-                    // TODO - duplicate behavior, where from?
-                    builder.Add(divider, key, val, TranslationSets.Options.DuplicateBehavior.Replace);
+                    builder.Add(divider, key, val);
                 }
             }
         }
@@ -67,12 +65,12 @@ internal sealed class ResourceStreamTranslationSetSource : ResxTranslationSetSou
     {
         if (options.ResourceType is not null)
         {
-            // TODO - check this message.
             throw new RegistrationException(
                 $"Options with '{nameof(options.ResourceType)}' set are not allowed " +
                 $"in this '{nameof(ResourceStreamTranslationSetSource)}'. " +
                 $"You should use .FromResource<TResxResource>() upon registering the " +
-                $"translation set if you use dividers with the {nameof(CultureInfo)} syntax.");
+                $"translation set if you use dividers with the " +
+                $"{nameof(System.Globalization.CultureInfo)} syntax.");
         }
 
 

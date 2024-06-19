@@ -73,7 +73,7 @@ public sealed class TechTolkSourcesResxTests
         }
 
         [Fact]
-        public void Registering_a_resource_by_base_name_and_assembly_for_a_merged_translation_set_will_throw_an_exception()
+        public void Can_register_a_resource_by_base_name_and_assembly_for_a_merged_translation_set()
         {
             _services.AddTechTolkResxServices();
             var builder = _services.AddTechTolk()
