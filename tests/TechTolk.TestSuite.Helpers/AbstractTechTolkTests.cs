@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TechTolk.TestSuite.Helpers.Dividers;
 
 namespace TechTolk.TestSuite.Helpers;
 
@@ -19,5 +18,10 @@ public abstract class AbstractTechTolkTests
     {
         var factory = Provider.GetRequiredService<ITolkFactory>();
         return factory.Create(setKey);
+    }
+
+    protected ITolk<T> GetTolkForTranslationSet<T>()
+    {
+        return Provider.GetRequiredService<ITolk<T>>();
     }
 }
