@@ -31,7 +31,7 @@ public static class TechTolkBuilderExtensions
     }
 
     /// <summary>
-    /// Shorthand extension method for adding a translation set with a source isntance
+    /// Shorthand extension method for adding a translation set with a source instance
     /// </summary>
     /// <param name="techTolkBuilder">The current builder</param>
     /// <param name="name">The name of the translation set</param>
@@ -49,7 +49,7 @@ public static class TechTolkBuilderExtensions
     /// <summary>
     /// Shorthand extension method for adding a translation set with a source type.
     /// The type will also be the name of the translation set, so you can resolve
-    /// an ITolk<T> with the same type.
+    /// an ITolk`T with the same type.
     /// </summary>
     /// <typeparam name="TTranslationSetSource">Type of the source of the translation set</typeparam>
     /// <param name="techTolkBuilder">The current builder</param>
