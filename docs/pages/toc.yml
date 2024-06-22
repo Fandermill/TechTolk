@@ -16,3 +16,6 @@ items:
 - name: Value renderers
   href: value-renderers.md
   
+- name: Misc
+- name: About
+  href: about.md
