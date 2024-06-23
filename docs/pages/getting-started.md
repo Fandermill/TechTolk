@@ -10,6 +10,10 @@ by injecting it into your constructors and calling .Translate("key") where you n
 
 ## Registration
 
+To register TechTolk services at application start, use the `IServiceCollection`
+extension method `.AddTechTolk()`. With the returned builder, you can configure
+TechTolk and add your translation sets.
+
 ```csharp
 services
     .AddTechTolk()
@@ -22,18 +26,54 @@ services
     // with the TechTolk.Sources.Resx package
     .AddTranslationSetFromResource<MyResource>()
 
-    // Or add translations from a hardcoded class
+    // Or add translations from a hard coded class
     // This time with the more configurable methods
     // and also override the behavior upon 'translation not found'
-    .AddTranslationSetFromJson("NamedSet", set => {
-        set.FromJson(new MyHardCodedSet());
+    .AddTranslationSet("NamedSet", set => {
+        set.FromSource(new MyHardCodedSet());
         set.WithOptions(o => o.OnTranslationNotFound().ThrowException());
     });
 ```
 
+This example uses the built in `CultureInfoDivider`. You will find more information
+about dividers at the [dividers](dividers.md) page.
+
+There are shorthand methods and more advanced methods to add your translation sets.
+You can also add a translation set that is compiled from multiple sources into one.
+More documentation on registering translation sets are on the [translation sets](translation-sets.md)
+page.
+
+Adding translation sets can be done with multiple implementations of sources. 
+Read more about the possibilities on the [translation set sources](translation-set-sources.md)
+page.
+
 ## Sources
 
 todo - text
+
+> [!WARNING]
+> Misschien toch eerst wat extra sources implementeren (JSON?) voor makkelijkere uitleg
+> in 'Getting Started'
+
+```json
+{
+    "translationSet": [
+        {
+            "divider": "nl-NL",
+            "translations": [
+                { "MyProfile": "Mijn profiel" },
+                { "UserGreeting": "Hallo {Username}" }
+            ],
+
+            "divider": "en-US",
+            "translations": [
+                { "MyProfile": "My profile" },
+                { "UserGreeting": "Hello {Username}" }
+            ]
+        }
+    ]
+}
+```
 
 ```csharp
 public class MyHardCodedTranslationSet : ITranslationSetSource
@@ -58,8 +98,12 @@ public class MyHardCodedTranslationSet : ITranslationSetSource
 
 ## Tolk usage
 
-```csharp
+To actually use TechTolk to render translations from your translation sets, you
+need to aquire an ITolk instance from your service provider. You can then use
+the `.Translate(string)` method to get your translations.
 
+
+```csharp
 public class MyClass
 {
     private readonly ITolk<MyResourceTag> _tolk;
@@ -88,5 +132,9 @@ public class MyClass
         //  "3: Hallo Fandermill"
     }
 }
-
 ```
+
+You can set the behavior of rendering by using an `IValueRenderer`. The built in
+renderer features placeholders, but there is also a renderer that uses [SmartFormat](https://github.com/axuno/SmartFormat)
+to have more formatting available in your translations. See the [value renderers](value-renderers.md)
+page for more information.

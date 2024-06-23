@@ -47,6 +47,6 @@ you made!
 ## Try TechTolk
 
 Want to try TechTolk, but don't want to change all your translation calls in your
-views? There is a additional library that you can use as a drop in for .NET's
+views? There is an additional library that you can use as a drop in for .NET's
 localization implementation. See [TODO_LINK](#try-techtolk) for more information.
 
