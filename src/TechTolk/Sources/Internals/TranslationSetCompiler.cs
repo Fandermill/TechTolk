@@ -40,7 +40,9 @@ internal sealed class TranslationSetCompiler : ITranslationSetCompiler
         catch (AggregateException ae)
         {
             if (ae.InnerExceptions.Count == 1)
-                throw ae.InnerExceptions.First();
+            {
+                ae.InnerExceptions.First().ThrowWithPreservedStackTrace();
+            }
 
             throw new CompilationException(
                 $"Multiple exceptions thrown while compiling translation set " +
