@@ -6,7 +6,7 @@ namespace TechTolk;
 
 public static class TechTolkSourcesResxServiceCollectionExtensions
 {
-    public static void AddTechTolkResxServices(this IServiceCollection services)
+    public static IServiceCollection AddTechTolkResxServices(this IServiceCollection services)
     {
         services.AddSingleton(
             typeof(ITranslationSetSourceFactory<ResxTranslationSetSource>),
@@ -14,5 +14,7 @@ public static class TechTolkSourcesResxServiceCollectionExtensions
 
         services.AddSingleton<ResourceManagerTranslationSetSource>();
         services.AddSingleton<ResourceStreamTranslationSetSource>();
+
+        return services;
     }
 }

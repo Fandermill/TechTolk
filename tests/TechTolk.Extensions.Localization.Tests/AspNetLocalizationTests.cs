@@ -19,7 +19,7 @@ public class AspNetLocalizationTests : AbstractTechTolkTests
 
         _services
             .AddTechTolk()
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet<SharedResource>(s => s.FromSource(new SharedResourceSet()));
         _services.AddTechTolkAspNetLocalization();
 
@@ -41,7 +41,7 @@ public class AspNetLocalizationTests : AbstractTechTolkTests
 
         _services
             .AddTechTolk()
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet<SharedResourceSet>(s => s.FromSource(new SharedResourceSet()));
         _services.AddTechTolkAspNetLocalization();
 
@@ -69,7 +69,7 @@ public class AspNetLocalizationTests : AbstractTechTolkTests
 
         _services
             .AddTechTolk()
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(actualSetName, (s) => s.FromSource(new SharedResourceSet()));
         _services.AddTechTolkAspNetLocalization();
 
@@ -92,7 +92,7 @@ public class AspNetLocalizationTests : AbstractTechTolkTests
 
         _services
             .AddTechTolk()
-            .ConfigureDefaultDividers();
+            .ConfigureDefaultCultureInfoDividers();
         _services.AddTechTolkAspNetLocalization();
 
 

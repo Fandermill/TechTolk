@@ -60,7 +60,7 @@ public class DefaultValueRendererTests : AbstractTechTolkTests
 
     private ITolk SetupWithDefaultValueRenderer()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(SetWithPlaceholderValues.Key, s => s.FromSource(new SetWithPlaceholderValues()));
         return GetTolkForTranslationSet(SetWithPlaceholderValues.Key);
     }

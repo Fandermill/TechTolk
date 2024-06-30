@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <PackageId>TechTolk.Sources.Json</PackageId>
+    <Title>TechTolk.Sources.Json</Title>
+    <Description>Package to source translation sets from json files using System.Text.Json.</Description>
+    <PackageTags>Localisation;Translation;Translating;Tolk;json;json files</PackageTags>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TechTolk\TechTolk.csproj" />
+  </ItemGroup>
+</Project>

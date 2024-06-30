@@ -13,7 +13,7 @@ public class FactoryTests : AbstractTechTolkTests
     [Fact]
     public void Creating_a_tolk_by_a_type_parameter_uses_correct_translation_set()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet<SharedResource>(s => s.FromSource(new Set1()));
         var factory = Provider.GetRequiredService<ITolkFactory>();
         var tolk = factory.Create<SharedResource>();
@@ -25,7 +25,7 @@ public class FactoryTests : AbstractTechTolkTests
     [Fact]
     public void Resolving_a_typed_tolk_will_use_the_correct_translation_set()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet<SharedResource>(s => s.FromSource(new Set1()));
         var tolk = Provider.GetRequiredService<ITolk<SharedResource>>();
 
@@ -36,7 +36,7 @@ public class FactoryTests : AbstractTechTolkTests
     [Fact]
     public void Creating_a_tolk_by_a_translation_set_name_that_does_not_exist_throws_and_exception()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers();
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers();
         var factory = Provider.GetRequiredService<ITolkFactory>();
 
         var act = () => factory.Create("NotExistingKey");
@@ -49,7 +49,7 @@ public class FactoryTests : AbstractTechTolkTests
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var factory = Provider.GetRequiredService<ITolkFactory>();
 
@@ -63,7 +63,7 @@ public class FactoryTests : AbstractTechTolkTests
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().LazyLoad())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var factory = Provider.GetRequiredService<ITolkFactory>();
 

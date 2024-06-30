@@ -16,7 +16,7 @@ public class ValueRenderingTests : AbstractTechTolkTests
         _services.AddTechTolk(config =>
         {
             config.UseValueRenderer<PrefixingValueRenderer>();
-        }).ConfigureDefaultDividers()
+        }).ConfigureDefaultCultureInfoDividers()
         .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var tolk = GetTolkForTranslationSet(Set1.Key);
 

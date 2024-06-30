@@ -40,7 +40,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk.Sources.Resx.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk.TestSuite.Helpers", "tests\TechTolk.TestSuite.Helpers\TechTolk.TestSuite.Helpers.csproj", "{2FFC1B38-35AC-4367-ADFA-AB20F8988C8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTolk.Extensions.Localization.Tests", "tests\TechTolk.Extensions.Localization.Tests\TechTolk.Extensions.Localization.Tests.csproj", "{C7246157-8E7A-43FC-BAD4-4A52F8718F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk.Extensions.Localization.Tests", "tests\TechTolk.Extensions.Localization.Tests\TechTolk.Extensions.Localization.Tests.csproj", "{C7246157-8E7A-43FC-BAD4-4A52F8718F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTolk.Sources.Json", "src\TechTolk.Sources.Json\TechTolk.Sources.Json.csproj", "{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTolk.Sources.Json.Tests", "tests\TechTolk.Sources.Json.Tests\TechTolk.Sources.Json.Tests.csproj", "{B568286A-3BA6-42EF-BB96-04744C1C38D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +80,14 @@ Global
 		{C7246157-8E7A-43FC-BAD4-4A52F8718F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7246157-8E7A-43FC-BAD4-4A52F8718F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7246157-8E7A-43FC-BAD4-4A52F8718F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B568286A-3BA6-42EF-BB96-04744C1C38D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B568286A-3BA6-42EF-BB96-04744C1C38D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B568286A-3BA6-42EF-BB96-04744C1C38D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B568286A-3BA6-42EF-BB96-04744C1C38D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +101,8 @@ Global
 		{E1562AC0-BC05-4E50-9076-A3198BC0B829} = {021ED6DC-2265-4B76-A11E-EA6F7E51911E}
 		{2FFC1B38-35AC-4367-ADFA-AB20F8988C8F} = {021ED6DC-2265-4B76-A11E-EA6F7E51911E}
 		{C7246157-8E7A-43FC-BAD4-4A52F8718F5B} = {021ED6DC-2265-4B76-A11E-EA6F7E51911E}
+		{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689} = {E886A93E-8F71-401D-A094-2735AA4F9C0F}
+		{B568286A-3BA6-42EF-BB96-04744C1C38D1} = {021ED6DC-2265-4B76-A11E-EA6F7E51911E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C20C0AB4-F356-4B2B-8E6E-531327F28494}

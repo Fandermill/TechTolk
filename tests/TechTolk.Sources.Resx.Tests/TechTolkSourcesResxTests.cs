@@ -17,7 +17,7 @@ public sealed class TechTolkSourcesResxTests
         {
             _services.AddTechTolkResxServices();
             var builder = _services.AddTechTolk()
-                .ConfigureDefaultDividers(); // uses Constants.CultureInfoDividers
+                .ConfigureDefaultCultureInfoDividers();
 
             builder.AddTranslationSet("Set1", set =>
             {
@@ -36,7 +36,7 @@ public sealed class TechTolkSourcesResxTests
         {
             _services.AddTechTolkResxServices();
             var builder = _services.AddTechTolk()
-                .ConfigureDefaultDividers(); // uses Constants.CultureInfoDividers
+                .ConfigureDefaultCultureInfoDividers();
 
             builder.AddTranslationSet("Set1", set =>
             {
@@ -55,7 +55,7 @@ public sealed class TechTolkSourcesResxTests
         {
             _services.AddTechTolkResxServices();
             var builder = _services.AddTechTolk()
-                .ConfigureDefaultDividers(); // uses Constants.CultureInfoDividers
+                .ConfigureDefaultCultureInfoDividers();
 
             builder.AddMergedTranslationSet("MergedSet1", mergedSet =>
             {
@@ -77,7 +77,7 @@ public sealed class TechTolkSourcesResxTests
         {
             _services.AddTechTolkResxServices();
             var builder = _services.AddTechTolk()
-                .ConfigureDefaultDividers(); // uses Constants.CultureInfoDividers
+                .ConfigureDefaultCultureInfoDividers();
 
             builder.AddMergedTranslationSet("MergedSet1", set =>
             {
@@ -198,7 +198,7 @@ public sealed class TechTolkSourcesResxTests
         {
             _services.AddTechTolkResxServices();
             var builder = _services.AddTechTolk()
-                .ConfigureDefaultDividers() // uses Constants.CultureInfoDividers
+                .ConfigureDefaultCultureInfoDividers()
                 .AddTranslationSetFromResource<MyResource>(null);
 
             var tolk = GetTolkForTranslationSet<MyResource>();

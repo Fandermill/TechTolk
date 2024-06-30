@@ -1,0 +1,13 @@
+{
+  "translationSet": {
+    "divider": "en-US",
+    "translations": [
+      { "MyKey":  "PerDivider-MyValue-EN" },
+      { "MyKey1": "PerDivider-MyValue1-EN" },
+      { "MyKey2": "PerDivider-MyValue2-EN" },
+      { "MyKey3": "PerDivider-MyValue3-EN" },
+      { "MyKey4": "PerDivider-MyValue4-EN" },
+      { "MyKey5": "PerDivider-MyValue5-EN" }
+    ]
+  }
+}

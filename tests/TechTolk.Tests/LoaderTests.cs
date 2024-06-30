@@ -14,7 +14,7 @@ public class LoaderTests : AbstractTechTolkTests
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
 
         var sut = Provider.GetRequiredService<ITolkLoader>();
@@ -34,7 +34,7 @@ public class LoaderTests : AbstractTechTolkTests
 
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(translationSetSource.Key, s => s.FromSource(translationSetSource));
         var sut = Provider.GetRequiredService<ITolkLoader>();
 
@@ -55,7 +55,7 @@ public class LoaderTests : AbstractTechTolkTests
     {
         _services
             .AddTechTolk()
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var sut = Provider.GetRequiredService<ITolkLoader>();
 
@@ -71,7 +71,7 @@ public class LoaderTests : AbstractTechTolkTests
 
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(translationSetSource.Key, s => s.FromSource(translationSetSource));
         var sut = Provider.GetRequiredService<ITolkLoader>();
 
@@ -94,7 +94,7 @@ public class LoaderTests : AbstractTechTolkTests
 
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet<SharedResource>(s => s.FromSource(translationSetSource));
         var sut = Provider.GetRequiredService<ITolkLoader>();
 
@@ -115,7 +115,7 @@ public class LoaderTests : AbstractTechTolkTests
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
 
         var loader = Provider.GetRequiredService<ITolkLoader>();
@@ -138,7 +138,7 @@ public class LoaderTests : AbstractTechTolkTests
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
 
         var loader = Provider.GetRequiredService<ITolkLoader>();
@@ -154,7 +154,7 @@ public class LoaderTests : AbstractTechTolkTests
     {
         _services
             .AddTechTolk(options => options.OnTranslationSetNotLoaded().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()))
             .AddTranslationSet(Set2.Key, s => s.FromSource(new Set2()));
         var loader = Provider.GetRequiredService<ITolkLoader>();

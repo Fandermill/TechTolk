@@ -14,7 +14,7 @@ public class SourceTests : AbstractTechTolkTests
     public void Can_register_a_source_from_a_source_factory()
     {
         _services.AddSingleton(typeof(ITranslationSetSourceFactory<>), typeof(SimpleInstantiateTranslationSetSourceFactory<>));
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource<Set1>());
         var tolkFactory = Provider.GetRequiredService<ITolkFactory>();
 
@@ -26,7 +26,7 @@ public class SourceTests : AbstractTechTolkTests
     [Fact]
     public void Adding_a_translation_set_source_by_type_with_complex_constructor_without_registering_a_factory_in_di_throws_an_exception()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(SetWithComplexConstructor.Key, s => s.FromSource<SetWithComplexConstructor>());
         var loader = Provider.GetRequiredService<ITolkLoader>();
 
@@ -40,7 +40,7 @@ public class SourceTests : AbstractTechTolkTests
     [Fact]
     public void Adding_a_translation_set_source_by_type_without_registering_a_factory_but_source_has_a_parameterless_constructor_is_ok()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource<Set1>());
         var tolkFactory = Provider.GetRequiredService<ITolkFactory>();
 
@@ -52,7 +52,7 @@ public class SourceTests : AbstractTechTolkTests
     [Fact]
     public void Adding_a_translation_set_without_sources_throws_an_exception()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => { });
         var tolkFactory = Provider.GetRequiredService<ITolkFactory>();
 

@@ -56,7 +56,7 @@ public static class TechTolkBuilderExtensions
     /// <returns>The current builder</returns>
     public static ITechTolkBuilder AddTranslationSetFromSource<TTranslationSetSource>(
         this ITechTolkBuilder techTolkBuilder)
-        where TTranslationSetSource : ITranslationSetSource
+        where TTranslationSetSource : class, ITranslationSetSource
     {
         return techTolkBuilder.AddTranslationSet<TTranslationSetSource>(set =>
         {
@@ -73,7 +73,7 @@ public static class TechTolkBuilderExtensions
     /// <returns>The current builder</returns>
     public static ITechTolkBuilder AddTranslationSetFromSource<TTranslationSetSource>(
         this ITechTolkBuilder techTolkBuilder, string name)
-        where TTranslationSetSource : ITranslationSetSource
+        where TTranslationSetSource : class, ITranslationSetSource
     {
         return techTolkBuilder.AddTranslationSet(name, set =>
         {
