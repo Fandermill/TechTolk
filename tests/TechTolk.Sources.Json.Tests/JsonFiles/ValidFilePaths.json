@@ -1,0 +1,10 @@
+{
+  "translationSets": [
+    {
+      "divider": "en-US",
+      "translations": [
+        { "MyKey": "ValidFilePaths-MyValue-EN" }
+      ]
+    }
+  ]
+}

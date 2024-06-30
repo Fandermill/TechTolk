@@ -11,7 +11,7 @@ public class TolkTests : AbstractTechTolkTests
     [Fact]
     public void Tolk_returns_correct_value_for_divider()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var tolk = GetTolkForTranslationSet(Set1.Key);
 
@@ -25,7 +25,7 @@ public class TolkTests : AbstractTechTolkTests
     [Fact]
     public void Tolk_returns_value_from_current_divider_when_no_divider_is_given()
     {
-        _services.AddTechTolk().ConfigureDefaultDividers()
+        _services.AddTechTolk().ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var tolk = GetTolkForTranslationSet(Set1.Key);
 
@@ -39,7 +39,7 @@ public class TolkTests : AbstractTechTolkTests
     public void Tolk_throws_exception_for_missing_translation_key_as_configured_globally()
     {
         _services.AddTechTolk(options => options.OnTranslationNotFound().ThrowException())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var tolk = GetTolkForTranslationSet(Set1.Key);
 
@@ -52,7 +52,7 @@ public class TolkTests : AbstractTechTolkTests
     public void Tolk_returns_translation_key_for_missing_translation_key_as_configured_globally()
     {
         _services.AddTechTolk(options => options.OnTranslationNotFound().ReturnTranslationKey())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var tolk = GetTolkForTranslationSet(Set1.Key);
 
@@ -65,7 +65,7 @@ public class TolkTests : AbstractTechTolkTests
     public void Tolk_returns_empty_string_for_missing_translation_key_as_configured_globally()
     {
         _services.AddTechTolk(options => options.OnTranslationNotFound().ReturnEmptyString())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var tolk = GetTolkForTranslationSet(Set1.Key);
 
@@ -78,7 +78,7 @@ public class TolkTests : AbstractTechTolkTests
     public void Tolk_returns_translation_key_for_missing_translation_key_as_configured_specifically_for_translation_set()
     {
         _services.AddTechTolk(options => options.OnTranslationNotFound().ReturnEmptyString())
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s =>
             {
                 s.FromSource(new Set1());

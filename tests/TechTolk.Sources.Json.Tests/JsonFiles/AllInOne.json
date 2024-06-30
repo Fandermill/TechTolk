@@ -1,0 +1,26 @@
+{
+  "translationSets": [
+    {
+      "divider": "nl-NL",
+      "translations": [
+        { "MyKey":  "AllInOne-MyValue-NL" },
+        { "MyKey1": "AllInOne-MyValue1-NL" },
+        { "MyKey2": "AllInOne-MyValue2-NL" },
+        { "MyKey3": "AllInOne-MyValue3-NL" },
+        { "MyKey4": "AllInOne-MyValue4-NL" },
+        { "MyKey5": "AllInOne-MyValue5-NL" }
+      ]
+    },
+    {
+      "divider": "en-US",
+      "translations": [
+        { "MyKey":  "AllInOne-MyValue-EN" },
+        { "MyKey1": "AllInOne-MyValue1-EN" },
+        { "MyKey2": "AllInOne-MyValue2-EN" },
+        { "MyKey3": "AllInOne-MyValue3-EN" },
+        { "MyKey4": "AllInOne-MyValue4-EN" },
+        { "MyKey5": "AllInOne-MyValue5-EN" }
+      ]
+    }
+  ]
+}

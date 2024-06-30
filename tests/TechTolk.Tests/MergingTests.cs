@@ -59,7 +59,7 @@ public class MergingTests : AbstractTechTolkTests
     private void SetupMergedTranslationSetWithOptions(Action<IMergedTranslationSetOptionsBuilder>? options)
     {
         _services.AddTechTolk()
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddMergedTranslationSet("MergedSet", builder =>
             {
                 builder.FromSource(Set1.Key, new Set1());

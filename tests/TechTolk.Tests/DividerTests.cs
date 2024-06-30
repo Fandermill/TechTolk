@@ -34,7 +34,7 @@ public class DividerTests : AbstractTechTolkTests
     public void Requesting_a_translation_with_an_unknown_divider_will_throw_an_exception()
     {
         _services.AddTechTolk()
-            .ConfigureDefaultDividers()
+            .ConfigureDefaultCultureInfoDividers()
             .AddTranslationSet(Set1.Key, s => s.FromSource(new Set1()));
         var tolk = GetTolkForTranslationSet(Set1.Key);
 

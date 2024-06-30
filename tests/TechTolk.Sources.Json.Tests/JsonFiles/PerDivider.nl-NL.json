@@ -1,0 +1,13 @@
+{
+  "translationSet": {
+    "divider": "nl-NL",
+    "translations": [
+      { "MyKey":  "PerDivider-MyValue-NL" },
+      { "MyKey1": "PerDivider-MyValue1-NL" },
+      { "MyKey2": "PerDivider-MyValue2-NL" },
+      { "MyKey3": "PerDivider-MyValue3-NL" },
+      { "MyKey4": "PerDivider-MyValue4-NL" },
+      { "MyKey5": "PerDivider-MyValue5-NL" }
+    ]
+  }
+}

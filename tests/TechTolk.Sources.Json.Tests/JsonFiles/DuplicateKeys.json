@@ -1,0 +1,17 @@
+{
+  "translationSets": [
+    {
+      "divider": "en-US",
+      "translations": [
+        { "MyKey": "DuplicateKeys-MyValue-1-EN" },
+        { "MyKey": "DuplicateKeys-MyValue-2-EN" }
+      ]
+    }
+  ],
+  "translationSet": {
+    "divider": "nl-NL",
+    "translations": [
+      { "MyKey": "DuplicateKeys-MyValue-1-NL" }
+    ]
+  }
+}
