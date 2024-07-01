@@ -14,13 +14,15 @@ items:
 - name: Translation sets
   href: translation-sets.md
 - name: Translation set sources
-  href: translation-set-sources.md
-#  expanded: true
-#  items:
-#  - name: Embedded resources
-#    href: source-resx.md
-#  - name: Hard coded
-#    href: hard-coded.md
+  href: sources/index.md
+  expanded: true
+  items:
+  - name: Embedded resources
+    href: sources/resx.md
+  - name: JSON
+    href: sources/json.md
+  - name: Implement your own
+    href: sources/diy.md
 - name: Value renderers
   href: value-renderers.md
   

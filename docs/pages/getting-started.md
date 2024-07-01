@@ -26,11 +26,11 @@ services
     // with the TechTolk.Sources.Resx package
     .AddTranslationSetFromResource<MyResource>()
 
-    // Or add translations from a hard coded class
+    // Or add translations from a JSON file (TechTolk.Sources.Json package)
     // This time with the more configurable methods
     // and also override the behavior upon 'translation not found'
     .AddTranslationSet("NamedSet", set => {
-        set.FromSource(new MyHardCodedSet());
+        set.FromJson("./MyTranslations.json");
         set.WithOptions(o => o.OnTranslationNotFound().ThrowException());
     });
 ```
@@ -44,57 +44,8 @@ More documentation on registering translation sets are on the [translation sets]
 page.
 
 Adding translation sets can be done with multiple implementations of sources. 
-Read more about the possibilities on the [translation set sources](translation-set-sources.md)
+Read more about the possibilities on the [translation set sources](sources/index.md)
 page.
-
-## Sources
-
-todo - text
-
-> [!WARNING]
-> Misschien toch eerst wat extra sources implementeren (JSON?) voor makkelijkere uitleg
-> in 'Getting Started'
-
-```json
-{
-    "translationSet": [
-        {
-            "divider": "nl-NL",
-            "translations": [
-                { "MyProfile": "Mijn profiel" },
-                { "UserGreeting": "Hallo {Username}" }
-            ],
-
-            "divider": "en-US",
-            "translations": [
-                { "MyProfile": "My profile" },
-                { "UserGreeting": "Hello {Username}" }
-            ]
-        }
-    ]
-}
-```
-
-```csharp
-public class MyHardCodedTranslationSet : ITranslationSetSource
-{
-    public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
-    {
-        builder
-            .ForDivider("nl-NL").Add(new[] {
-                ( "MyProfile", "Mijn profiel" ),
-                ( "UserGreeting", "Hallo {Username}")
-            })
-            .ThenForDivider("en-US").Add(new[] {
-                ( "MyProfile", "My profile" ),
-                ( "UserGreeting", "Hello {Username}!")
-            });
-
-        return Task.CompletedTask;
-    }
-}
-```
-
 
 ## Tolk usage
 
@@ -115,6 +66,14 @@ public class MyClass
 
     public void MyMethod()
     {
+        // From set source:
+        // nl-NL:
+        //   MyProfile: "Mijn profiel"
+        //   UserGreeting: "Hallo {Username}"
+        // en-US:
+        //   MyProfile: "My profile"
+        //   UserGreeting: "Hello {Username}"
+
         CultureInfo.CurrentUICulture = new CultureInfo("nl-NL");
 
         // Uses the current divider (UICulture of current thread by default)
