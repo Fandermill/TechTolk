@@ -4,7 +4,7 @@
 A translation set is a collection of translations and consists of translation keys
 and a translation per [divider](dividers.md). It gets registered with a name or a
 type from which a name is determined. A set gets populated from a
-[translation set source](translation-set-sources.md). Multiple sets can be merged
+[translation set source](sources/index.md). Multiple sets can be merged
 into one with a [merged translation set](#merged-translation-set).
 
 ## Registering a translation set
@@ -15,7 +15,7 @@ Then you need to register the source from which the translations should be loade
 You can do this by invoking `.FromSource`.
 
 > [!TIP]
-> Find out more about the sources at the [Translation Set Sources](translation-set-sources.md) page.
+> Find out more about the sources at the [Translation Set Sources](sources/index.md) page.
 
 Additionaly, you can set options for the behavior upon non existing translation values.
 
