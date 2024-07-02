@@ -42,9 +42,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk.TestSuite.Helpers"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk.Extensions.Localization.Tests", "tests\TechTolk.Extensions.Localization.Tests\TechTolk.Extensions.Localization.Tests.csproj", "{C7246157-8E7A-43FC-BAD4-4A52F8718F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTolk.Sources.Json", "src\TechTolk.Sources.Json\TechTolk.Sources.Json.csproj", "{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk.Sources.Json", "src\TechTolk.Sources.Json\TechTolk.Sources.Json.csproj", "{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTolk.Sources.Json.Tests", "tests\TechTolk.Sources.Json.Tests\TechTolk.Sources.Json.Tests.csproj", "{B568286A-3BA6-42EF-BB96-04744C1C38D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTolk.Sources.Json.Tests", "tests\TechTolk.Sources.Json.Tests\TechTolk.Sources.Json.Tests.csproj", "{B568286A-3BA6-42EF-BB96-04744C1C38D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTolk.ValueRenderers.SmartFormat", "src\TechTolk.ValueRenderers.SmartFormat\TechTolk.ValueRenderers.SmartFormat.csproj", "{F7528B4A-0057-4F01-A4B6-1110B669889A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTolk.ValueRenderers.SmartFormat.Tests", "tests\TechTolk.ValueRenderers.SmartFormat.Tests\TechTolk.ValueRenderers.SmartFormat.Tests.csproj", "{0F37F205-A583-4D1C-87F8-1D1FE4F5EABC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,6 +92,14 @@ Global
 		{B568286A-3BA6-42EF-BB96-04744C1C38D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B568286A-3BA6-42EF-BB96-04744C1C38D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B568286A-3BA6-42EF-BB96-04744C1C38D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7528B4A-0057-4F01-A4B6-1110B669889A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7528B4A-0057-4F01-A4B6-1110B669889A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7528B4A-0057-4F01-A4B6-1110B669889A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7528B4A-0057-4F01-A4B6-1110B669889A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F37F205-A583-4D1C-87F8-1D1FE4F5EABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F37F205-A583-4D1C-87F8-1D1FE4F5EABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F37F205-A583-4D1C-87F8-1D1FE4F5EABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F37F205-A583-4D1C-87F8-1D1FE4F5EABC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +115,8 @@ Global
 		{C7246157-8E7A-43FC-BAD4-4A52F8718F5B} = {021ED6DC-2265-4B76-A11E-EA6F7E51911E}
 		{CBCCCC56-D0CA-48BF-B61F-7FCB246CD689} = {E886A93E-8F71-401D-A094-2735AA4F9C0F}
 		{B568286A-3BA6-42EF-BB96-04744C1C38D1} = {021ED6DC-2265-4B76-A11E-EA6F7E51911E}
+		{F7528B4A-0057-4F01-A4B6-1110B669889A} = {E886A93E-8F71-401D-A094-2735AA4F9C0F}
+		{0F37F205-A583-4D1C-87F8-1D1FE4F5EABC} = {021ED6DC-2265-4B76-A11E-EA6F7E51911E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C20C0AB4-F356-4B2B-8E6E-531327F28494}
