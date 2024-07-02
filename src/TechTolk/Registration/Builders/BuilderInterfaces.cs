@@ -7,6 +7,7 @@ namespace TechTolk.Registration.Builders;
 public interface ITechTolkBuilder
 {
     ITechTolkBuilder ConfigureDividers(Action<IDividerConfigurationBuilder> dividerConfiguration);
+    ITechTolkBuilder ConfigureDefaultOptions(Action<ITranslationSetOptionsBuilder> setOptions);
 
     ITechTolkBuilder AddTranslationSet(string name, Action<IRootTranslationSetRegistrationBuilder> set);
     ITechTolkBuilder AddTranslationSet<T>(Action<IRootTranslationSetRegistrationBuilder> set);

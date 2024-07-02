@@ -30,10 +30,11 @@ internal sealed class TechTolkBuilder : ITechTolkBuilder
         _services.AddSingleton(_registrations);
     }
 
-    private void ConfigureDefaultOptions(Action<ITranslationSetOptionsBuilder> configureDefaultOptions)
+    public ITechTolkBuilder ConfigureDefaultOptions(Action<ITranslationSetOptionsBuilder> setOptions)
     {
         var optionsBuilder = new TranslationSetOptionsBuilder(_defaultOptions);
-        configureDefaultOptions(optionsBuilder);
+        setOptions(optionsBuilder);
+        return this;
     }
 
     public ITechTolkBuilder ConfigureDividers(Action<IDividerConfigurationBuilder> dividerConfiguration)
