@@ -105,6 +105,24 @@ public class JsonSourceTests : AbstractTechTolkTests
     }
 
     [Fact]
+    public void Can_read_translations_from_an_object_property()
+    {
+        var builder = _services.AddTechTolk()
+                .ConfigureDefaultCultureInfoDividers();
+
+        builder.AddTranslationSet("Set1", set =>
+        {
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "ReadTranslationsFromObject.json"));
+        });
+
+        var tolk = GetTolkForTranslationSet("Set1");
+
+        var result = tolk.Translate(Constants.CultureInfoDividers.en_US, "MyKey2");
+
+        result.Should().Be("MyValue2");
+    }
+
+    [Fact]
     public void When_an_expected_property_is_missing_an_exception_will_be_thrown()
     {
         var builder = _services.AddTechTolk()

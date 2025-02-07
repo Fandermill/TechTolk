@@ -15,8 +15,6 @@ internal sealed class JsonDocumentTranslationSetReader
 
     private readonly ISupportedDividersProvider _supportedDividersProvider;
 
-    // TODO - Refactor class
-
     public JsonDocumentTranslationSetReader(ISupportedDividersProvider supportedDividersProvider)
     {
         _supportedDividersProvider = supportedDividersProvider;
@@ -65,13 +63,9 @@ internal sealed class JsonDocumentTranslationSetReader
     private void ParseSetElementIntoSetBuilder(
         JsonElementWithPropertyName set, ITranslationSetBuilder builder, IDivider? divider)
     {
-        if (TryGetElementOfType(set, DIVIDER_PROPERTY, JsonValueKind.String, out var dividerElement))
+        if (TryParseDividerFromSetElement(set, out var parsedDivider))
         {
-            string? dividerKey = dividerElement.GetString();
-            if (dividerKey is not null)
-            {
-                divider = _supportedDividersProvider.GetByKey(dividerKey);
-            }
+            divider = parsedDivider;
         }
 
         if (divider is null)
@@ -82,17 +76,18 @@ internal sealed class JsonDocumentTranslationSetReader
                 $"The '{DIVIDER_PROPERTY}' is mandatory when the file was not loaded by divider key.");
         }
 
-        var translationsElement = GetMandatoryElementOfType(set, TRANSLATIONS_PROPERTY, JsonValueKind.Array);
-        foreach (var translation in translationsElement.EnumerateArray())
+        var translationObjects = GetTranslationObjectsFromSetElement(set);
+        if (!translationObjects.Any())
         {
-            if (translation.ValueKind != JsonValueKind.Object)
-            {
-                throw new JsonFormatException(
-                    $"'{TRANSLATIONS_PROPERTY}' should be an array of objects, " +
-                    $"but found an array element of type {translation.ValueKind}");
-            }
+            throw new JsonFormatException(
+                "No translations were found in the translation set element. " +
+                $"Make sure there is a property named '{TRANSLATIONS_PROPERTY}' " +
+                "which should be an array of objects, or an object itself.");
+        }
 
-            foreach (var objectProperty in translation.EnumerateObject())
+        foreach (var translationObject in translationObjects)
+        {
+            foreach (var objectProperty in translationObject.EnumerateObject())
             {
                 var key = objectProperty.Name;
                 var val = objectProperty.Value.GetString();
@@ -105,17 +100,42 @@ internal sealed class JsonDocumentTranslationSetReader
         }
     }
 
-    private static JsonElement GetMandatoryElementOfType(JsonElementWithPropertyName parent, string propertyName, JsonValueKind valueKind)
+    private bool TryParseDividerFromSetElement(JsonElementWithPropertyName set, out IDivider parsedDivider)
     {
-        if (TryGetElementOfType(parent, propertyName, valueKind, out var result))
+        if (TryGetElementOfType(set, DIVIDER_PROPERTY, JsonValueKind.String, out var dividerElement))
         {
-            return result;
+            string? dividerKey = dividerElement.GetString();
+            if (dividerKey is not null)
+            {
+                parsedDivider = _supportedDividersProvider.GetByKey(dividerKey);
+                return true;
+            }
         }
 
-        throw new JsonFormatException(
-            $"Expected element '{parent.PropertyName}' to contain a property named '{propertyName}' " +
-            $"of type {valueKind}, " +
-            $"but no such property was found.");
+        parsedDivider = default!;
+        return false;
+    }
+
+    private IEnumerable<JsonElement> GetTranslationObjectsFromSetElement(JsonElementWithPropertyName set)
+    {
+        if (TryGetElementOfType(set, TRANSLATIONS_PROPERTY, JsonValueKind.Object, out var translationObjectElement))
+        {
+            yield return translationObjectElement;
+        }
+        else if (TryGetElementOfType(set, TRANSLATIONS_PROPERTY, JsonValueKind.Array, out var translationsArrayElement))
+        {
+            foreach (var translationElement in translationsArrayElement.EnumerateArray())
+            {
+                if (translationElement.ValueKind != JsonValueKind.Object)
+                {
+                    throw new JsonFormatException(
+                        $"'{TRANSLATIONS_PROPERTY}' should be an array of objects, " +
+                        $"but found an array element of type {translationElement.ValueKind}");
+                }
+
+                yield return translationElement;
+            }
+        }
     }
 
     private static bool TryGetElementOfType(
@@ -127,9 +147,7 @@ internal sealed class JsonDocumentTranslationSetReader
         {
             if (element.ValueKind != valueKind)
             {
-                throw new JsonFormatException(
-                    $"Expected property '{propertyName}' of parent '{parent.PropertyName}' " +
-                    $"to be of type {valueKind}, but got {element.ValueKind}");
+                return false;
             }
 
             result = element;
