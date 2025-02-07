@@ -4,16 +4,19 @@ namespace TechTolk.Registration.Builders;
 
 internal sealed class RootTranslationSetRegistrationBuilder : IRootTranslationSetRegistrationBuilder
 {
+    public ITechTolkBuilder RootBuilder { get; private init; }
+
     private readonly TranslationSetRegistration _registration;
 
-    public RootTranslationSetRegistrationBuilder(TranslationSetRegistration registration)
+    public RootTranslationSetRegistrationBuilder(ITechTolkBuilder rootBuilder, TranslationSetRegistration registration)
     {
+        RootBuilder = rootBuilder;
         _registration = registration;
     }
 
     public void WithOptions(Action<ITranslationSetOptionsBuilder> options)
     {
-        options(new TranslationSetOptionsBuilder(_registration.Options));
+        options(new TranslationSetOptionsBuilder(RootBuilder, _registration.Options));
     }
 
 
