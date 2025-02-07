@@ -1,4 +1,4 @@
-﻿using TechTolk.Registration.Builders;
+using TechTolk.Registration.Builders;
 using TechTolk.Tests.TestTranslationSets;
 using TechTolk.TestSuite.Helpers;
 

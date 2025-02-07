@@ -1,4 +1,4 @@
-﻿using TechTolk.Rendering.Internals;
+using TechTolk.Rendering.Internals;
 
 namespace TechTolk.TranslationSets.Options.Internals;
 

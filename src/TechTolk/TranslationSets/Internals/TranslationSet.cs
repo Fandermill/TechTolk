@@ -1,4 +1,4 @@
-﻿using TechTolk.Division;
+using TechTolk.Division;
 using TechTolk.Exceptions;
 using TechTolk.TranslationSets.Values;
 

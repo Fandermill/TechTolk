@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+using FluentAssertions;
 using TechTolk.Exceptions;
 using TechTolk.Registration.Builders;
 using TechTolk.Sources.Json.Exceptions;

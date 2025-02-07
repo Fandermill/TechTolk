@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using SmartFormat;
 using TechTolk.Registration.Builders;
 using TechTolk.ValueRenderers.SmartFormat;

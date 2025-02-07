@@ -1,4 +1,4 @@
-﻿using TechTolk.TranslationSets.Merging;
+using TechTolk.TranslationSets.Merging;
 using TechTolk.TranslationSets.Options.Internals;
 
 namespace TechTolk.Registration;
@@ -16,8 +16,8 @@ public class TranslationSetRegistration
 
     internal TranslationSetRegistration(string key) : this(key, new()) { }
     internal TranslationSetRegistration(string key, TranslationSetOptions options)
-    { 
-        Key = key; 
+    {
+        Key = key;
         Name = key;
 
         Options = options;

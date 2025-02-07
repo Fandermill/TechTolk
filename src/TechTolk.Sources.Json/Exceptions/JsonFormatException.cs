@@ -1,4 +1,4 @@
-﻿using TechTolk.Exceptions;
+using TechTolk.Exceptions;
 
 namespace TechTolk.Sources.Json.Exceptions;
 

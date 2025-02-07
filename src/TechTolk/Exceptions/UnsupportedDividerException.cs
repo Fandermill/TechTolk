@@ -1,4 +1,4 @@
-﻿using TechTolk.Division;
+using TechTolk.Division;
 
 namespace TechTolk.Exceptions;
 

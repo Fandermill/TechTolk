@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using TechTolk.Division;
 using TechTolk.TranslationSets.Values;
 

@@ -1,15 +1,15 @@
-﻿namespace TechTolk;
+namespace TechTolk;
 
 /// <summary>
 /// Factory for creating an <see cref="ITolk"/> for a translation set
 /// </summary>
 public interface ITolkFactory
 {
-	/// <summary>
-	/// Creates an <see cref="ITolk"/> for the translation set with the given key
-	/// </summary>
-	/// <param name="translationSetKey">The key of the translation set</param>
-	/// <returns>The <see cref="ITolk"/> for the requested translation set</returns>
+    /// <summary>
+    /// Creates an <see cref="ITolk"/> for the translation set with the given key
+    /// </summary>
+    /// <param name="translationSetKey">The key of the translation set</param>
+    /// <returns>The <see cref="ITolk"/> for the requested translation set</returns>
     public ITolk Create(string translationSetKey);
 
     /// <summary>

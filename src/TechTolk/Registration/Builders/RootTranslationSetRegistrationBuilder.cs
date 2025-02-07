@@ -1,4 +1,4 @@
-﻿using TechTolk.Sources;
+using TechTolk.Sources;
 
 namespace TechTolk.Registration.Builders;
 
@@ -46,4 +46,3 @@ internal sealed class RootTranslationSetRegistrationBuilder : IRootTranslationSe
         _registration.Sources.Add(sourceRegistration);
     }
 }
-

@@ -1,3 +1,3 @@
-﻿namespace TechTolk.Sources;
+namespace TechTolk.Sources;
 
 public class TranslationSetSourceOptions { }

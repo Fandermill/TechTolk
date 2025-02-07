@@ -1,4 +1,4 @@
-﻿using TechTolk.Sources.Json;
+using TechTolk.Sources.Json;
 
 namespace TechTolk.Registration.Builders;
 

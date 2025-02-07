@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using TechTolk.Exceptions;
 using TechTolk.Registration.Builders;
 using TechTolk.Tests.TestTranslationSets;

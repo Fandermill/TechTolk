@@ -1,4 +1,4 @@
-﻿namespace TechTolk.Rendering.Internals;
+namespace TechTolk.Rendering.Internals;
 
 internal sealed class ValueBag
 {

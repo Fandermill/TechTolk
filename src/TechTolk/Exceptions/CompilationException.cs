@@ -1,4 +1,4 @@
-﻿namespace TechTolk.Exceptions;
+namespace TechTolk.Exceptions;
 
 internal sealed class CompilationException : TechTolkException
 {

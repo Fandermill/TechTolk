@@ -1,4 +1,4 @@
-﻿using TechTolk.Exceptions;
+using TechTolk.Exceptions;
 using TechTolk.Sources;
 
 namespace TechTolk.Registration;

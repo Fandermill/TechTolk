@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Resources;
 using TechTolk.Division;
 using TechTolk.Exceptions;
@@ -77,6 +77,3 @@ internal sealed class ResourceStreamTranslationSetSource : ResxTranslationSetSou
         return $"{options.BaseName}.{divider.Key}.resources";
     }
 }
-
-
-

@@ -1,4 +1,4 @@
-﻿namespace TechTolk.Division;
+namespace TechTolk.Division;
 
 /// <summary>
 /// Interfaces for getting dividers that are configured with TechTolk

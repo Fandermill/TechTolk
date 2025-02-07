@@ -1,4 +1,4 @@
-﻿using TechTolk.Exceptions;
+using TechTolk.Exceptions;
 using TechTolk.TranslationSets.Values;
 
 namespace TechTolk.TranslationSets.Internals;
