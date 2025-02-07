@@ -20,7 +20,7 @@ jobs:
     - name: Setup dotnet SDK
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.x.x'
+        dotnet-version: '9.x.x'
 
     - name: Build solution
       run: dotnet build --configuration Release
