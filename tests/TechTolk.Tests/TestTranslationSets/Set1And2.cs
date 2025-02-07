@@ -1,8 +1,8 @@
-﻿using TechTolk.Registration;
+using TechTolk.Registration;
 using TechTolk.Sources;
-using TechTolk.TranslationSets.Building;
 using TechTolk.Tests.Helpers;
 using TechTolk.TestSuite.Helpers.Dividers;
+using TechTolk.TranslationSets.Building;
 
 namespace TechTolk.Tests.TestTranslationSets;
 

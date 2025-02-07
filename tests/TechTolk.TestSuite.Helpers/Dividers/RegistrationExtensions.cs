@@ -1,4 +1,4 @@
-﻿using TechTolk.Registration.Builders;
+using TechTolk.Registration.Builders;
 
 namespace TechTolk.TestSuite.Helpers.Dividers;
 

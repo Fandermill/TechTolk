@@ -1,4 +1,4 @@
-﻿namespace TechTolk.TranslationSets.Options;
+namespace TechTolk.TranslationSets.Options;
 
 /// <summary>
 /// Behavior for when no translation value is present for the requested parameters

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Globalization;
 using System.Resources;
 using TechTolk.Division;
@@ -54,6 +54,3 @@ internal sealed class ResourceManagerTranslationSetSource : ResxTranslationSetSo
         throw new ArgumentException("Unable to create a resource manager from the given options");
     }
 }
-
-
-

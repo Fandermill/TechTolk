@@ -1,4 +1,4 @@
-﻿namespace TechTolk;
+namespace TechTolk;
 
 /// <summary>
 /// Interface for loading, reloading and clearing translation sets

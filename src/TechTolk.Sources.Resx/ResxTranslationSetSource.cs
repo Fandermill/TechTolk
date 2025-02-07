@@ -1,4 +1,4 @@
-﻿using TechTolk.Registration;
+using TechTolk.Registration;
 using TechTolk.TranslationSets.Building;
 
 namespace TechTolk.Sources.Resx;
@@ -13,6 +13,3 @@ internal abstract class ResxTranslationSetSource : ITranslationSetSource
 
     protected abstract Task PopulateTranslationsAsync(ITranslationSetBuilder builder, ResxTranslationSetSourceOptions options);
 }
-
-
-

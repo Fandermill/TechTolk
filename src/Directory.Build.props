@@ -5,6 +5,7 @@
 		<LangVersion>latest</LangVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
 		<Authors>Folkert van der Molen</Authors>
 		<Copyright>Copyright 2023 (c) Folkert van der Molen</Copyright>

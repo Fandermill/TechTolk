@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using TechTolk.Registration.Builders;
 using TechTolk.Sources;
 using TechTolk.Sources.Resx;

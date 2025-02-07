@@ -1,4 +1,4 @@
-﻿using TechTolk.Registration;
+using TechTolk.Registration;
 using TechTolk.Sources;
 
 namespace TechTolk.Tests.TestTranslationSets;

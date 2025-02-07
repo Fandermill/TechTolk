@@ -1,4 +1,4 @@
-﻿namespace TechTolk.Exceptions;
+namespace TechTolk.Exceptions;
 
 public class TechTolkException : Exception
 {

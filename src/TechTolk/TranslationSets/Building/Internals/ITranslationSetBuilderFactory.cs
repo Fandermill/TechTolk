@@ -1,4 +1,4 @@
-﻿namespace TechTolk.TranslationSets.Building.Internals;
+namespace TechTolk.TranslationSets.Building.Internals;
 
 internal interface ITranslationSetBuilderFactory
 {

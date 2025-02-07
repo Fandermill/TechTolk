@@ -1,4 +1,4 @@
-﻿using TechTolk.Registration;
+using TechTolk.Registration;
 using TechTolk.Sources;
 using TechTolk.TestSuite.Helpers.Dividers;
 using TechTolk.TranslationSets.Building;

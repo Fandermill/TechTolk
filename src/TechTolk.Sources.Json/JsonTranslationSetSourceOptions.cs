@@ -1,4 +1,4 @@
-﻿namespace TechTolk.Sources.Json;
+namespace TechTolk.Sources.Json;
 
 internal sealed class JsonTranslationSetSourceOptions : TranslationSetSourceOptions
 {

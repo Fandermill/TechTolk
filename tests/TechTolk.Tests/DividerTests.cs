@@ -1,4 +1,4 @@
-﻿using TechTolk.Exceptions;
+using TechTolk.Exceptions;
 using TechTolk.Tests.TestTranslationSets;
 using TechTolk.TestSuite.Helpers;
 using TechTolk.TestSuite.Helpers.Dividers;

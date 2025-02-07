@@ -1,4 +1,4 @@
-﻿namespace TechTolk;
+namespace TechTolk;
 
 internal static class TypeExtensions
 {

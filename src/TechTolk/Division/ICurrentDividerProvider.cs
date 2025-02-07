@@ -1,4 +1,4 @@
-﻿namespace TechTolk.Division;
+namespace TechTolk.Division;
 
 /// <summary>
 /// Interface that provides the current <see cref="IDivider"/> to be used when translating

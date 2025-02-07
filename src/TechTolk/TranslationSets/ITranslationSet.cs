@@ -1,4 +1,4 @@
-﻿using TechTolk.Division;
+using TechTolk.Division;
 using TechTolk.TranslationSets.Values;
 
 namespace TechTolk.TranslationSets;

@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using TechTolk;
 using TechTolk.Exceptions;
-using TechTolk.TestSuite.Helpers;
-using TechTolk.Tests.TestTranslationSets;
-using TechTolk.TestSuite.Helpers.Dividers;
 using TechTolk.Tests.Helpers;
+using TechTolk.Tests.TestTranslationSets;
+using TechTolk.TestSuite.Helpers;
+using TechTolk.TestSuite.Helpers.Dividers;
 
 namespace TechTolk.Tests;
 

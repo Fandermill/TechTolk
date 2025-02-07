@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using TechTolk.Sources.Resx;
 
 namespace TechTolk.Registration.Builders;

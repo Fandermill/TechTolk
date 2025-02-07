@@ -1,4 +1,4 @@
-﻿namespace TechTolk.TranslationSets.Values.Internals;
+namespace TechTolk.TranslationSets.Values.Internals;
 
 internal sealed class TranslationValueFactory : ITranslationValueFactory
 {

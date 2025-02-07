@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using System.Text.RegularExpressions;
 using TechTolk.Division;
 using TechTolk.Registration;
@@ -24,7 +24,7 @@ public class ResxTranslationSetSourceFactory : ITranslationSetSourceFactory<Resx
     {
         bool dividerIsCulture = IsDividerACulture(_supportedDividersProvider.GetSupportedDividers().First());
 
-        if(dividerIsCulture)
+        if (dividerIsCulture)
         {
             return _serviceProvider.GetRequiredService<ResourceManagerTranslationSetSource>();
         }
@@ -39,6 +39,3 @@ public class ResxTranslationSetSourceFactory : ITranslationSetSourceFactory<Resx
         return RFC_4647_REGEX.IsMatch(divider.Key);
     }
 }
-
-
-

@@ -1,6 +1,6 @@
-﻿using TechTolk;
-using TechTolk.TestSuite.Helpers;
+using TechTolk;
 using TechTolk.Tests.TestTranslationSets;
+using TechTolk.TestSuite.Helpers;
 using TechTolk.TestSuite.Helpers.Dividers;
 
 namespace TechTolk.Tests;

@@ -1,4 +1,4 @@
-﻿namespace TechTolk.TranslationSets.Options.Internals;
+namespace TechTolk.TranslationSets.Options.Internals;
 
 internal interface ITranslationSetOptionsProvider
 {

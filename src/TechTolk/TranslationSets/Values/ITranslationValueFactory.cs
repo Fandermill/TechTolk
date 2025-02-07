@@ -1,4 +1,4 @@
-﻿namespace TechTolk.TranslationSets.Values;
+namespace TechTolk.TranslationSets.Values;
 
 /// <summary>
 /// Factory class for creating <see cref="TranslationValue"/> 

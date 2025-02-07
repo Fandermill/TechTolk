@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using TechTolk.Division;
 using TechTolk.Sources.Json.Exceptions;
 using TechTolk.Sources.Json.Paths;

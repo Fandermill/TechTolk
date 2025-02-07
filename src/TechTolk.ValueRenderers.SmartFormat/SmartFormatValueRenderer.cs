@@ -1,4 +1,4 @@
-﻿using SmartFormat;
+using SmartFormat;
 using System.Globalization;
 using TechTolk.Division;
 using TechTolk.Rendering;

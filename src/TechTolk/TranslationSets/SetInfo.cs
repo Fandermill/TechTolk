@@ -1,4 +1,4 @@
-﻿namespace TechTolk.TranslationSets;
+namespace TechTolk.TranslationSets;
 
 /// <summary>
 /// This class stores metadata of a translation set.

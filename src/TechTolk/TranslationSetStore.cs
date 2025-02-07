@@ -1,4 +1,4 @@
-﻿using System.Collections.Concurrent;
+using System.Collections.Concurrent;
 using TechTolk.Exceptions;
 using TechTolk.Registration;
 using TechTolk.Sources.Internals;

@@ -1,4 +1,4 @@
-﻿namespace TechTolk;
+namespace TechTolk;
 
 internal sealed class TolkLoader : ITolkLoader
 {

@@ -1,4 +1,4 @@
-﻿namespace TechTolk.Division;
+namespace TechTolk.Division;
 
 /// <summary>
 /// A Divider is used for separating different translated values per translation key.

@@ -1,4 +1,4 @@
-﻿namespace TechTolk.TranslationSets.Values;
+namespace TechTolk.TranslationSets.Values;
 
 /// <summary>
 /// Represents a translated value from a <see cref="ITranslationSet"/>

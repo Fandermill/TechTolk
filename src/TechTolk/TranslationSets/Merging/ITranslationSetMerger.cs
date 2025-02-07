@@ -1,4 +1,4 @@
-﻿using TechTolk.TranslationSets.Internals;
+using TechTolk.TranslationSets.Internals;
 
 namespace TechTolk.TranslationSets.Merging;
 

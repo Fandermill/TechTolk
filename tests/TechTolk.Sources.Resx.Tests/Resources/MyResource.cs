@@ -1,3 +1,3 @@
-﻿namespace TechTolk.Sources.Resx.Tests.Resources;
+namespace TechTolk.Sources.Resx.Tests.Resources;
 
 public sealed class MyResource { }
