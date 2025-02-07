@@ -10,6 +10,8 @@ namespace TechTolk.Sources.Json.Tests;
 
 public class JsonSourceTests : AbstractTechTolkTests
 {
+    private const string JSON_DIRECTORY = "./../../../JsonFiles/";
+
     [Fact]
     public void Can_read_multiple_translation_sets_from_json_file()
     {
@@ -18,7 +20,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/AllInOne.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "AllInOne.json"));
         });
 
         var tolk = GetTolkForTranslationSet("Set1");
@@ -38,7 +40,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/AllInOne-MissingDivider.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "AllInOne-MissingDivider.json"));
         });
 
         var act = () => GetTolkForTranslationSet("Set1");
@@ -54,7 +56,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/PerDivider.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "PerDivider.json"));
         });
 
         var tolk = GetTolkForTranslationSet("Set1");
@@ -72,7 +74,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/PerDivider-MissingDivider.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "PerDivider-MissingDivider.json"));
         });
 
         var tolk = GetTolkForTranslationSet("Set1");
@@ -90,7 +92,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/Mixed.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "Mixed.json"));
         });
 
         var tolk = GetTolkForTranslationSet("Set1");
@@ -110,7 +112,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/MissingTranslationsProperty.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "MissingTranslationsProperty.json"));
         });
 
         var act = () => GetTolkForTranslationSet("Set1");
@@ -126,7 +128,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/InvalidValueKind.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "InvalidValueKind.json"));
         });
 
         var act = () => GetTolkForTranslationSet("Set1");
@@ -142,7 +144,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/MissingTranslationSetProperties.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "MissingTranslationSetProperties.json"));
         });
 
         var act = () => GetTolkForTranslationSet("Set1");
@@ -158,7 +160,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/ValidFilePaths.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "ValidFilePaths.json"));
         });
 
         var tolk = GetTolkForTranslationSet("Set1");
@@ -178,7 +180,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/UnsupportedDividerInFilename.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "UnsupportedDividerInFilename.json"));
         });
 
         var act = () => GetTolkForTranslationSet("Set1");
@@ -194,7 +196,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/DuplicateKeys.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "DuplicateKeys.json"));
         });
 
         var tolk = GetTolkForTranslationSet("Set1");
@@ -214,7 +216,7 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         builder.AddTranslationSet("Set1", set =>
         {
-            set.FromJson("./JsonFiles/UnsupportedDivider.json");
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "UnsupportedDivider.json"));
         });
 
         var act = () => GetTolkForTranslationSet("Set1");
