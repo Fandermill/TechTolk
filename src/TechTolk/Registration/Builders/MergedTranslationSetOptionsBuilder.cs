@@ -8,8 +8,9 @@ internal sealed class MergedTranslationSetOptionsBuilder : TranslationSetOptions
     private readonly TranslationSetMergeOptions _mergeOptions;
 
     public MergedTranslationSetOptionsBuilder(
+        ITechTolkBuilder rootBuilder,
         TranslationSetOptions options,
-        TranslationSetMergeOptions mergeOptions) : base(options)
+        TranslationSetMergeOptions mergeOptions) : base(rootBuilder, options)
     {
         _mergeOptions = mergeOptions;
     }

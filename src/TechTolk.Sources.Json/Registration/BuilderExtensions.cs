@@ -8,8 +8,9 @@ public static class BuilderExtensions
         this IRootTranslationSetRegistrationBuilder rootSetBuilder,
         string path)
     {
+        rootSetBuilder.RootBuilder.TryAddJson();
+
         rootSetBuilder.FromSource<JsonTranslationSetSource>(
             () => new JsonTranslationSetSourceOptions(path));
     }
-
 }

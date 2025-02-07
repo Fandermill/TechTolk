@@ -1,4 +1,5 @@
-﻿using TechTolk.Division;
+﻿using Microsoft.Extensions.DependencyInjection;
+using TechTolk.Division;
 using TechTolk.Rendering;
 using TechTolk.Sources;
 
@@ -6,6 +7,7 @@ namespace TechTolk.Registration.Builders;
 
 public interface ITechTolkBuilder
 {
+    IServiceCollection Services { get; }
     ITechTolkBuilder ConfigureDividers(Action<IDividerConfigurationBuilder> dividerConfiguration);
     ITechTolkBuilder ConfigureDefaultOptions(Action<ITranslationSetOptionsBuilder> setOptions);
 
@@ -18,6 +20,8 @@ public interface ITechTolkBuilder
 
 public interface IDividerConfigurationBuilder
 {
+    ITechTolkBuilder RootBuilder { get; }
+
     /// <summary>
     /// Registers the given type as the implementation of the 
     /// <see cref="ICurrentDividerProvider"/> interface
@@ -39,6 +43,7 @@ public interface IDividerConfigurationBuilder
 
 public interface ITranslationSetOptionsBuilder
 {
+    ITechTolkBuilder RootBuilder { get; }
     ITranslationSetOptionsBuilder UseValueRenderer<T>() where T : AbstractTranslationValueRenderer;
     ITranslationNotFoundBehaviorConfigurationBuilder OnTranslationNotFound();
     ITranslationSetNotLoadedBehaviorConfigurationBuilder OnTranslationSetNotLoaded();
@@ -67,6 +72,7 @@ public interface IDuplicateKeyBehaviorConfigurationBuilder
 
 public interface IRootTranslationSetRegistrationBuilder
 {
+    ITechTolkBuilder RootBuilder { get; }
     void WithOptions(Action<ITranslationSetOptionsBuilder> options);
 
     void FromSource<T>() where T : ITranslationSetSource;
@@ -76,6 +82,7 @@ public interface IRootTranslationSetRegistrationBuilder
 }
 public interface IMergedTranslationSetRegistrationBuilder
 {
+    ITechTolkBuilder RootBuilder { get; }
     void WithOptions(Action<IMergedTranslationSetOptionsBuilder> options);
     void FromSource<T>(string name) where T : ITranslationSetSource;
     void FromSource<T>(string name, Func<TranslationSetSourceOptions>? options) where T : ITranslationSetSource;

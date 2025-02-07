@@ -7,7 +7,7 @@ namespace TechTolk.Registration.Builders;
 
 internal sealed class TechTolkBuilder : ITechTolkBuilder
 {
-    private readonly IServiceCollection _services;
+    public IServiceCollection Services { get; private set; }
 
     private readonly SupportedDividersProvider _supportedDividersProvider;
     private readonly TranslationSetOptions _defaultOptions;
@@ -16,30 +16,30 @@ internal sealed class TechTolkBuilder : ITechTolkBuilder
 
     public TechTolkBuilder(IServiceCollection services, Action<ITranslationSetOptionsBuilder>? defaultOptions)
     {
-        _services = services;
+        Services = services;
 
         _supportedDividersProvider = new SupportedDividersProvider();
-        _services.AddSingleton<ISupportedDividersProvider>(_supportedDividersProvider);
-        _services.AddSingleton<ICurrentDividerProvider, CurrentThreadUICultureDividerProvider>();
+        Services.AddSingleton<ISupportedDividersProvider>(_supportedDividersProvider);
+        Services.AddSingleton<ICurrentDividerProvider, CurrentThreadUICultureDividerProvider>();
 
         _defaultOptions = new();
         if (defaultOptions is not null)
             ConfigureDefaultOptions(defaultOptions);
 
         _registrations = new();
-        _services.AddSingleton(_registrations);
+        Services.AddSingleton(_registrations);
     }
 
     public ITechTolkBuilder ConfigureDefaultOptions(Action<ITranslationSetOptionsBuilder> setOptions)
     {
-        var optionsBuilder = new TranslationSetOptionsBuilder(_defaultOptions);
+        var optionsBuilder = new TranslationSetOptionsBuilder(this, _defaultOptions);
         setOptions(optionsBuilder);
         return this;
     }
 
     public ITechTolkBuilder ConfigureDividers(Action<IDividerConfigurationBuilder> dividerConfiguration)
     {
-        var builder = new DividerConfigurationBuilder(_services, _supportedDividersProvider);
+        var builder = new DividerConfigurationBuilder(this, _supportedDividersProvider);
         dividerConfiguration(builder);
         return this;
     }
@@ -47,7 +47,7 @@ internal sealed class TechTolkBuilder : ITechTolkBuilder
     public ITechTolkBuilder AddTranslationSet(string name, Action<IRootTranslationSetRegistrationBuilder> set)
     {
         var registration = _registrations.Create(name, _defaultOptions.Clone());
-        var builder = new RootTranslationSetRegistrationBuilder(registration);
+        var builder = new RootTranslationSetRegistrationBuilder(this, registration);
         set(builder);
         return this;
     }
@@ -61,7 +61,7 @@ internal sealed class TechTolkBuilder : ITechTolkBuilder
     public ITechTolkBuilder AddMergedTranslationSet(string name, Action<IMergedTranslationSetRegistrationBuilder> mergedSet)
     {
         var registration = _registrations.Create(name, _defaultOptions.Clone());
-        var builder = new MergedTranslationSetRegistrationBuilder(registration);
+        var builder = new MergedTranslationSetRegistrationBuilder(this, registration);
         mergedSet(builder);
         return this;
     }

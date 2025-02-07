@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 using SmartFormat;
 using TechTolk.Registration.Builders;
 using TechTolk.ValueRenderers.SmartFormat;
@@ -7,17 +7,24 @@ namespace TechTolk;
 
 public static class BuilderExtensions
 {
-    public static ITechTolkBuilder UseSmartFormatValueRenderer(this ITechTolkBuilder builder, IServiceCollection services)
+    public static ITechTolkBuilder UseSmartFormatValueRenderer(this ITechTolkBuilder builder)
     {
-        services.AddSingleton<SmartFormatValueRenderer>();
+        builder.Services.TryAddSingleton<SmartFormatValueRenderer>();
         builder.ConfigureDefaultOptions(c => c.UseValueRenderer<SmartFormatValueRenderer>());
         return builder;
     }
 
-    public static ITechTolkBuilder UseSmartFormatValueRenderer(this ITechTolkBuilder builder, IServiceCollection services, SmartFormatter formatter)
+    public static ITechTolkBuilder UseSmartFormatValueRenderer(this ITechTolkBuilder builder, SmartFormatter formatter)
     {
-        services.AddSingleton(p => new SmartFormatValueRenderer(formatter));
+        builder.Services.TryAddSingleton(p => new SmartFormatValueRenderer(formatter));
         builder.ConfigureDefaultOptions(c => c.UseValueRenderer<SmartFormatValueRenderer>());
+        return builder;
+    }
+
+    public static ITranslationSetOptionsBuilder UseSmartFormatValueRenderer(this ITranslationSetOptionsBuilder builder)
+    {
+        builder.RootBuilder.Services.TryAddSingleton<SmartFormatValueRenderer>();
+        builder.UseValueRenderer<SmartFormatValueRenderer>();
         return builder;
     }
 }

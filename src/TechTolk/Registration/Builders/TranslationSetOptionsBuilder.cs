@@ -5,10 +5,14 @@ namespace TechTolk.Registration.Builders;
 
 internal class TranslationSetOptionsBuilder : ITranslationSetOptionsBuilder
 {
+    public ITechTolkBuilder RootBuilder { get; private init; }
+
     private readonly TranslationSetOptions _options;
 
-    public TranslationSetOptionsBuilder(TranslationSetOptions options)
+    public TranslationSetOptionsBuilder(ITechTolkBuilder rootBuilder, TranslationSetOptions options)
     {
+        RootBuilder = rootBuilder;
+
         _options = options;
     }
 

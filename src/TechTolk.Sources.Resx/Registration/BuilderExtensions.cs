@@ -12,6 +12,8 @@ public static class BuilderExtensions
     public static ITechTolkBuilder AddTranslationSetFromResource<TResxResource>(
         this ITechTolkBuilder techTolkBuilder, Action<ITranslationSetOptionsBuilder>? options)
     {
+        techTolkBuilder.TryAddResx();
+
         techTolkBuilder.AddTranslationSet<TResxResource>(set =>
         {
             BuilderExtensions.FromResource<TResxResource>(set);
@@ -27,6 +29,8 @@ public static class BuilderExtensions
     public static void FromResource<TResxResource>(
         this IRootTranslationSetRegistrationBuilder rootSetBuilder)
     {
+        rootSetBuilder.RootBuilder.TryAddResx();
+
         rootSetBuilder.FromSource<ResxTranslationSetSource>(
             () => new ResxTranslationSetSourceOptions(typeof(TResxResource)));
     }
@@ -34,6 +38,8 @@ public static class BuilderExtensions
     public static void FromResource(
         this IRootTranslationSetRegistrationBuilder rootSetBuilder, string baseName, Assembly assembly)
     {
+        rootSetBuilder.RootBuilder.TryAddResx();
+
         rootSetBuilder.FromSource<ResxTranslationSetSource>(
             () => new ResxTranslationSetSourceOptions(baseName, assembly));
     }
@@ -41,6 +47,8 @@ public static class BuilderExtensions
     public static void FromResource<TResxResource>(
         this IMergedTranslationSetRegistrationBuilder mergedSetBuilder)
     {
+        mergedSetBuilder.RootBuilder.TryAddResx();
+
         var type = typeof(TResxResource);
         mergedSetBuilder.FromSource<ResxTranslationSetSource>(
             type.Name,
@@ -50,6 +58,8 @@ public static class BuilderExtensions
     public static void FromResource(
         this IMergedTranslationSetRegistrationBuilder mergedSetBuilder, string baseName, Assembly assembly)
     {
+        mergedSetBuilder.RootBuilder.TryAddResx();
+
         mergedSetBuilder.FromSource<ResxTranslationSetSource>(
             baseName,
             () => new ResxTranslationSetSourceOptions(baseName, assembly));

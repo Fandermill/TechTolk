@@ -1,20 +1,21 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using TechTolk.Registration.Builders;
 using TechTolk.Sources;
 using TechTolk.Sources.Resx;
 
 namespace TechTolk;
 
-public static class TechTolkSourcesResxServiceCollectionExtensions
+internal static class TechTolkSourcesResxServiceCollectionExtensions
 {
-    public static IServiceCollection AddTechTolkResxServices(this IServiceCollection services)
+    internal static ITechTolkBuilder TryAddResx(this ITechTolkBuilder builder)
     {
-        services.AddSingleton(
+        builder.Services.TryAddSingleton(
             typeof(ITranslationSetSourceFactory<ResxTranslationSetSource>),
             typeof(ResxTranslationSetSourceFactory));
 
-        services.AddSingleton<ResourceManagerTranslationSetSource>();
-        services.AddSingleton<ResourceStreamTranslationSetSource>();
+        builder.Services.TryAddSingleton<ResourceManagerTranslationSetSource>();
+        builder.Services.TryAddSingleton<ResourceStreamTranslationSetSource>();
 
-        return services;
+        return builder;
     }
 }

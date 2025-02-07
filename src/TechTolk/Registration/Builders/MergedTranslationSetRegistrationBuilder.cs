@@ -5,10 +5,14 @@ namespace TechTolk.Registration.Builders;
 
 internal sealed class MergedTranslationSetRegistrationBuilder : IMergedTranslationSetRegistrationBuilder
 {
+    public ITechTolkBuilder RootBuilder { get; private init; }
+
     private readonly TranslationSetRegistration _registration;
 
-    public MergedTranslationSetRegistrationBuilder(TranslationSetRegistration registration)
+    public MergedTranslationSetRegistrationBuilder(ITechTolkBuilder rootBuilder, TranslationSetRegistration registration)
     {
+        RootBuilder = rootBuilder;
+
         _registration = registration;
         _registration.MergeOptions = new TranslationSetMergeOptions()
         {
@@ -18,7 +22,7 @@ internal sealed class MergedTranslationSetRegistrationBuilder : IMergedTranslati
 
     public void WithOptions(Action<IMergedTranslationSetOptionsBuilder> options)
     {
-        options(new MergedTranslationSetOptionsBuilder(_registration.Options, _registration.MergeOptions!));
+        options(new MergedTranslationSetOptionsBuilder(RootBuilder, _registration.Options, _registration.MergeOptions!));
     }
 
     public void FromSource<T>(string name) where T : ITranslationSetSource
