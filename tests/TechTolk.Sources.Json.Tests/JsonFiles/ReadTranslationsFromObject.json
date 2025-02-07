@@ -1,0 +1,9 @@
+{
+    "translationSet": {
+        "divider": "en-US",
+        "translations": {
+            "MyKey1": "MyValue1",
+            "MyKey2": "MyValue2"
+        }
+    }
+}
