@@ -7,23 +7,23 @@ items:
   href: getting-started.md
 
 - name: The moving parts
-- name: The tolk
+- name: The Tolk
   href: the-tolk.md
 - name: Dividers
   href: dividers.md
-- name: Translation sets
+- name: Translation Sets
   href: translation-sets.md
-- name: Translation set sources
+- name: Translation Set Sources
   href: sources/index.md
   expanded: true
   items:
-  - name: Embedded resources
+  - name: Embedded Resources
     href: sources/resx.md
   - name: JSON
     href: sources/json.md
-  - name: Implement your own
+  - name: Implement Your Own
     href: sources/diy.md
-- name: Value renderers
+- name: Value Renderers
   href: value-renderers.md
   
 - name: Misc

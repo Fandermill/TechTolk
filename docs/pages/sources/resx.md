@@ -1,18 +1,12 @@
 # Embedded resource files (Resx)
 
 The package `TechTolk.Sources.Resx` adds extension methods to load translations
-from embedded resource files. First, register the required services with your
-service container by calling `.AddTechTolkResxServices()`. Then you can register
-a source by a type or via a basename and an assembly.
-
-> [!WARNING]
-> We really should look into avoiding the .AddTechTolkResxServices call by just
-> calling 'TryAdd...' every time '.FromResource' is called.
+from embedded resource files. You can register a source by a type or via a 
+basename and an assembly.
 
 The resource files should be named in the format: `{name}.{divider-key}.resx`.
 
 ```csharp
-services.AddTechTolkResxServices();
 services.AddTechTolk()
     //.ConfigureDividers(...)
     .AddTranslationSet("MyResxSet", set => {
@@ -33,7 +27,6 @@ services.AddTechTolk()
 > You can use an extension method to keep the translation set registration short
 >
 > ```csharp
-> services.AddTechTolkResxServices();
 > services.AddTechTolk()
 >     //.ConfigureDividers(...)
 >     .AddTranslationSetFromResource<MyResource>();
