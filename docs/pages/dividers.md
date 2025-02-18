@@ -40,7 +40,7 @@ services
 >
 > The `CultureInfoDivider` contains an implicit operator so you can easily pass a string,
 > where a `CultureInfoDivider` is asked. That's why you can pass in strings in the
-> `.UserCultureInfoDividers()` extension method.
+> `.UseCultureInfoDividers()` extension method.
 
 
 ## The `ICurrentDividerProvider`
