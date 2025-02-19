@@ -1,11 +1,13 @@
 
 # Getting Started
 
-It requires a few steps to get started with TechTolk. First you have to configure 
-TechTolk with your DI container and specify which dividers you will support. 
-You also have to configure translation sets from which the translation values will 
-be returned. You can then use an `ITolk<T>`, where `<T>` corresponds to a translation set,
-by injecting it into your constructors and calling `.Translate("key")` where you need it.
+It requires a few steps to get started with TechTolk. First you have to
+configure TechTolk with your DI container and specify which
+[dividers](./dividers.md) you will support. You also have to configure
+translation sets from which the translation values will be returned. You can
+then use an `ITolk<T>`, where `<T>` corresponds to a translation set, by
+injecting it into your constructors and calling `.Translate("key")` where you
+need it.
 
 
 ## Registration
@@ -35,13 +37,13 @@ services
     });
 ```
 
-This example uses the built in `CultureInfoDivider`. You will find more information
-about dividers at the [dividers](dividers.md) page.
+This example uses the built in `CultureInfoDivider`. You will find more
+information about dividers at the [dividers](dividers.md) page.
 
-There are shorthand methods and more advanced methods to add your translation sets.
-You can also add a translation set that is compiled from multiple sources into one.
-More documentation on registering translation sets are on the [translation sets](translation-sets.md)
-page.
+There are shorthand methods and more advanced methods to add your translation
+sets. You can also add a translation set that is compiled from multiple sources
+into one. More documentation on registering translation sets are on the
+[translation sets](translation-sets.md) page.
 
 Adding translation sets can be done with multiple implementations of sources. 
 Read more about the possibilities on the [translation set sources](sources/index.md)
@@ -94,6 +96,7 @@ public class MyClass
 ```
 
 You can set the behavior of rendering by using an `IValueRenderer`. The built in
-renderer features placeholders, but there is also a renderer that uses [SmartFormat](https://github.com/axuno/SmartFormat)
-to have more formatting available in your translations. See the [value renderers](value-renderers.md)
+renderer features placeholders, but there is also a renderer that uses
+[SmartFormat](https://github.com/axuno/SmartFormat) to have more formatting
+available in your translations. See the [value renderers](value-renderers.md)
 page for more information.
