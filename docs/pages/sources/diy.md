@@ -1,14 +1,15 @@
 # Implementing your own custom source
 
 If the sources from the TechTolk repository do not suffice for your project, you
-can easily implement your own sources. You do this by implementing the `ITranslationSetSource`
-interface with this method:
+can easily implement your own sources. You do this by implementing the
+`ITranslationSetSource` interface with this method:
 
 ```csharp
 Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
 ```
 
-The `ITranslationSetBuilder` contains several methods to add translations for dividers.
+The `ITranslationSetBuilder` contains several methods to add translations for
+dividers.
 
 You can use direct `Add` calls:
 
@@ -63,9 +64,9 @@ into the `.FromSource(...)` call.
 });
 ```
 
-If your custom source needs services injected that can be resolved from the service
-provider, you can call `.FromSource<MyTranslationSource>()`. The source is resolved
-as soon as the translation set gets compiled.
+If your custom source needs services injected that can be resolved from the
+service provider, you can call `.FromSource<MyTranslationSource>()`. The source
+is resolved as soon as the translation set gets compiled.
 
 ```csharp
 .AddTranslationSet("SetName", set => {
@@ -73,10 +74,10 @@ as soon as the translation set gets compiled.
 });
 ```
 
-If your constructor is more complex, you must use a factory for your source by 
-implementing the `ITranslationSetSourceFactory<>` interface, with the type of your
-source as type argument. You must register the factory with your service container
-yourself!
+If your constructor is more complex, you must use a factory for your source by
+implementing the `ITranslationSetSourceFactory<>` interface, with the type of
+your source as type argument. You must register the factory with your service
+container yourself!
 
 ```csharp
 .AddTranslationSet("SetName", set => {

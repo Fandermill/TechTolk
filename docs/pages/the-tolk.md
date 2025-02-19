@@ -1,4 +1,4 @@
-# The tolk
+# The Tolk
 
 The `ITolk` interface provides you with methods to render the translations from
 a single translation set. 
@@ -12,9 +12,9 @@ registered your translation set by name, you have to use the `ITolkFactory`.
 
 ### By tag type
 
-To aquire a tolk for a translation set you registered with a tag type, you simply
-inject an `ITolk<T>` where `T` is the tag type you registered the translation set
-with.
+To aquire a tolk for a translation set you registered with a tag type, you
+simply inject an `ITolk<T>` where `T` is the tag type you registered the
+translation set with.
 
 ```csharp
 // Registration
@@ -59,9 +59,11 @@ services
 
 public class MyClass
 {
+    private readonly ITolk _tolk;
+
     public MyClass(ITolkFactory tolkFactory)
     {
-        var tolk = tolkFactory.CreateTolk("MyNamedTranslationSet");
+        _tolk = tolkFactory.CreateTolk("MyNamedTranslationSet");
     }
 }
 ```
@@ -69,20 +71,21 @@ public class MyClass
 
 ## Using an `ITolk`
 
-Once you have an instance of an implementation of `ITolk`, you can start using it.
-It contains a method `.Translate` to get your translations.
+Once you have an instance of an implementation of `ITolk`, you can start using
+it. It contains a method `.Translate` to get your translations.
 
-You can call `.Translate()` with only your translation key to render the translation
-for the current divider. TechTolk will use the `ICurrentDividerProvider` to
-determine this current divider. (See [dividers page](dividers.md#the-icurrentdividerprovider).)
+You can call `.Translate()` with only your translation key to render the
+translation for the current divider. TechTolk will use the
+`ICurrentDividerProvider` to determine this current divider.
+(See [dividers page](dividers.md#the-icurrentdividerprovider).)
 
-You can pass in a divider as well to explicitly get the translation for the given
-divider.
+You can pass in a divider as well to explicitly get the translation for the
+given divider.
 
-To render translations with placeholder, you can pass in an anonymous object. The
-built in `IValueRenderer` will merge the property values into the translation by
-property names. More information on this is on the [value renderers](value-renderers.md)
-page.
+To render translations with placeholder, you can pass in an anonymous object.
+The built in `IValueRenderer` will merge the property values into the
+translation by property names. More information on this is on the 
+[value renderers](value-renderers.md) page.
 
 ```csharp
 
