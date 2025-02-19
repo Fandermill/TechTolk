@@ -24,7 +24,8 @@ services.AddTechTolk()
 ```
 
 > [!TIP]
-> You can use an extension method to keep the translation set registration short
+> You can use an extension method to keep the translation set registration
+> short.
 >
 > ```csharp
 > services.AddTechTolk()
@@ -35,10 +36,12 @@ services.AddTechTolk()
 > ```
 
 > [!WARNING]
-> Be aware that you cannot register a resource source by a type tag (`.FromResource<T>()`)
-> when using dividers other than `CultureInfo`. It will throw an exception.
+> Be aware that you cannot register a resource source by a type tag
+> (`.FromResource<T>()`) when using dividers other than `CultureInfo`. It will
+> throw an exception.
 > 
 > This has to do with how the embedded resource files are loaded internally.
-> When using the `CultureInfo.Name` as divider keys, like 'nl-NL' or 'en-US', a 
-> `System.Resources.ResourceManager` is used, otherwise `Assembly.GetManifestResourceStream()`
-> in combination with a `System.Resources.ResourceReader` is used. 
+> When using the `CultureInfo.Name` as divider keys, like 'nl-NL' or 'en-US', a
+> `System.Resources.ResourceManager` is used, otherwise
+> `Assembly.GetManifestResourceStream()` in combination with a
+> `System.Resources.ResourceReader` is used. 

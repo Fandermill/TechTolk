@@ -8,9 +8,9 @@ you are looking for. If not, please get in touch. You will find TechTolk on
 
 ## What is TechTolk?
 
-TechTolk is a .NET localization library with an extensible set of sources and 
-translation rendering features. It loads translations sets into memory, registered
-by a simple to use API.
+TechTolk is a .NET localization library with an extensible set of sources and
+translation rendering features. It loads translations sets into memory,
+registered by a simple to use API.
 
 
 
@@ -19,22 +19,24 @@ by a simple to use API.
 So here's the "Commercial" pitch, in which I'm not very good at writing:
 
 ### Sources
-TechTolk supports multiple implementations of sourcing your translations. At the
-moment, you can hard code it, or load them from (embedded) resource files, like
-Microsoft does. More implementations are on the way!
+TechTolk supports multiple implementations of sourcing your translations. You
+can load them from [JSON files](./sources/json.md) and 
+[resource files](./sources/resx.md). If this doesn't fit your needs, you can
+[implement your own](./sources/diy.md).
 
 ### Merging multiple sources
 You can merge multiple sources into one translation set. This way you can load
 your default translations and override them with another source for a specific
-context. And it doesn't matter from where the translations come from, so you
-can mix source implementations. A use case could be to load the default set from
-a database and override them with translation from a local file.
+context. And it doesn't matter from where the translations come from, so you can
+mix source implementations. A use case could be to load the default set from a
+database and override them with translation from a local file.
 
 ### Value renderers
-You can make use of 'value renderers' to set the behavior of rendering. By default
-you can use placeholders in your translations and TechTolk will replace them with
-the parameters you gave. Using the SmartFormat renderer (to be implemented), you
-can add additional meta data to the placeholders for additional smart formatting.
+You can make use of '[value renderers](./value-renderers.md)' to set the
+behavior of rendering. By default you can use placeholders in your translations
+and TechTolk will replace them with the parameters you gave. Using the
+SmartFormat renderer, you can add additional meta data to the placeholders for
+additional smart formatting.
 
 
 ### Extensible
@@ -46,7 +48,7 @@ you made!
 
 ## Try TechTolk
 
-Want to try TechTolk, but don't want to change all your translation calls in your
-views? There is an additional library that you can use as a drop in for .NET's
-localization implementation. See [TODO_LINK](#try-techtolk) for more information.
-
+Want to try TechTolk, but don't want to change all your translation calls in
+your views? There is an additional library that you can use as a drop in for
+.NET's localization implementation. See [.NET Localization Adapter](net-localization-adapter.md)
+for more information.
