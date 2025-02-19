@@ -42,11 +42,11 @@ nothing more than an array of the other.
 
 The singular form `translationSet` should be an object with properties `divider`
 and `translations`. The former should contain the divider key and the latter
-should be an object of which the property/value pairs will be the translation key
-and translation value pair.
+should be an object of which the property/value pairs will be the translation
+key and translation value pair.
 
-When reading translation sets from files without the divider key in the filename,
-the `divider` property is mandatory.
+When reading translation sets from files without the divider key in the
+filename, the `divider` property is mandatory.
 
 Maybe the format is best explained by example JSON:
 

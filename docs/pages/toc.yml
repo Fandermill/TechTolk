@@ -25,6 +25,8 @@ items:
     href: sources/diy.md
 - name: Value Renderers
   href: value-renderers.md
+- name: .NET Localization Adapter
+  href: net-localization-adapter.md
   
 - name: Misc
 - name: About

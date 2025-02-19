@@ -1,0 +1,3 @@
+# .NET Localization Adapter
+
+To do...
