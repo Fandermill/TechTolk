@@ -12,8 +12,6 @@ public static class BuilderExtensions
     public static ITechTolkBuilder AddTranslationSetFromResource<TResxResource>(
         this ITechTolkBuilder techTolkBuilder, Action<ITranslationSetOptionsBuilder>? options)
     {
-        techTolkBuilder.TryAddResx();
-
         techTolkBuilder.AddTranslationSet<TResxResource>(set =>
         {
             BuilderExtensions.FromResource<TResxResource>(set);
