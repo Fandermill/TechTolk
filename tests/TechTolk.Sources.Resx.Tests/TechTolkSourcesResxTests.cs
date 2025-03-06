@@ -190,7 +190,7 @@ public sealed class TechTolkSourcesResxTests
         {
             _services.AddTechTolk()
                 .ConfigureDefaultCultureInfoDividers()
-                .AddTranslationSetFromResource<MyResource>(null);
+                .AddTranslationSetFromResource<MyResource>();
 
             var tolk = GetTolkForTranslationSet<MyResource>();
 
