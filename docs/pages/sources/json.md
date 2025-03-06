@@ -15,6 +15,21 @@ services.AddTechTolk()
     });
 ```
 
+> [!TIP]
+> You can use an extension method to keep the translation set registration
+> short. The translation set name will be the given filename without the 
+> extension.
+>
+> ```csharp
+> services.AddTechTolk()
+>     //.ConfigureDividers(...)
+>     .AddTranslationSetFromJson("./PathToJson/MyTranslations.json");
+>
+>     // Translation set name will be 'MyTranslations'.
+>     // Can later be requested by resolving an ITolkFactory from the 
+>     // service provider and calling ITolkFactory.CreateTolk("MyTranslations")
+> ```
+
 ## File naming
 
 You can choose to put all the translations of all dividers into one file, or
