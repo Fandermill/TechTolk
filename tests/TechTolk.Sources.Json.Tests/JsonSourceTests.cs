@@ -241,4 +241,21 @@ public class JsonSourceTests : AbstractTechTolkTests
 
         act.Should().Throw<UnsupportedDividerException>();
     }
+
+
+
+
+    [Fact]
+    public void Can_register_a_json_source_through_the_translation_set_extension_method()
+    {
+        _services.AddTechTolk()
+            .ConfigureDefaultCultureInfoDividers()
+            .AddTranslationSetFromJson(Path.Combine(JSON_DIRECTORY, "AllInOne.json"));
+
+        var tolk = GetTolkForTranslationSet("AllInOne");
+
+        var result = tolk.Translate(Constants.CultureInfoDividers.nl_NL, "MyKey");
+
+        result.Should().Be("AllInOne-MyValue-NL");
+    }
 }
