@@ -1,3 +1,4 @@
+using System.Globalization;
 using TechTolk.Division;
 using TechTolk.Division.Internals;
 using TechTolk.Sources;
@@ -6,6 +7,23 @@ namespace TechTolk.Registration.Builders;
 
 public static class TechTolkBuilderExtensions
 {
+    /// <summary>
+    /// Sets the supported dividers to <see cref="CultureInfoDivider"/> and uses
+    /// the current thread ui culture as the <see cref="ICurrentDividerProvider"/>.
+    /// This extension method serves as a shortcut for .ConfigureDividers(...).
+    /// </summary>
+    /// <param name="techTolkBuilder">The current builder</param>
+    /// <param name="supportedCultures">
+    /// The cultures to support. These <see cref="CultureInfo"/>s are converted 
+    /// into <see cref="CultureInfoDivider"/>
+    /// </param>
+    /// <returns>The same current builder</returns>
+    public static ITechTolkBuilder UseCultureInfoDividers(
+        this ITechTolkBuilder techTolkBuilder, params CultureInfo[] supportedCultures)
+        => UseCultureInfoDividers(
+            techTolkBuilder,
+            supportedCultures.Select(CultureInfoDivider.FromCulture).ToArray());
+
     /// <summary>
     /// Sets the supported dividers to <see cref="CultureInfoDivider"/> and uses
     /// the current thread ui culture as the <see cref="ICurrentDividerProvider"/>.
