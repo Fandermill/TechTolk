@@ -49,6 +49,6 @@ you made!
 ## Try TechTolk
 
 Want to try TechTolk, but don't want to change all your translation calls in
-your views? There is an additional library that you can use as a drop in for
-.NET's localization implementation. See [.NET Localization Adapter](net-localization-adapter.md)
-for more information.
+your views? There is an additional library that you can use as a drop-in
+replacement for .NET's localization implementation. See 
+[.NET Localization Adapter](net-localization-adapter.md) for more information.
