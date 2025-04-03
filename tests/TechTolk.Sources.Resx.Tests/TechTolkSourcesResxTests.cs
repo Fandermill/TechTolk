@@ -1,6 +1,5 @@
 using FluentAssertions;
 using TechTolk.Exceptions;
-using TechTolk.Registration.Builders;
 using TechTolk.Sources.Resx.Tests.Resources;
 using TechTolk.TestSuite.Helpers;
 using TechTolk.TestSuite.Helpers.Dividers;

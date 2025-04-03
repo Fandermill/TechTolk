@@ -1,6 +1,7 @@
+using TechTolk.Registration.Builders;
 using TechTolk.Sources.Json;
 
-namespace TechTolk.Registration.Builders;
+namespace TechTolk;
 
 public static class BuilderExtensions
 {
@@ -8,11 +9,34 @@ public static class BuilderExtensions
         this ITechTolkBuilder techTolkBuilder, string path)
         => techTolkBuilder.AddTranslationSetFromJson(path, null);
 
+    public static ITechTolkBuilder AddTranslationSetFromJson<T>(
+        this ITechTolkBuilder techTolkBuilder, string path)
+        => techTolkBuilder.AddTranslationSetFromJson<T>(path, null);
+
     public static ITechTolkBuilder AddTranslationSetFromJson(
-        this ITechTolkBuilder techTolkBuilder, string path, Action<ITranslationSetOptionsBuilder>? options)
+        this ITechTolkBuilder techTolkBuilder,
+        string path,
+        Action<ITranslationSetOptionsBuilder>? options)
     {
         string setName = Path.GetFileNameWithoutExtension(path);
-        techTolkBuilder.AddTranslationSet(setName, set =>
+        techTolkBuilder.AddTranslationSet(setName, RegisterSet(path, options));
+        return techTolkBuilder;
+    }
+
+    public static ITechTolkBuilder AddTranslationSetFromJson<T>(
+        this ITechTolkBuilder techTolkBuilder,
+        string path,
+        Action<ITranslationSetOptionsBuilder>? options)
+    {
+        techTolkBuilder.AddTranslationSet<T>(RegisterSet(path, options));
+        return techTolkBuilder;
+    }
+
+    private static Action<IRootTranslationSetRegistrationBuilder> RegisterSet(
+        string path,
+        Action<ITranslationSetOptionsBuilder>? options)
+    {
+        return set =>
         {
             set.FromJson(path);
 
@@ -20,8 +44,7 @@ public static class BuilderExtensions
             {
                 set.WithOptions(options);
             }
-        });
-        return techTolkBuilder;
+        };
     }
 
     public static void FromJson(
