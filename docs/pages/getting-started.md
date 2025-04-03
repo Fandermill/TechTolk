@@ -11,7 +11,10 @@ need it.
 
 ## Installation
 
-Before you can use TechTolk, you need to add the core [NuGet package](https://www.nuget.org/packages/TechTolk) to your project. TechTolk targets the `netstandard2.0` moniker, so you can use it for both modern .NET and classic .NET Framework applications.
+Before you can use TechTolk, you need to add the core 
+[NuGet package](https://www.nuget.org/packages/TechTolk) to your project.
+TechTolk targets the `netstandard2.0` moniker, so you can use it for both modern
+.NET and classic .NET Framework applications.
 
 # [dotnet CLI](#tab/dotnet-cli)
 
@@ -26,7 +29,8 @@ PM> Install-Package TechTolk
 ```
 ---
 
-In the same way, add the [translation set source](./sources/index.md) package of your liking as well to be able to load your translations. For example:
+In the same way, add the [translation set source](./sources/index.md) package of
+your liking as well to be able to load your translations. For example:
 
 # [dotnet CLI](#tab/dotnet-cli)
 
