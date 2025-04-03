@@ -242,6 +242,26 @@ public class JsonSourceTests : AbstractTechTolkTests
     }
 
 
+    [Fact]
+    public void A_JSON_file_is_allowed_to_contain_comments()
+    {
+        var builder = _services.AddTechTolk()
+                .ConfigureDefaultCultureInfoDividers();
+
+        builder.AddTranslationSet("Set1", set =>
+        {
+            set.FromJson(Path.Combine(JSON_DIRECTORY, "AllInOne-WithComments.json"));
+        });
+
+        var tolk = GetTolkForTranslationSet("Set1");
+
+        var nlResult = tolk.Translate(Constants.CultureInfoDividers.nl_NL, "MyKey");
+        var enResult = tolk.Translate(Constants.CultureInfoDividers.en_US, "MyKey");
+
+        nlResult.Should().Be("AllInOne-WithComments-NL");
+        enResult.Should().Be("AllInOne-WithComments-EN");
+    }
+
 
 
     [Fact]

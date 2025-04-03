@@ -1,0 +1,22 @@
+{
+    "translationSets": [
+        {
+            "divider": "nl-NL",
+            "translations": [
+                // Added a comment to find out if it's ignored
+                {
+                    "MyKey": "AllInOne-WithComments-NL"
+                }
+            ]
+        },
+        {
+            "divider": "en-US",
+            "translations": [
+                // Even though comments shouldn't be allowed in JSON
+                {
+                    "MyKey": "AllInOne-WithComments-EN"
+                }
+            ]
+        }
+    ]
+}

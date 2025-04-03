@@ -23,7 +23,10 @@ internal sealed class JsonDocumentTranslationSetReader
     public async Task ParseFileIntoSetBuilder(JsonFilePath jsonFile, ITranslationSetBuilder builder)
     {
         using var stream = File.OpenRead(jsonFile.FullPath);
-        using var jsonDocument = await JsonDocument.ParseAsync(stream);
+        using var jsonDocument = await JsonDocument.ParseAsync(stream, new JsonDocumentOptions
+        {
+            CommentHandling = JsonCommentHandling.Skip
+        });
 
         var root = new JsonElementWithPropertyName("$", jsonDocument.RootElement);
 
