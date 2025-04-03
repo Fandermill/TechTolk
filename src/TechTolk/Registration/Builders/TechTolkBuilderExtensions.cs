@@ -1,9 +1,10 @@
 using System.Globalization;
 using TechTolk.Division;
 using TechTolk.Division.Internals;
+using TechTolk.Registration.Builders;
 using TechTolk.Sources;
 
-namespace TechTolk.Registration.Builders;
+namespace TechTolk;
 
 public static class TechTolkBuilderExtensions
 {

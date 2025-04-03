@@ -1,6 +1,5 @@
 using FluentAssertions;
 using TechTolk.Exceptions;
-using TechTolk.Registration.Builders;
 using TechTolk.Sources.Json.Exceptions;
 using TechTolk.TestSuite.Helpers;
 using TechTolk.TestSuite.Helpers.Dividers;
@@ -253,6 +252,20 @@ public class JsonSourceTests : AbstractTechTolkTests
             .AddTranslationSetFromJson(Path.Combine(JSON_DIRECTORY, "AllInOne.json"));
 
         var tolk = GetTolkForTranslationSet("AllInOne");
+
+        var result = tolk.Translate(Constants.CultureInfoDividers.nl_NL, "MyKey");
+
+        result.Should().Be("AllInOne-MyValue-NL");
+    }
+
+    [Fact]
+    public void Can_register_a_json_source_through_the_translation_set_extension_method_with_a_generic_type_parameter()
+    {
+        _services.AddTechTolk()
+            .ConfigureDefaultCultureInfoDividers()
+            .AddTranslationSetFromJson<JsonSourceTests>(Path.Combine(JSON_DIRECTORY, "AllInOne.json"));
+
+        var tolk = GetTolkForTranslationSet<JsonSourceTests>();
 
         var result = tolk.Translate(Constants.CultureInfoDividers.nl_NL, "MyKey");
 

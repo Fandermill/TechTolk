@@ -1,7 +1,8 @@
 using System.Reflection;
+using TechTolk.Registration.Builders;
 using TechTolk.Sources.Resx;
 
-namespace TechTolk.Registration.Builders;
+namespace TechTolk;
 
 public static class BuilderExtensions
 {
