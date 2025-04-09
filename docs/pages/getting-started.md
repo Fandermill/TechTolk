@@ -29,8 +29,8 @@ PM> Install-Package TechTolk
 ```
 ---
 
-In the same way, add the [translation set source](./sources/index.md) package of
-your liking as well to be able to load your translations. For example:
+In the same way, add the [translation set source](./sources/index.md) package(s) of
+your liking as well, to be able to load your translations. For example:
 
 # [dotnet CLI](#tab/dotnet-cli)
 
@@ -67,11 +67,13 @@ services
     // with the TechTolk.Sources.Resx package
     .AddTranslationSetFromResource<MyResource>()
 
-    // Or add translations from a JSON file (TechTolk.Sources.Json package)
-    // This time with the more configurable methods
-    // and also override the behavior upon 'translation not found'
+    // Or add a translation set from JSON files
+    // with the TechTolk.Sources.Json package
+    .AddTranslationSetFromJson<MyResourceTag>("./MyTranslations.json")
+
+    // Or add a translation set with a custom name and override default behavior
     .AddTranslationSet("NamedSet", set => {
-        set.FromJson("./MyTranslations.json");
+        set.FromJson("./NamedSetTranslations.json");
         set.WithOptions(o => o.OnTranslationNotFound().ThrowException());
     });
 ```
