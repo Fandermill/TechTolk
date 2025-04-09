@@ -12,6 +12,7 @@
 		<RepositoryUrl>https://github.com/Fandermill/TechTolk</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Fandermill/TechTolk</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>techtolk-logo-icon.png</PackageIcon>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -24,6 +25,10 @@
 			<PackagePath>\</PackagePath>
 		</None>
 		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\techtolk-logo-icon.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
