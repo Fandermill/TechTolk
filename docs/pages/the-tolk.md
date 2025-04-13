@@ -91,26 +91,27 @@ translation by property names. More information on this is on the
 
 ITolk tolk = /* ... */;
 
-// source of translation set
-//
-// nl-NL
-// "MyProfile": "Mijn profiel"
-// "UserGreeting": "Hallo {Username}"
-//
-// en-US
-// "MyProfile": "My profiel"
-// "UserGreeting": "Hello {Username}"
+// From set source:
+// nl-NL:
+//   MyProfile: "Mijn profiel"
+//   UserGreeting: "Hallo {Username}"
+// en-US:
+//   MyProfile: "My profile"
+//   UserGreeting: "Hello {Username}"
 
-CultureInfo.CurrentUICulture = new CultureInfo("nl-NL");
+var nl_NL = new CultureInfo("nl-NL");
+var en_US = new CultureInfo("en-US");
+
+CultureInfo.CurrentUICulture = nl_NL;
 
 // Uses the current divider (UICulture of current thread by default)
-Console.WriteLine("1: " + tolk.Translate("MyProfile"));
+Console.WriteLine("1: " + _tolk.Translate("MyProfile"));
 
 // You can always pass in a divider
-Console.WriteLine("2: " + tolk.Translate("en-US", "MyProfile"));
+Console.WriteLine("2: " + _tolk.Translate(CultureInfoDivider.FromCulture(en_US), "MyProfile"));
 
 // Pass in a value bag to fill in the gaps
-Console.WriteLine("3: " + tolk.Translate("UserGreeting", new { Username = "Fandermill"});
+Console.WriteLine("3: " + _tolk.Translate("UserGreeting", new { Username = "Fandermill" }));
 
 // Outputs:
 //  "1: Mijn profiel"
@@ -118,6 +119,3 @@ Console.WriteLine("3: " + tolk.Translate("UserGreeting", new { Username = "Fande
 //  "3: Hallo Fandermill"
 
 ```
-
-> [!WARNING]
-> TODO - Check code!
