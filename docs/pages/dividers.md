@@ -31,7 +31,7 @@ services
 
 > [!TIP]
 > You can use a shorthand extension method to use the built in
-> `CultureInfoDivider` as dividers. This method also sets a
+> `CultureInfoDivider` as dividers. This method also sets an
 > `ICurrentDividerProvider` that returns the current UI culture of the current
 > thread.
 >
