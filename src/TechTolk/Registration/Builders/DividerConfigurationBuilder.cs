@@ -23,7 +23,7 @@ internal sealed class DividerConfigurationBuilder : IDividerConfigurationBuilder
         return this;
     }
 
-    public IDividerConfigurationBuilder SetCurrentDividerProvider<T>(Func<IServiceProvider, ICurrentDividerProvider> provider) where T : ICurrentDividerProvider
+    public IDividerConfigurationBuilder SetCurrentDividerProvider<T>(Func<IServiceProvider, T> provider) where T : class, ICurrentDividerProvider
     {
         RootBuilder.Services.Replace(new ServiceDescriptor(typeof(ICurrentDividerProvider), provider, ServiceLifetime.Singleton));
         return this;
