@@ -77,6 +77,8 @@ forget to register your renderer in your DI container.
 services
     .AddTechTolk()
 
+    //.ConfigureDividers(...)
+
     // Configure your value renderer as the default
     .ConfigureDefaultOptions(o => o.UseValueRenderer<MyValueRenderer>())
 

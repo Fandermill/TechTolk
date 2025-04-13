@@ -14,7 +14,7 @@ dividers.
 You can use direct `Add` calls:
 
 ```csharp
-public class MyTranslationSource : ITranslationSource
+public class MyTranslationSetSource : ITranslationSetSource
 {
     public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
@@ -34,7 +34,7 @@ public class MyTranslationSource : ITranslationSource
 ... or use the fluent API:
 
 ```csharp
-public class MyTranslationSource : ITranslationSource
+public class MyTranslationSetSource : ITranslationSetSource
 {
     public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
@@ -60,17 +60,17 @@ into the `.FromSource(...)` call.
 
 ```csharp
 .AddTranslationSet("SetName", set => {
-    set.FromSource(new MyTranslationSource());
+    set.FromSource(new MyTranslationSetSource());
 });
 ```
 
 If your custom source needs services injected that can be resolved from the
-service provider, you can call `.FromSource<MyTranslationSource>()`. The source
-is resolved as soon as the translation set gets compiled.
+service provider, you can call `.FromSource<MyTranslationSetSource>()`. The
+source is resolved as soon as the translation set gets compiled.
 
 ```csharp
 .AddTranslationSet("SetName", set => {
-    set.FromSource<MyTranslationSource>();
+    set.FromSource<MyTranslationSetSource>();
 });
 ```
 

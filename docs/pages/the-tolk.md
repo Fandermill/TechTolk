@@ -63,7 +63,7 @@ public class MyClass
 
     public MyClass(ITolkFactory tolkFactory)
     {
-        _tolk = tolkFactory.CreateTolk("MyNamedTranslationSet");
+        _tolk = tolkFactory.Create("MyNamedTranslationSet");
     }
 }
 ```
@@ -82,7 +82,7 @@ translation for the current divider. TechTolk will use the
 You can pass in a divider as well to explicitly get the translation for the
 given divider.
 
-To render translations with placeholder, you can pass in an anonymous object.
+To render translations with placeholders, you can pass in an anonymous object.
 The built in `IValueRenderer` will merge the property values into the
 translation by property names. More information on this is on the 
 [value renderers](value-renderers.md) page.
