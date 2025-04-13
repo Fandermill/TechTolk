@@ -18,11 +18,11 @@ public class MyTranslationSetSource : ITranslationSetSource
 {
     public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
-        var en = new CultureInfo("en-US");
+        var en = CultureInfoDivider.FromCulture("en-US");
         builder.Add(en, "MyKey", "MyTranslation");
         builder.Add(en, "AnotherKey", "AnotherTranslation");
         
-        var nl = new CultureInfo("nl-NL");
+        var nl = CultureInfoDivider.FromCulture("nl-NL");
         builder.Add(nl, "MyKey", "MijnVertaling");
         builder.Add(nl, "AnotherKey", "NogEenVertaling");
 
@@ -39,11 +39,11 @@ public class MyTranslationSetSource : ITranslationSetSource
     public Task PopulateTranslationsAsync(ITranslationSetBuilder builder, SourceRegistrationBase sourceRegistration)
     {
         builder
-            .ForDivider(new CultureInfo("en-US")).Add(new[] {
+            .ForDivider(CultureInfoDivider.FromCulture("en-US")).Add(new[] {
                 ( "MyKey", "MyTranslation"),
                 ( "AnotherKey", "AnotherTranslation")
             })
-            .ThenForDivider(new CultureInfo("nl-NL")).Add(new[] {
+            .ThenForDivider(CultureInfoDivider.FromCulture("nl-NL")).Add(new[] {
                 ( "MyKey", "MijnVertaling"),
                 ( "AnotherKey", "NogEenVertaling")
             });

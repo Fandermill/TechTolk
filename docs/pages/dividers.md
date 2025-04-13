@@ -24,8 +24,8 @@ To specify the supported dividers, you should use the
 services
     .AddTechTolk()
     .ConfigureDividers(config => {
-        config.AddSupportedDivider(new CultureInfoDivider("nl-NL"));
-        config.AddSupportedDivider(new CultureInfoDivider("en-US"));
+        config.AddSupportedDivider(CultureInfoDivider.FromCulture("nl-NL"));
+        config.AddSupportedDivider(CultureInfoDivider.FromCulture("en-US"));
     });
 ```
 
@@ -44,7 +44,11 @@ services
 >
 > The `CultureInfoDivider` contains an implicit operator so you can easily pass
 > a string, where a `CultureInfoDivider` is asked. That's why you can pass in
-> strings in the `.UseCultureInfoDividers()` extension method.
+> strings into the `.UseCultureInfoDividers()` extension method. Note that you
+> can't use strings for obtaining translations for a specific divider, like
+> `_tolk.Translate("nl-NL", "MyKey")`, as it will be seen as a call to
+> `Translate(string key, object? data)`. Use an actual `IDivider` implementation
+> when needed.
 
 
 ## The `ICurrentDividerProvider`
