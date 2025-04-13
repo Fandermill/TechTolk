@@ -37,7 +37,7 @@ public interface IDividerConfigurationBuilder
     /// <typeparam name="T">The implementation type</typeparam>
     /// <param name="provider"></param>
     /// <returns>The builder to chain calls on</returns>
-    IDividerConfigurationBuilder SetCurrentDividerProvider<T>(Func<IServiceProvider, ICurrentDividerProvider> provider) where T : ICurrentDividerProvider;
+    IDividerConfigurationBuilder SetCurrentDividerProvider<T>(Func<IServiceProvider, T> provider) where T : class, ICurrentDividerProvider;
     IDividerConfigurationBuilder AddSupportedDivider(IDivider divider);
 }
 

@@ -61,7 +61,7 @@ public class DividerTests : AbstractTechTolkTests
         _services.AddTechTolk().ConfigureDividers(config =>
         {
             config.AddSupportedDivider(Constants.StringDividers.FixedDivider);
-            config.SetCurrentDividerProvider<FixedDividerProvider>(p => new FixedDividerProvider(Constants.StringDividers.FixedDivider.Key));
+            config.SetCurrentDividerProvider(p => new FixedDividerProvider(Constants.StringDividers.FixedDivider.Key));
         }).AddTranslationSet(SetForFixedDivider.Key, s => s.FromSource(new SetForFixedDivider()));
         var tolk = GetTolkForTranslationSet(SetForFixedDivider.Key);
 
