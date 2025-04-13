@@ -65,7 +65,7 @@ services
 
     // Add translation set from an embedded resource
     // with the TechTolk.Sources.Resx package
-    .AddTranslationSetFromResource<MyResource>()
+    .AddTranslationSetFromResource<MyResxTranslations>()
 
     // Or add a translation set from JSON files
     // with the TechTolk.Sources.Json package
@@ -150,7 +150,7 @@ public class MyClass
 @page
 @using TechTolk
 @model PrivacyModel
-@inject ITolk<PrivacyModel> Localizer;
+@inject ITolk<MyResxTranslations> Localizer;
 @{
     ViewData["Title"] = Localizer.Translate("Pages.Privacy.Title");
 }
