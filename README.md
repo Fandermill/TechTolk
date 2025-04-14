@@ -7,6 +7,7 @@ registered by a simple to use API.
 
 See for full documentation: https://fandermill.github.io/TechTolk
 
+
 ## Getting Started
 
 It requires a few steps to get started with TechTolk. First you have to
@@ -38,7 +39,6 @@ dotnet add package TechTolk.Sources.Resx
 dotnet add package TechTolk.Sources.Json
 ```
 
-
 ### Registration
 
 To register TechTolk services at application start, use the `IServiceCollection`
@@ -57,7 +57,7 @@ services
 
     // Add translation set from an embedded resource
     // with the TechTolk.Sources.Resx package
-    .AddTranslationSetFromResource<MyResource>()
+    .AddTranslationSetFromResource<MyResxTranslations>()
 
     // Or add a translation set from JSON files
     // with the TechTolk.Sources.Json package
@@ -98,16 +98,19 @@ public class MyClass
         //   MyProfile: "My profile"
         //   UserGreeting: "Hello {Username}"
 
-        CultureInfo.CurrentUICulture = new CultureInfo("nl-NL");
+        var nl_NL = new CultureInfo("nl-NL");
+        var en_US = new CultureInfo("en-US");
+
+        CultureInfo.CurrentUICulture = nl_NL;
 
         // Uses the current divider (UICulture of current thread by default)
         Console.WriteLine("1: " + _tolk.Translate("MyProfile"));
 
         // You can always pass in a divider
-        Console.WriteLine("2: " + _tolk.Translate("en-US", "MyProfile"));
+        Console.WriteLine("2: " + _tolk.Translate(CultureInfoDivider.FromCulture(en_US), "MyProfile"));
 
         // Pass in a value bag to fill in the gaps
-        Console.WriteLine("3: " + _tolk.Translate("UserGreeting", new { Username = "Fandermill"});
+        Console.WriteLine("3: " + _tolk.Translate("UserGreeting", new { Username = "Fandermill"}));
 
         // Outputs:
         //  "1: Mijn profiel"
