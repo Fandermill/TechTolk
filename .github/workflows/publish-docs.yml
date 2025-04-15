@@ -1,0 +1,12 @@
+name: Publish Docs
+
+# dummy version - workflow needs to be in main in order to show up on actions tab..
+
+on:
+  workflow_dispatch:
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
