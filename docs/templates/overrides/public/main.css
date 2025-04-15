@@ -1,0 +1,162 @@
+:root {
+    --tt-blue: #2D93AD;
+    --tt-blue-rgb: 45, 147, 173;
+    --tt-blue-darker: #216E82;
+    --tt-blue-darker-rgb: 33, 110, 130;
+    --tt-blue-subtle: #EFF8FB;
+    --tt-blue-subtle-rgb: 239, 248, 251;
+
+    --tt-red: #DB5461;
+    --tt-red-rgb: 219, 84, 97;
+    --tt-red-darker: #CA2B3B;
+    --tt-red-darker-rgb: 202, 43, 59;
+
+    --tt-white-ish: #FAFAFA;
+    --tt-white-ish-rgb: 250, 250, 250;
+
+    --tt-black-ish: #131516;
+    --tt-black-ish-rgb: 19, 21, 22;
+
+    --tt-yellow: #FCBA04;
+    --tt-yellow-rgb: 219, 84, 97;
+    --tt-yellow-darker: #CA9502;
+    --tt-yellow-darker-rgb: 202, 149, 2;
+    --tt-yellow-subtle: #FEE39A;
+    --tt-yellow-subtle-rgb: 254, 227, 154;
+
+    --bs-border-color-translucent: var(--bs-border-color);
+
+    --bs-info: var(--tt-blue-darker);
+    --bs-info-rgb: var(--tt-blue-darker-rgb);
+    --bs-info-bg-subtle: var(--tt-blue-subtle);
+    --bs-info-border-subtle: var(--tt-blue);
+
+    --bs-warning: var(--tt-yellow-darker);
+    --bs-warning-rgb: var(--tt-yellow-darker-rgb);
+    --bs-warning-bg-subtle: var(--tt-yellow-subtle);
+    --bs-warning-border-subtle: var(--tt-yellow);
+
+    --bs-info-text-emphasis: var(--tt-blue);
+    --bs-warning-text-emphasis: var(--tt-yellow-darker);
+}
+
+[data-bs-theme="light"] {
+
+    --bs-body-color: var(--tt-black-ish);
+    --bs-body-color-rgb: var(--tt-black-ish-rgb);
+
+    --bs-link-color: var(--tt-blue);
+    --bs-link-color-rgb: var(--tt-blue-rgb);
+    --bs-link-hover-color: var(--tt-blue-darker);
+    --bs-link-hover-color-rgb: var(--tt-blue-darker-rgb);
+
+    --bs-code-color: var(--tt-red);
+}
+
+[data-bs-theme="light"] header {
+    --bs-body-bg: #F5F5F5;
+    --bs-body-bg-rgb: 245, 245, 245;
+}
+
+
+
+[data-bs-theme="light"] .alert-warning p code {
+    color: var(--tt-red-darker);
+}
+
+[data-bs-theme="light"] .form-control:focus {
+    border-color: var(--tt-blue);
+    box-shadow: none;
+}
+
+
+
+[data-bs-theme="dark"] {
+
+    --bs-body-bg: var(--tt-black-ish);
+    --bs-body-bg-rgb: var(--tt-black-ish-rgb);
+
+    --bs-link-color: var(--tt-red);
+    --bs-link-color-rgb: var(--tt-red-rgb);
+    --bs-link-hover-color: var(--tt-red-darker);
+    --bs-link-hover-color-rgb: var(--tt-red-darker-rgb);
+
+    --bs-code-color: var(--tt-blue);
+}
+
+[data-bs-theme="dark"] .alert-info {
+    --bs-alert-bg: inherit;
+}
+
+[data-bs-theme="dark"] .alert-warning {
+    --bs-alert-bg: inherit;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+    border-color: var(--tt-red);
+    box-shadow: none;
+}
+
+
+
+
+/* HighlightJS */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+    color: var(--tt-blue-darker);
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+    color: var(--tt-red);
+}
+
+[data-bs-theme="light"] .hljs {
+    background-color: rgba(var(--bs-black-rgb), 0.05);
+}
+
+[data-bs-theme="light"] .hljs-string,
+[data-bs-theme="light"] .hljs-title,
+[data-bs-theme="light"] .hljs-section,
+[data-bs-theme="light"] .hljs-attribute,
+[data-bs-theme="light"] .hljs-literal,
+[data-bs-theme="light"] .hljs-template-tag,
+[data-bs-theme="light"] .hljs-template-variable,
+[data-bs-theme="light"] .hljs-type,
+[data-bs-theme="light"] .hljs-addition {
+    color: var(--tt-red-darker);
+}
+
+[data-bs-theme="light"] .alert .hljs {
+    background-color: rgba(var(--bs-white-rgb), 0.9);
+}
+
+
+
+/*
+    The _appName option in docfx set both the alt attribute on the logo and text
+    to the element. Unsetting the option removes the alt attribute from the 
+    image but does not add the text.
+    I do want the alt attribute, but no added text (because it's in the logo 
+    already), so here, I'm trying to hide the text, but not the image.
+*/
+nav a.navbar-brand {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0.0001px;
+}
+
+img#logo {
+    height: 40px;
+}
