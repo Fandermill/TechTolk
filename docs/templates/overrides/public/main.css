@@ -160,3 +160,17 @@ nav a.navbar-brand {
 img#logo {
     height: 40px;
 }
+
+h2 {
+    font-size: 1.75rem;
+    margin-top: 2rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+}
+
+nav.toc li:not(:first-child) span.name-only {
+    margin-top: 2rem;
+}
