@@ -30,7 +30,7 @@ dotnet add package TechTolk
 ```
 
 In the same way, add the 
-[translation set source](https://fandermill.github.io/TechTolk/pages/sources/index.md)
+[translation set source](https://fandermill.github.io/TechTolk/pages/sources/index.html)
 package(s) of your liking as well, to be able to load your translations. For
 example:
 
@@ -125,5 +125,5 @@ public class MyClass
 Want to try TechTolk, but don't want to change all your translation calls in
 your views? There is an additional library that you can use as a drop-in
 replacement for .NET's localization implementation. See 
-[.NET Localization Adapter](https://fandermill.github.io/TechTolk/pages/net-localization-adapter.md)
+[.NET Localization Adapter](https://fandermill.github.io/TechTolk/pages/net-localization-adapter.html)
 for more information.
