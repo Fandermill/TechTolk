@@ -18,14 +18,20 @@ jobs:
       with:
         dotnet-version: '9.x.x'
 
+    - name: Parse tag name
+      id: parsedTag
+      uses: olegtarasov/get-tag@v2.1.4
+      with:
+        tagRegex: "(?<package>[a-zA-Z.]*)-(?<version>.*)"
+
     - name: Build solution
-      run: dotnet build --configuration Release
+      run: dotnet build ./src/${{ steps.parsedTag.outputs.package }} --configuration Release
 
     - name: Run tests
-      run: dotnet test --configuration Release
+      run: dotnet test ./tests/${{ steps.parsedTag.outputs.package}}.Tests --configuration Release
 
     - name: Pack NuGet packages
-      run: dotnet pack --configuration Release -p:PackageVersion=${{github.event.release.tag_name}}
+      run: dotnet pack ./src/${{ steps.parsedTag.outputs.package }} --configuration Release -p:PackageVersion=${{ steps.parsedTag.outputs.version }}
     
     - name: Push to NuGet.org
-      run: dotnet nuget push "**/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push "./src/${{ steps.parsedTag.outputs.package }}/**/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
