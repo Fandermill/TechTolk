@@ -22,7 +22,7 @@ jobs:
       id: parsedTag
       uses: olegtarasov/get-tag@v2.1.4
       with:
-        tagRegex: "(?<package>[a-zA-Z.]*)-(?<version>.*)"
+        tagRegex: "(?<package>[a-zA-Z.]*)-v(?<version>.*)"
 
     - name: Build solution
       run: dotnet build ./src/${{ steps.parsedTag.outputs.package }} --configuration Release
