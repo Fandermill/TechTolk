@@ -1,11 +1,10 @@
 
-# <img src="https://raw.githubusercontent.com/Fandermill/TechTolk/main/techtolk-logo.png" alt="TechTolk Logo" height="80" />
-
+# ![Tech Tolk Logo](https://raw.githubusercontent.com/Fandermill/TechTolk/main/assets/techtolk-logo-380x80.png)
 
 TechTolk is a powerful and flexible .NET localization library with an extensible
 set of sources and translation rendering features. It loads translation sets
 into memory, registered through a simple-to-use API.
-
+ 
 For full documentation, visit the 
 [TechTolk documentation pages](https://fandermill.github.io/TechTolk).
 
@@ -30,13 +29,13 @@ For full documentation, visit the
 
 ## Current versions
 
-| Package | Version |
-| --- | --- |
-| `TechTolk` | ![TechTolk NuGet Version](https://img.shields.io/nuget/v/TechTolk?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
-| `TechTolk.Sources.Json` | ![TechTolk.Sources.Json NuGet Version](https://img.shields.io/nuget/v/TechTolk.Sources.Json?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
-| `TechTolk.Sources.Resx` | ![TechTolk.Sources.Resx NuGet Version](https://img.shields.io/nuget/v/TechTolk.Sources.Resx?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
+| Package                               | Version                                                                                                                                                                              |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `TechTolk`                            | ![TechTolk NuGet Version](https://img.shields.io/nuget/v/TechTolk?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461)                                                       |
+| `TechTolk.Sources.Json`               | ![TechTolk.Sources.Json NuGet Version](https://img.shields.io/nuget/v/TechTolk.Sources.Json?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461)                             |
+| `TechTolk.Sources.Resx`               | ![TechTolk.Sources.Resx NuGet Version](https://img.shields.io/nuget/v/TechTolk.Sources.Resx?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461)                             |
 | `TechTolk.ValueRenderers.SmartFormat` | ![TechTolk.ValueRenderers.SmartFormat NuGet Version](https://img.shields.io/nuget/v/TechTolk.ValueRenderers.SmartFormat?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
-| `TechTolk.Extensions.Localization` | ![TechTolk.Extensions.Localization NuGet Version](https://img.shields.io/nuget/v/TechTolk.Extensions.Localization?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
+| `TechTolk.Extensions.Localization`    | ![TechTolk.Extensions.Localization NuGet Version](https://img.shields.io/nuget/v/TechTolk.Extensions.Localization?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461)       |
 
 
 
