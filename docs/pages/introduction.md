@@ -8,9 +8,24 @@ you are looking for. If not, please get in touch. You will find TechTolk on
 
 ## What is TechTolk?
 
-TechTolk is a .NET localization library with an extensible set of sources and
-translation rendering features. It loads translations sets into memory,
-registered by a simple to use API.
+TechTolk is a powerful and flexible .NET localization library with an extensible
+set of sources and translation rendering features. It loads translation sets
+into memory, registered through a simple-to-use API.
+
+### Features
+
+* In-memory localizer
+* Support for multiple sources, like JSON or Resx
+* Merge multiple sources into one translation set
+* Per translation set configuration
+* Render translations with placeholders
+* Extensible sources and value renderers
+* Optional complex rendering with the use of 
+  [`SmartFormat`](https://github.com/axuno/SmartFormat)
+* Drop in adapter for use with 
+  [Microsoft's localization](#net-localization-adapter)
+* Targets .NET Standard 2.0 for use in both modern .NET and 
+  classic .NET Framework applications
 
 
 
@@ -52,3 +67,18 @@ Want to try TechTolk, but don't want to change all your translation calls in
 your views? There is an additional library that you can use as a drop-in
 replacement for .NET's localization implementation. See 
 [.NET Localization Adapter](net-localization-adapter.md) for more information.
+
+
+
+## Support
+
+If you encounter any issues or have questions, please open an issue on the 
+[GitHub repository](https://github.com/Fandermill/TechTolk/issues).
+
+
+
+## License
+
+This project is licensed under the 
+[MIT License](https://raw.githubusercontent.com/Fandermill/TechTolk/main/LICENSE).
+Feel free to use, modify, and distribute it in your projects.

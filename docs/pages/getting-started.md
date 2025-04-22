@@ -63,15 +63,22 @@ services
     // (optional) set default behavior
     .ConfigureDefaultOptions(o => o.OnTranslationNotFound().ReturnEmptyString())
 
-    // Add translation set from an embedded resource
-    // with the TechTolk.Sources.Resx package
+    // Add a translation set from an embedded resource
+    // with the TechTolk.Sources.Resx package.
+    // The MyResxTranslations type is the type of the 
+    // embedded resource and can be used to request 
+    // an ITolk instance from your DI container later on.
     .AddTranslationSetFromResource<MyResxTranslations>()
 
     // Or add a translation set from JSON files
-    // with the TechTolk.Sources.Json package
+    // with the TechTolk.Sources.Json package.
+    // Use the MyResourceTag type to request an 
+    // ITolk for this translation set later on.
     .AddTranslationSetFromJson<MyResourceTag>("./MyTranslations.json")
 
-    // Or add a translation set with a custom name and override default behavior
+    // Or add a translation set with a custom name and 
+    // override default behavior. Use an ITolkFactory 
+    // to request an ITolk for a named set.
     .AddTranslationSet("NamedSet", set => {
         set.FromJson("./NamedSetTranslations.json");
         set.WithOptions(o => o.OnTranslationNotFound().ThrowException());
@@ -98,7 +105,7 @@ page.
 ## Tolk usage
 
 To actually use TechTolk to render translations from your translation sets, you
-need to aquire an ITolk instance from your service provider. You can then use
+need to acquire an `ITolk` instance from your service provider. You can then use
 the `.Translate(string)` method to get your translations.
 
 # [in a class or service](#tab/class-or-service)
@@ -108,6 +115,8 @@ using TechTolk;
 
 public class MyClass
 {
+    // MyResourceTag is the type of which you 
+    // registered the translation set with earlier
     private readonly ITolk<MyResourceTag> _tolk;
 
     public MyClass(ITolk<MyResourceTag> tolk)
@@ -128,15 +137,19 @@ public class MyClass
         var nl_NL = new CultureInfo("nl-NL");
         var en_US = new CultureInfo("en-US");
 
+        // The default implementation that provides the current divider
+        // uses the current UI Culture of the current thread.
+        // TechTolk is not responsible for setting the current divider.
+        // For this example, set it to Dutch (nl-NL).
         CultureInfo.CurrentUICulture = nl_NL;
 
-        // Uses the current divider (UICulture of current thread by default)
+        // Translate using the current divider/culture
         Console.WriteLine("1: " + _tolk.Translate("MyProfile"));
 
-        // You can always pass in a divider
+        // Translate using a specific divider, like the en-US culture
         Console.WriteLine("2: " + _tolk.Translate(CultureInfoDivider.FromCulture(en_US), "MyProfile"));
 
-        // Pass in a value bag to fill in the gaps
+        // Translate with placeholders filled using a value bag
         Console.WriteLine("3: " + _tolk.Translate("UserGreeting", new { Username = "Fandermill"}));
 
         // Outputs:
