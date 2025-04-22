@@ -1,11 +1,43 @@
 
-# <img src="./techtolk-logo.png" alt="TechTolk" height="80" />
+# <img src="https://raw.githubusercontent.com/Fandermill/TechTolk/main/techtolk-logo.png" alt="TechTolk Logo" height="80" />
 
-TechTolk is a .NET localization library with an extensible set of sources and
-translation rendering features. It loads translations sets into memory,
-registered by a simple to use API.
 
-See for full documentation: https://fandermill.github.io/TechTolk
+TechTolk is a powerful and flexible .NET localization library with an extensible
+set of sources and translation rendering features. It loads translation sets
+into memory, registered through a simple-to-use API.
+
+For full documentation, visit the 
+[TechTolk documentation pages](https://fandermill.github.io/TechTolk).
+
+
+
+## Features
+
+* In-memory localizer
+* Support for multiple sources, like JSON or Resx
+* Merge multiple sources into one translation set
+* Per translation set configuration
+* Render translations with placeholders
+* Extensible sources and value renderers
+* Optional complex rendering with the use of 
+  [`SmartFormat`](https://github.com/axuno/SmartFormat)
+* Drop in adapter for use with 
+  [Microsoft's localization](#net-localization-adapter)
+* Targets .NET Standard 2.0 for use in both modern .NET and 
+  classic .NET Framework applications
+
+
+
+## Current versions
+
+| Package | Version |
+| --- | --- |
+| `TechTolk` | ![TechTolk NuGet Version](https://img.shields.io/nuget/v/TechTolk?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
+| `TechTolk.Sources.Json` | ![TechTolk.Sources.Json NuGet Version](https://img.shields.io/nuget/v/TechTolk.Sources.Json?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
+| `TechTolk.Sources.Resx` | ![TechTolk.Sources.Resx NuGet Version](https://img.shields.io/nuget/v/TechTolk.Sources.Resx?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
+| `TechTolk.ValueRenderers.SmartFormat` | ![TechTolk.ValueRenderers.SmartFormat NuGet Version](https://img.shields.io/nuget/v/TechTolk.ValueRenderers.SmartFormat?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
+| `TechTolk.Extensions.Localization` | ![TechTolk.Extensions.Localization NuGet Version](https://img.shields.io/nuget/v/TechTolk.Extensions.Localization?style=flat-square&logo=nuget&labelColor=2d93ad&color=DB5461) |
+
 
 
 ## Getting Started
@@ -55,25 +87,35 @@ services
     // (optional) set default behavior
     .ConfigureDefaultOptions(o => o.OnTranslationNotFound().ReturnEmptyString())
 
-    // Add translation set from an embedded resource
-    // with the TechTolk.Sources.Resx package
+    // Add a translation set from an embedded resource
+    // with the TechTolk.Sources.Resx package.
+    // The MyResxTranslations type is the type of the 
+    // embedded resource and can be used to request 
+    // an ITolk instance from your DI container later on.
     .AddTranslationSetFromResource<MyResxTranslations>()
 
     // Or add a translation set from JSON files
-    // with the TechTolk.Sources.Json package
+    // with the TechTolk.Sources.Json package.
+    // Use the MyResourceTag type to request an 
+    // ITolk for this translation set later on.
     .AddTranslationSetFromJson<MyResourceTag>("./MyTranslations.json")
 
-    // Or add a translation set with a custom name and override default behavior
+    // Or add a translation set with a custom name and 
+    // override default behavior. Use an ITolkFactory 
+    // to request an ITolk for a named set.
     .AddTranslationSet("NamedSet", set => {
         set.FromJson("./NamedSetTranslations.json");
         set.WithOptions(o => o.OnTranslationNotFound().ThrowException());
     });
 ```
 
+See for adding a merged translation set that consists from multiple sources, the
+[full documentation pages](https://fandermill.github.io/TechTolk/pages/translation-sets.html#merged-translation-set).
+
 ### Tolk usage
 
 To actually use TechTolk to render translations from your translation sets, you
-need to aquire an ITolk instance from your service provider. You can then use
+need to acquire an `ITolk` instance from your service provider. You can then use
 the `.Translate(string)` method to get your translations.
 
 ```csharp
@@ -81,6 +123,8 @@ using TechTolk;
 
 public class MyClass
 {
+    // MyResourceTag is the type of which you 
+    // registered the translation set with earlier
     private readonly ITolk<MyResourceTag> _tolk;
 
     public MyClass(ITolk<MyResourceTag> tolk)
@@ -101,15 +145,19 @@ public class MyClass
         var nl_NL = new CultureInfo("nl-NL");
         var en_US = new CultureInfo("en-US");
 
+        // The default implementation that provides the current divider
+        // uses the current UI Culture of the current thread.
+        // TechTolk is not responsible for setting the current divider.
+        // For this example, set it to Dutch (nl-NL).
         CultureInfo.CurrentUICulture = nl_NL;
 
-        // Uses the current divider (UICulture of current thread by default)
+        // Translate using the current divider/culture
         Console.WriteLine("1: " + _tolk.Translate("MyProfile"));
 
-        // You can always pass in a divider
+        // Translate using a specific divider, like the en-US culture
         Console.WriteLine("2: " + _tolk.Translate(CultureInfoDivider.FromCulture(en_US), "MyProfile"));
 
-        // Pass in a value bag to fill in the gaps
+        // Translate with placeholders filled using a value bag
         Console.WriteLine("3: " + _tolk.Translate("UserGreeting", new { Username = "Fandermill"}));
 
         // Outputs:
@@ -127,3 +175,18 @@ your views? There is an additional library that you can use as a drop-in
 replacement for .NET's localization implementation. See 
 [.NET Localization Adapter](https://fandermill.github.io/TechTolk/pages/net-localization-adapter.html)
 for more information.
+
+
+
+## Support
+
+If you encounter any issues or have questions, please open an issue on the 
+[GitHub repository](https://github.com/Fandermill/TechTolk/issues).
+
+
+
+## License
+
+This project is licensed under the 
+[MIT License](https://raw.githubusercontent.com/Fandermill/TechTolk/main/LICENSE).
+Feel free to use, modify, and distribute it in your projects.
