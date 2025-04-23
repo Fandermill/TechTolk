@@ -8,9 +8,7 @@
   </PropertyGroup>
 	
   <ItemGroup>
+    <PackageReference Include="TechTolk" Version="1.0.0" />
     <PackageReference Include="System.Text.Json" Version="4.6.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TechTolk\TechTolk.csproj" />
   </ItemGroup>
 </Project>
