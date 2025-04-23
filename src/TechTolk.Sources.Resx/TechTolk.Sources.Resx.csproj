@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TechTolk\TechTolk.csproj" />
+    <PackageReference Include="TechTolk" Version="1.0.0" />
   </ItemGroup>
 	
 </Project>

@@ -29,8 +29,6 @@
     <ProjectReference Include="..\TechTolk.TestSuite.Helpers\TechTolk.TestSuite.Helpers.csproj" />
   </ItemGroup>
 
-
-
   <ItemGroup>
 	<Content Include="../xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>

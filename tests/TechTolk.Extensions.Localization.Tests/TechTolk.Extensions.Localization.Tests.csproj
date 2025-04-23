@@ -4,13 +4,12 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,19 +24,14 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="../xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
-
-	<ItemGroup>
-		<Content Include="../xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
-	</ItemGroup>
-
-
-
-	<ItemGroup>
-	  <ProjectReference Include="..\..\src\TechTolk.Extensions.Localization\TechTolk.Extensions.Localization.csproj" />
-	  <ProjectReference Include="..\..\src\TechTolk\TechTolk.csproj" />
-	  <ProjectReference Include="..\TechTolk.TestSuite.Helpers\TechTolk.TestSuite.Helpers.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TechTolk.Extensions.Localization\TechTolk.Extensions.Localization.csproj" />
+    <ProjectReference Include="..\TechTolk.TestSuite.Helpers\TechTolk.TestSuite.Helpers.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />

@@ -10,11 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+      <PackageReference Include="TechTolk" Version="1.0.0" />
 	  <PackageReference Include="SmartFormat" Version="3.4.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\TechTolk\TechTolk.csproj" />
 	</ItemGroup>
 
 </Project>
