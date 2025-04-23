@@ -23,7 +23,7 @@ into memory, registered through a simple-to-use API.
 * Optional complex rendering with the use of 
   [`SmartFormat`](https://github.com/axuno/SmartFormat)
 * Drop in adapter for use with 
-  [Microsoft's localization](#net-localization-adapter)
+  [Microsoft's localization](https://learn.microsoft.com/en-us/dotnet/core/extensions/localization)
 * Targets .NET Standard 2.0 for use in both modern .NET and 
   classic .NET Framework applications
 
