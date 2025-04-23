@@ -1,5 +1,5 @@
 
-# ![Tech Tolk Logo](https://raw.githubusercontent.com/Fandermill/TechTolk/main/assets/techtolk-logo-380x80.png)
+# [![Tech Tolk Logo](https://raw.githubusercontent.com/Fandermill/TechTolk/main/assets/techtolk-logo-380x80.png)](https://fandermill.github.io/TechTolk)
 
 TechTolk is a powerful and flexible .NET localization library with an extensible
 set of sources and translation rendering features. It loads translation sets
